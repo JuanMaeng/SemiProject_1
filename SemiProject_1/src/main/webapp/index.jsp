@@ -12,6 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	템플릿 민찬
+	깃 연습을 하고 있습니다
 </body>
 </html>
