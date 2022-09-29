@@ -12,6 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	템플릿
+	템플릿 민찬
 </body>
 </html>
