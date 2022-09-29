@@ -12,11 +12,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <div class="layout header">
 	<jsp:include page="layout/header.jsp"/>
 </div>
 <div class="layout footer">
 	<jsp:include page="layout/footer.jsp"/>
 </div>
+
 </body>
 </html>
