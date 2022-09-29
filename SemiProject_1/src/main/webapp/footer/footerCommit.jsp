@@ -12,6 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	권민찬 footer
 </body>
 </html>
