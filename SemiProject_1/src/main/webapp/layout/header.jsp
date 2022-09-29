@@ -35,7 +35,7 @@
                 <div class="flex-fill">
 					<ul class="nav justify-content-center">
 						<li class="nav-item">
-							<a class="nav-link" href="#">마우스&키보드</a>
+							<a class="nav-link" href="index.jsp?main=product/productlist.jsp">마우스&키보드</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">스트리밍</a>

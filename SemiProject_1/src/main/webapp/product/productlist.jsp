@@ -9,30 +9,16 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/templatemo.css">
+<link rel="stylesheet" href="assets/css/custom.css">
+
+<!-- Load fonts style after rendering the layout styles -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
 </head>
-<%
-String root =request.getContextPath();
-
-String mainPage = "layout/main.jsp";
-
-//url을 통해서 main값을 읽어 메인페이지에 출력
-if(request.getParameter("main")!=null){
-	
-	mainPage=request.getParameter("main");
-}
-%>
 <body>
-
-<div class="layout header">
-	<jsp:include page="layout/header.jsp"/>
-</div>
-<div class="layout main">
-	<jsp:include page="<%=mainPage %>"/>
-</div>
-<div class="layout footer">
-	<jsp:include page="layout/footer.jsp"/>
-</div>
-
+ asdfasdf
 </body>
 </html>
