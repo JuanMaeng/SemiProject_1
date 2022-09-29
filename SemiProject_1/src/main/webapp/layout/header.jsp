@@ -53,7 +53,7 @@
 							<a class="nav-link" href="#">스마트홈</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Q&A</a>
+							<a class="nav-link" href="index.jsp?main=qna/qnalist.jsp">Q&A</a>
 						</li>
 					</ul>
                 </div>
