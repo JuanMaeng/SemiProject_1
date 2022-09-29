@@ -12,6 +12,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	깃 연습을 하고 
+
+<div class="layout header">
+	<jsp:include page="layout/header.jsp"/>
+</div>
+<div class="layout footer">
+	<jsp:include page="layout/footer.jsp"/>
+</div>
+
 </body>
 </html>
