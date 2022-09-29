@@ -12,6 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	깃 연습을 하고 있습니다fdskjflkjslfkjelfeflksfjelkj
+	깃 연습을 하고 
 </body>
 </html>
