@@ -31,7 +31,7 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/myimg/vertical_mouse.jpg" alt="">
+                            <img class="img-fluid" src="./assets/img/mainimg/vertical_mouse.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
@@ -53,7 +53,7 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/myimg/MX_MASTER.jpg" alt="">
+                            <img class="img-fluid" src="./assets/img/mainimg/MX_MASTER.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
@@ -72,7 +72,7 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/myimg/OPTION.jpg" alt="">
+                            <img class="img-fluid" src="./assets/img/mainimg/OPTION.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
@@ -107,17 +107,17 @@
         
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/myimg/category_1.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
+                <a href="#"><img src="./assets/img/mainimg/category_1.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
                 <h5 class="text-center mt-3 mb-3">화상 회의</h5>
                 <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/myimg/presentation.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
+                <a href="#"><img src="./assets/img/mainimg/presentation.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
                 <h2 class="h5 text-center mt-3 mb-3">프레젠테이션</h2>
                 <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/myimg/camera.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
+                <a href="#"><img src="./assets/img/mainimg/camera.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
                 <h2 class="h5 text-center mt-3 mb-3">가정용 카메라</h2>
                 <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
             </div>
