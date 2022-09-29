@@ -19,6 +19,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 
 <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
@@ -87,5 +88,8 @@
         </div>
     </nav>
 
+=======
+header test14:30
+>>>>>>> branch 'main' of https://github.com/JuanMaeng/SemiProject_1.git
 </body>
 </html>
