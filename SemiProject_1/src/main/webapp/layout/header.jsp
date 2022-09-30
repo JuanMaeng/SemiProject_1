@@ -44,6 +44,16 @@
 			
 			location.href="layout/temporarySession.jsp";
 		});
+		
+		
+		$("button.search").click(function(){
+			
+			var keyword = $("#keyword").val();
+			
+			// alert(keyword);
+			
+			location.href="index.jsp?main=product/searchresult.jsp?keyword=" + keyword;
+		});
 	});
 </script>
 
@@ -52,7 +62,6 @@
 String loginok = (String)session.getAttribute("loginok");
 String myid = (String)session.getAttribute("myid");
 
-System.out.println((String)session.getAttribute("loginok"));
 %>
 <body>
 <!-- Header -->
@@ -128,7 +137,7 @@ System.out.println((String)session.getAttribute("loginok"));
 		    			</li>
 		    			
 						<li class="nav-item">
-							<a class="nav-link" href="index.jsp?main=qna/qnalist.jsp">Q&A</a>
+							<a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">Q&A</a>
 						</li>
 					</ul>
                 </div>
@@ -145,7 +154,7 @@ System.out.println((String)session.getAttribute("loginok"));
                     </div>
                     
                     <!-- 세션용 임시아이콘 Start -->
-                    <%
+                   <%
                     if(loginok == null) {
                    	%>
 	                    <a class="nav-icon d-none d-lg-inline stemp" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
@@ -166,8 +175,26 @@ System.out.println((String)session.getAttribute("loginok"));
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1" href="index.jsp?main=login/loginform.jsp"></i>
+                    
+                    <!-- Modal -->
+				    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				        <div class="modal-dialog modal-lg" role="document">
+				            <div class="w-100 pt-1 mb-5 text-right">
+				                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				            </div>
+				            <form action="#" method="get" class="modal-content modal-body border-0 p-0">
+				                <div class="input-group mb-2">
+				                    <input type="text" class="form-control" id="keyword" placeholder="Search ...">
+				                    <button type="button" class="input-group-text bg-success text-light search">
+				                        <i class="fa fa-fw fa-search text-white"></i>
+				                    </button>
+				                </div>
+				            </form>
+				        </div>
+				    </div>
+				    
+                    <a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=login/loginform.jsp">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span> --> <!-- 장바구니에 담긴 숫자 -->
                     </a>
                     

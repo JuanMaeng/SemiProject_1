@@ -53,22 +53,22 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
 							<i class="fas fa-user fa-fw"></i>
-							맹주안 / maeng11@naver.com
+							맹주안 / startrikcs@gmail.com
                        	</li>
                        	
                         <li>
 							<i class="fas fa-user fa-fw"></i>
-							강혜원 / kang22@naver.com
+							강혜원 / khw0813@gmail.com
                        	</li>
                        	
                        	<li>
 							<i class="fas fa-user fa-fw"></i>
-							권민찬 / kwon33@naver.com
+							권민찬 / als2887@naver.com
                        	</li>
                        	
                        	<li>
 							<i class="fas fa-user fa-fw"></i>
-							김상민 / kim44@naver.com
+							김상민 / tkdals6752@gmail.com
                        	</li>
                        	
                     </ul>

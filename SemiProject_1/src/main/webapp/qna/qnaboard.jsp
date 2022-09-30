@@ -19,6 +19,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	Q&A Board
 </body>
 </html>
