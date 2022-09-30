@@ -20,16 +20,13 @@
 </head>
 <body>
 <%
+//로그인에 대한 세션 값 삭제
+session.removeAttribute("loginok");
 
-String loginok=(String)session.getAttribute("loginok");
+//로그인메인으로 이동.. 항상 메인을 통해 이동하게끔
+response.sendRedirect("loginmain.jsp");
 
-if(loginok==null || loginok.equals("")) //로그아웃상태
-{%>
-	<jsp:include page="loginform.jsp"/>
-<%}else //로그인상태
-{%>
-	<jsp:include page="logoutform.jsp"/>
-<%}
+
 %>
 </body>
 </html>

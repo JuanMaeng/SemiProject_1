@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,15 +22,23 @@
 <body>
 <%
 
-String loginok=(String)session.getAttribute("loginok");
 
-if(loginok==null || loginok.equals("")) //로그아웃상태
-{%>
-	<jsp:include page="loginform.jsp"/>
-<%}else //로그인상태
-{%>
-	<jsp:include page="logoutform.jsp"/>
-<%}
+	//세션으로부터 아이디를 읽어 온다
+	String id=(String)session.getAttribute("idok");
+
+	//아이디에 대한 이름을 dao로부터 얻어온다
+	MemberDao db=new MemberDao();
+	String name=db.getName(id);
 %>
+
+<br><br>
+<b style="color: gray;"><%=name %></b>
+님이 로그인 하셨습니다
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="로그아웃" class="btn btn-danger"
+onclick="loaction.href='logoutaction.jsp'">
+<br><br>
+
+
 </body>
 </html>
