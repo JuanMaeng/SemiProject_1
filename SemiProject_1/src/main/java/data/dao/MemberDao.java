@@ -64,11 +64,11 @@ DbConnect db=new DbConnect();
 			
 			if(rs.next())
 				b=true; //비밀번호가 일치하지 않을떄
-		
 		}	catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
 		}
 		return b;
 	}
-		
 }

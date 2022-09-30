@@ -1,4 +1,4 @@
-<%@page import="member.model.memberDao"%>
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
 	String id=(String)session.getAttribute("idok");
 
 	//아이디에 대한 이름을 dao로부터 얻어온다
-	memberDao db=new memberDao();
+	MemberDao db=new MemberDao();
 	String name=db.getName(id);
 %>
 

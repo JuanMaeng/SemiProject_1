@@ -69,7 +69,7 @@ if(saveid==null || saveid.equals("no"))
 				<div style="padding: 5px;">
 				</div>
 				<br>
-				<input type="password" name="pass" style="width: 300px;"
+				<input type="password" name="pw" style="width: 300px;"
 				class="form-control input-lg"
 				placeholder="비밀번호" required="required">
 				<br>
