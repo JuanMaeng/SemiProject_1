@@ -1,3 +1,4 @@
+<%@page import="member.model.memberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,15 +21,35 @@
 </head>
 <body>
 <%
+String id=request.getParameter("id");
+String pw=request.getParameter("pw");
+String save=request.getParameter("savechk");
 
-String loginok=(String)session.getAttribute("loginok");
+//아이디와 비번 맞는지
+memberDao db=new memberDao();
+boolean b=db.isLogin(id, pw);
 
-if(loginok==null || loginok.equals("")) //로그아웃상태
+//맞으면 세션 저장후 로그인 메인으로 이동
+if(b)
+{
+	//로그인중이니
+	session.setAttribute("loginok", "yes");
+	//아이디와 체크값 저장
+	session.setAttribute("idok", id);
+	//체크하면 값으로 on 체크안하면 null
+	session.setAttribute("saveok", save);
+	
+	//세션유지시간
+	session.setMaxInactiveInterval(60*60*8); //8시간유지
+	
+	//로그인 메인으로이동
+	response.sendRedirect("loginmain.jsp");
+}else
 {%>
-	<jsp:include page="loginform.jsp"/>
-<%}else //로그인상태
-{%>
-	<jsp:include page="logoutform.jsp"/>
+	<script type="text/javascript">
+	alert("아이디와 비밀번호가 맞지않습니다");
+	history.back();
+	</script>
 <%}
 %>
 </body>
