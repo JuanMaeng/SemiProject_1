@@ -27,6 +27,17 @@ div.logform{
     margin-bottom: 400px;
     margin-left: 800px;	
 }
+div.loginbutton {
+  background-color:blue; 
+  border: 1px solid gray; 
+  color: white; 
+  padding: 10px 70px;
+  cursor: pointer;
+  float: left;
+  button:hover;{  
+  color: white;
+	}
+}
 </style>
 
 
@@ -62,10 +73,10 @@ if(saveid==null || saveid.equals("no"))
 				class="form-control input-lg"
 				placeholder="비밀번호" required="required">
 				<br>
-				<button type="submit" class="btn-btn-success btn-lg"
+				<div class="loginbutton" button type="submit" class="btn-btn-success btn-lg"
 				style="width: 200px; height: 50px;">로그인</button>
 				</div><br>
-				<div style="padding: 5px;">
+				<div style="padding:30px 30px;">
 				<input type="checkbox" name="savechk" <%=save?"checked":""%>>아이디저장
 			</form>
 	</div>
