@@ -13,11 +13,23 @@
 <link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
 
-<!-- Load fonts style after rendering the layout styles -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
+
+<script type="text/javascript">
+	
+	$(function(){
+		
+		$("a.stemp").click(function(){
+			
+			location.href="layout/temporarySession.jsp";
+		});
+	});
+</script>
+
 </head>
+
 <body>
 <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
@@ -68,12 +80,35 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- 세션용 임시아이콘 Start -->
+                    <%
+                    System.out.println((String)session.getAttribute("loginok"));
+                    String loginok = (String)session.getAttribute("loginok");
+                    
+                    if(loginok == null) {
+                   	%>
+	                    <a class="nav-icon d-none d-lg-inline stemp" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+	                        NoSession
+	                    </a>
+                    	
+                    <%
+                    } else {
+                   	%>
+                   		<a class="nav-icon d-none d-lg-inline stemp" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+	                        YesSession
+	                    </a>
+                   	<%
+                    }
+                    %>
+                    <!-- 세션용 임시아이콘 End -->
+                    
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=login/loginform.jsp">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span> --> <!-- 장바구니에 담긴 숫자 -->
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
 							<i class="fa fa-fw fa-sign-in-alt text-dark mr-3"></i>
