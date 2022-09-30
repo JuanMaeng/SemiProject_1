@@ -19,11 +19,21 @@
 
 <style type="text/css">
 	@media all and (min-width: 992px) {
-		.navbar .nav-item .dropdown-menu{ display: none; }
-		.navbar .nav-item:hover .nav-link{   }
-		.navbar .nav-item:hover .dropdown-menu{ display: block; }
-		.navbar .nav-item .dropdown-menu{ margin-top:0; }
-	}	
+		.navbar .nav-item .dropdown-menu{display: none;}
+		.navbar .nav-item:hover .nav-link{}
+		.navbar .nav-item:hover .dropdown-menu{display: block;}
+		.navbar .nav-item .dropdown-menu{margin-top:0;}
+	}
+	
+	#welcome{
+		position: absolute;
+		top: 30px;
+		left: 0px;
+		width: 110px;
+		font-size: 12px;
+		text-align: center;
+	}
+	
 </style>
 
 <script type="text/javascript">
@@ -38,7 +48,12 @@
 </script>
 
 </head>
+<%
+String loginok = (String)session.getAttribute("loginok");
+String myid = (String)session.getAttribute("myid");
 
+System.out.println((String)session.getAttribute("loginok"));
+%>
 <body>
 <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
@@ -131,9 +146,6 @@
                     
                     <!-- 세션용 임시아이콘 Start -->
                     <%
-                    System.out.println((String)session.getAttribute("loginok"));
-                    String loginok = (String)session.getAttribute("loginok");
-                    
                     if(loginok == null) {
                    	%>
 	                    <a class="nav-icon d-none d-lg-inline stemp" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
@@ -169,9 +181,11 @@
                    	<%
                     } else {
                    	%>
+						<!-- <a style="pointer-events: none; font-size: 8px;">angel23님&nbsp;</a> -->
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
 								<i class="fa fa-fw fa-sign-out-alt text-dark mr-3"></i>
 	                    </a>
+	                    <div id="welcome"><u><%= myid %></u> 님</div>
                    	<%
                     }
                     %>
@@ -180,6 +194,5 @@
 
         </div>
     </nav>
-
 </body>
 </html>
