@@ -41,10 +41,7 @@
                                 <h3 class="h2">이제 리프트로 업해보세요!</h3>
                                 <p>
                                     손을 올려 편안함을 높여보세요. 리프트 버티컬 마우스가 자연스럽게 자세를 유지하게 합니다. 편안하게 일에 집중할 수 있을 거예요. 
-                                    조금 작거나 보통 크기의 손에 잘 맞아요. <!-- <a rel="sponsored" class="text-success" href="https://templatemo.com" target="_blank">TemplateMo</a> website. 
-                                    Image credits go to <a rel="sponsored" class="text-success" href="https://stories.freepik.com/" target="_blank">Freepik Stories</a>,
-                                    <a rel="sponsored" class="text-success" href="https://unsplash.com/" target="_blank">Unsplash</a> and
-                                    <a rel="sponsored" class="text-success" href="https://icons8.com/" target="_blank">Icons 8</a>. -->
+                                    조금 작거나 보통 크기의 손에 잘 맞아요.
                                 </p>
                             </div>
                         </div>
