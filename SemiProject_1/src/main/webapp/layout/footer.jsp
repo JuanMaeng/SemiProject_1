@@ -22,15 +22,16 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            서울특별시 강남구 테헤란로 132(역삼동)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한독약품빌딩 8층 쌍용교육센터
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            02-3482-4632~5
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            sist@company.com
                         </li>
                     </ul>
                 </div>
@@ -38,24 +39,38 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                        <li><a class="text-decoration-none" href="#">마우스 & 키보드</a></li>
+                        <li><a class="text-decoration-none" href="#">스트리밍</a></li>
+                        <li><a class="text-decoration-none" href="#">비디오 협업</a></li>
+                        <li><a class="text-decoration-none" href="#">헤드셋 & 스피커</a></li>
+                        <li><a class="text-decoration-none" href="#">액세서리</a></li>
+                        <li><a class="text-decoration-none" href="#">스마트 홈</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Contact Us</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                        <li>
+							<i class="fas fa-user fa-fw"></i>
+							맹주안 / maeng11@naver.com
+                       	</li>
+                       	
+                        <li>
+							<i class="fas fa-user fa-fw"></i>
+							강혜원 / kang22@naver.com
+                       	</li>
+                       	
+                       	<li>
+							<i class="fas fa-user fa-fw"></i>
+							권민찬 / kwon33@naver.com
+                       	</li>
+                       	
+                       	<li>
+							<i class="fas fa-user fa-fw"></i>
+							김상민 / kim44@naver.com
+                       	</li>
+                       	
                     </ul>
                 </div>
 
