@@ -52,31 +52,23 @@
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Contact Us</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
-                        	<a class="text-decoration-none" href="#">
-								<i class="fas fa-user-alt fa-fw"></i>
-								맹주안 ㅁㅁㅁㅁ
-							</a>
+							<i class="fas fa-user fa-fw"></i>
+							맹주안 / maeng11@naver.com
                        	</li>
                        	
                         <li>
-                        	<a class="text-decoration-none" href="#">
-								<i class="fas fa-user fa-fw"></i>
-								강혜원 ㅁㅁㅁㅁ
-							</a>
+							<i class="fas fa-user fa-fw"></i>
+							강혜원 / kang22@naver.com
                        	</li>
                        	
                        	<li>
-                        	<a class="text-decoration-none" href="#">
-								<i class="fas fa-user fa-fw"></i>
-								권민찬 ㅁㅁㅁㅁ
-							</a>
+							<i class="fas fa-user fa-fw"></i>
+							권민찬 / kwon33@naver.com
                        	</li>
                        	
                        	<li>
-                        	<a class="text-decoration-none" href="#">
-								<i class="fas fa-user fa-fw"></i>
-								김상민 ㅁㅁㅁㅁ
-							</a>
+							<i class="fas fa-user fa-fw"></i>
+							김상민 / kim44@naver.com
                        	</li>
                        	
                     </ul>

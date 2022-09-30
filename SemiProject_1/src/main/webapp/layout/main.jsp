@@ -17,15 +17,17 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
+
+<style type="text/css">
+	img.recommend{
+		height: 400px;
+	}
+</style>
+
 </head>
 <body>
-<!-- Start Banner Hero -->
+<!-- Start Banner -->
     <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <!-- <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-        </ol> -->
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="container">
@@ -94,10 +96,10 @@
             <i class="fas fa-chevron-right"></i>
         </a>
     </div>
-    <!-- End Banner Hero -->
+    <!-- End Banner -->
 
 
-    <!-- Start Categories of The Month -->
+    <!-- Start Various product -->
     <section class="container py-5">
         <div class="row text-center pt-3">
             <div class="col-lg-6 m-auto">
@@ -109,32 +111,30 @@
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/mainimg/category_1.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
                 <h5 class="text-center mt-3 mb-3">화상 회의</h5>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+                <p class="text-center"><a class="btn btn-success" href="#">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/mainimg/presentation.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
                 <h2 class="h5 text-center mt-3 mb-3">프레젠테이션</h2>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+                <p class="text-center"><a class="btn btn-success" href="#">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/mainimg/camera.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
                 <h2 class="h5 text-center mt-3 mb-3">가정용 카메라</h2>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+                <p class="text-center"><a class="btn btn-success" href="#">Go Shop</a></p>
             </div>
         </div>
     </section>
-    <!-- End Categories of The Month -->
+    <!-- End Various product -->
 
 
-    <!-- Start Featured Product -->
+    <!-- Start Recommend Product -->
     <section class="bg-light">
         <div class="container py-5">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
                     <h1 class="h1">추천 상품</h1>
                     <p>
-                        Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident.
                     </p>
                 </div>
             </div>
@@ -142,78 +142,66 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="./assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                            <img src="./assets/img/mainimg/recommend_mouse.jpg" class="card-img-top recommend" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-black fa fa-circle"></i>
+                                    <i class="text-white fa fa-circle" style="border: 1px solid black; border-radius: 100px;"></i>
                                 </li>
-                                <li class="text-muted text-right">$240.00</li>
+                                <li class="text-muted text-right">&#8361;가격 입력</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Gym Weight</a>
+                            <a href="#" class="h2 text-decoration-none text-dark">MX Master 3s</a>
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
+                                <br>마스터 시리즈,<br>7개의 버튼 및 엄지손가락 휠 제공
                             </p>
-                            <p class="text-muted">Reviews (24)</p>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="./assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
+                            <img src="./assets/img/mainimg/recommend_keyboard.jpg" class="card-img-top recommend" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-black fa fa-circle"></i>
                                 </li>
-                                <li class="text-muted text-right">$480.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
+								<li class="text-muted text-right">&#8361;가격 입력</li>
+							</ul>
+                            <a href="#" class="h2 text-decoration-none text-dark">MX MECHANICAL</a>
                             <p class="card-text">
-                                Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
+                                <br>마스터 시리즈,<br>무선 일루미네이티드 퍼포먼스 키보드
                             </p>
-                            <p class="text-muted">Reviews (48)</p>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="./assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
+                            <img src="./assets/img/mainimg/recommend_camera.jpg" class="card-img-top recommend" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-black fa fa-circle"></i>
                                 </li>
-                                <li class="text-muted text-right">$360.00</li>
+                                <li class="text-muted text-right">&#8361;가격 입력</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
+                            <a href="#" class="h2 text-decoration-none text-dark">C922 PRO HD STREAM WEBCAM</a>
                             <p class="card-text">
-                                Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
+                               <br>제대로 된 스트리밍 웹캠<br>초고속 HD 720p/60fps.
                             </p>
-                            <p class="text-muted">Reviews (74)</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Featured Product -->
+    <!-- End Recommend Product -->
 </body>
 </html>

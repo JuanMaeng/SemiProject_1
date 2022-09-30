@@ -17,6 +17,15 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
 
+<style type="text/css">
+	@media all and (min-width: 992px) {
+		.navbar .nav-item .dropdown-menu{ display: none; }
+		.navbar .nav-item:hover .nav-link{   }
+		.navbar .nav-item:hover .dropdown-menu{ display: block; }
+		.navbar .nav-item .dropdown-menu{ margin-top:0; }
+	}	
+</style>
+
 <script type="text/javascript">
 	
 	$(function(){
@@ -46,24 +55,63 @@
             <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
 					<ul class="nav justify-content-center">
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="index.jsp?main=product/productlist.jsp">마우스&키보드</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">스트리밍</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">비디오 협업</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">헤드셋&스피커</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">액세서리</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">스마트홈</a>
-						</li>
+						</li> -->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">마우스 & 키보드</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">마우스</a></li>
+								<li><a class="dropdown-item" href="#">키보드</a></li>
+				 				<li><a class="dropdown-item" href="#">콤보</a></li>
+			    			</ul>
+		    			</li>
+						
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">스트리밍</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">웹캠</a></li>
+								<li><a class="dropdown-item" href="#">크리에이터용 제품</a></li>
+			    			</ul>
+		    			</li>
+		    			
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">비디오 협업</a>
+							<ul class="dropdown-menu">
+				 				<li><a class="dropdown-item" href="#">컨퍼런스 카메라</a></li>
+								<li><a class="dropdown-item" href="#">통합 회의실 솔루션</a></li>
+								<li><a class="dropdown-item" href="#">Logi Dock</a></li>
+			    			</ul>
+		    			</li>
+		    			
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">헤드셋 & 스피커</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">유선 헤드셋</a></li>
+								<li><a class="dropdown-item" href="#">무선 헤드셋</a></li>
+				 				<li><a class="dropdown-item" href="#">BLUETOOTH 스피커</a></li>
+				 				<li><a class="dropdown-item" href="#">컴퓨터 스피커</a></li>
+			    			</ul>
+		    			</li>
+		    			
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">악세서리</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">IPad용</a></li>
+								<li><a class="dropdown-item" href="#">스마트폰용</a></li>
+				 				<li><a class="dropdown-item" href="#">화상회의</a></li>
+				 				<li><a class="dropdown-item" href="#">프레젠테이션 리모컨</a></li>
+				 				<li><a class="dropdown-item" href="#">충전기</a></li>
+			    			</ul>
+		    			</li>
+		    			
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">스마트홈</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">보안 카메라</a></li>
+			    			</ul>
+		    			</li>
+		    			
 						<li class="nav-item">
 							<a class="nav-link" href="index.jsp?main=qna/qnalist.jsp">Q&A</a>
 						</li>
@@ -110,11 +158,23 @@
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span> --> <!-- 장바구니에 담긴 숫자 -->
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-							<i class="fa fa-fw fa-sign-in-alt text-dark mr-3"></i>
-                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
-                        
-                    </a>
+                    
+                    <%
+                    if(loginok == null){
+                   	%>
+	                    <a class="nav-icon position-relative text-decoration-none" href="#">
+								<i class="fa fa-fw fa-sign-in-alt text-dark mr-3"></i>
+	                    </a>
+                   	
+                   	<%
+                    } else {
+                   	%>
+                   		<a class="nav-icon position-relative text-decoration-none" href="#">
+								<i class="fa fa-fw fa-sign-out-alt text-dark mr-3"></i>
+	                    </a>
+                   	<%
+                    }
+                    %>
                 </div>
             </div>
 
