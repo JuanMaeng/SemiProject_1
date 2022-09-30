@@ -1,4 +1,4 @@
-<%@page import="member.model.memberDao"%>
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ String pw=request.getParameter("pw");
 String save=request.getParameter("savechk");
 
 //아이디와 비번 맞는지
-memberDao db=new memberDao();
+MemberDao db=new MemberDao();
 boolean b=db.isLogin(id, pw);
 
 //맞으면 세션 저장후 로그인 메인으로 이동
@@ -42,7 +42,7 @@ if(b)
 	//세션유지시간
 	session.setMaxInactiveInterval(60*60*8); //8시간유지
 	
-	//로그인 메인으로이동
+	//로그인 메인으로이동 
 	response.sendRedirect("loginmain.jsp");
 }else
 {%>

@@ -77,7 +77,7 @@ if(saveid==null || saveid.equals("no"))
 				style="width: 200px; height: 50px;">로그인</button>
 				</div><br>
 				<div style="padding:30px 30px;">
-				<input type="checkbox" name="savechk" <%=save?"checked":""%>>아이디저장
+				<input type="checkbox" name="savechk">아이디저장
 			</form>
 	</div>
 </div>
