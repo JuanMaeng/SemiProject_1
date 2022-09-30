@@ -1,3 +1,8 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="data.dto.QnaBoardDto"%>
+<%@page import="java.util.List"%>
+<%@page import="data.dao.QnaBoardDao"%>
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,7 +23,39 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
 </head>
+
+<script type="text/javascript">
+$(function(){
+	
+	 $("#qnabtn").click(function(){
+
+		location.href="index.jsp?main=qna/qnaform.jsp";
+			
+	});
+});
+
+
+</script>
+
 <body>
+
+
+
+
+	<div class="container-fluid bg-light py-5">
+        <div class="col-md-6 m-auto text-center">
+            <h1 class="h1">QnA 게시판</h1>
+            <p>
+                문의을 남겨주세요
+            </p>
+        </div>
+    </div>
+    
+
+    
+    <p class="text-center"><button type="button" class="btn btn-success" id="qnabtn">문의하기</button></p>
+    
+    
 
 </body>
 </html>
