@@ -60,7 +60,7 @@
 </head>
 <%
 String loginok = (String)session.getAttribute("loginok");
-String myid = (String)session.getAttribute("myid");
+String myid = (String)session.getAttribute("id");
 
 %>
 <body>

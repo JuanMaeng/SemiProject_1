@@ -25,6 +25,7 @@
 	//프로젝트의 경로
 	String root=request.getContextPath();
 
+	String id = (String)session.getAttribute("id");
 	
 %>
 <!-- se2 폴더에서 js 파일 가져오기 -->
@@ -47,7 +48,8 @@
     </div>
     
 	<form action="qna/qnainsertproc.jsp" method="post">
-		<table class="table table-bordered" style="width:900px; height:500px; margin: 100px 800px 200px;">
+		<input type="hidden" name="id" id="id" value="<%=id%>">
+		<table class="table table-bordered" style="width:900px; height:500px; margin: 100px 500px 200px;">
 			<thead>
 				<tr>
 					<th colspan="2" style="background-color: #f8f9fa; text-align: center;">문의하기</th>						

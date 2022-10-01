@@ -1,3 +1,5 @@
+
+<%@page import="data.dao.QnaBoardDao"%>
 <%@page import="data.dto.QnaBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -22,7 +24,23 @@
 <body>
 
 <%
+request.setCharacterEncoding("utf-8");
 
+String id = request.getParameter("id");
+String subject = request.getParameter("subject");
+String content = request.getParameter("content");
+
+QnaBoardDto dto = new QnaBoardDto();
+
+dto.setId(id);
+dto.setSubject(subject);
+dto.setContent(content);
+
+QnaBoardDao dao = new QnaBoardDao();
+
+dao.insertQna(dto);
+
+response.sendRedirect("../index.jsp?main=qna/qnaboard.jsp");
 
 %>
 </body>
