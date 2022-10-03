@@ -65,6 +65,7 @@
 			if(keycode == 13){
 				
 				var keyword = $("#keyword").val();
+				$("#keyword").val("");
 				
 				location.href="index.jsp?main=product/searchresult.jsp?keyword=" + keyword;
 			}
@@ -190,6 +191,7 @@ String myid = (String)session.getAttribute("myid");
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
                     
+                    
                     <!-- Modal Start -->
 				    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				        <div class="modal-dialog modal-lg" role="document">
@@ -211,19 +213,19 @@ String myid = (String)session.getAttribute("myid");
 				    
                     
                     <%
-                    if(loginok == null){
+                    if(loginok == null){ // login session이 없으면
                    	%>
 	                    <a class="nav-icon position-relative text-decoration-none" href="#">
 							<i class="fa fa-fw fa-sign-in-alt text-dark mr-3 stemp"></i>
 	                    </a>
                    	
                    	<%
-                    } else {
+                    } else { // login session이 있으면
                    	%>
                    	
 	                    <a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=cart/cartlist.jsp">
 	                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-	                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span> --> <!-- 장바구니에 담긴 숫자 -->
+	                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span> --> <!-- 장바구니에 담긴 제품의 수 -->
 	                    </a>
 	                    
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
