@@ -1,18 +1,18 @@
 package data.dto;
 
-import java.sql.Timestamp;
-
 public class ProductDto {
 
 	private String p_num;
-	private String category;
 	private String name;
+	private String category;
+	private String collection;
+	private String description;
 	private String hand;
 	private String size;
 	private String platform;
 	private int price;
-	private String photo;
-	private Timestamp updatetime;
+	private String thumbnail;
+	private String regdate;
 	
 	public String getP_num() {
 		return p_num;
@@ -20,17 +20,29 @@ public class ProductDto {
 	public void setP_num(String p_num) {
 		this.p_num = p_num;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getCategory() {
 		return category;
 	}
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getName() {
-		return name;
+	public String getCollection() {
+		return collection;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setCollection(String collection) {
+		this.collection = collection;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getHand() {
 		return hand;
@@ -56,16 +68,17 @@ public class ProductDto {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getPhoto() {
-		return photo;
+	public String getThumbnail() {
+		return thumbnail;
 	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
-	public Timestamp getUpdatetime() {
-		return updatetime;
+	public String getRegdate() {
+		return regdate;
 	}
-	public void setUpdatetime(Timestamp updatetime) {
-		this.updatetime = updatetime;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
+	
 }
