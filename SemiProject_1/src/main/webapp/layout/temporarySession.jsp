@@ -15,8 +15,6 @@
 	<%
 	String loginok = (String)session.getAttribute("loginok");
 	String id = (String)session.getAttribute("id");
-	String name = (String)session.getAttribute("name");
-	String pw = (String)session.getAttribute("pw"); 
 	
 	if(loginok == null){
 		

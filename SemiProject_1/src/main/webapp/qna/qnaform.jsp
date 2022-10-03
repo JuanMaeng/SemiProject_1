@@ -36,16 +36,18 @@
 	charset="utf-8"></script>	
 	
 </head>
-<body>
 
+<body>
+	<!-- 상단 고정 이미지 start -->
 	<div class="container-fluid bg-light py-5">
         <div class="col-md-6 m-auto text-center">
             <h1 class="h1">QnA 게시판</h1>
             <p>
-                문의을 남겨주세요
+                문의를 남겨주세요
             </p>
         </div>
     </div>
+    <!-- 상단 고정 이미지 end -->
     
 	<form action="qna/qnainsertproc.jsp" method="post">
 		<input type="hidden" name="id" id="id" value="<%=id%>">
