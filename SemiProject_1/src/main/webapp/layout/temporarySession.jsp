@@ -14,15 +14,21 @@
 <body>
 	<%
 	String loginok = (String)session.getAttribute("loginok");
-
+	String id = (String)session.getAttribute("id");
+	String name = (String)session.getAttribute("name");
+	String pw = (String)session.getAttribute("pw"); 
+	
 	if(loginok == null){
 		
 		session.setMaxInactiveInterval(60 * 60 * 8); // 생략 시 30분
 		session.setAttribute("loginok", "yes");
+		session.setAttribute("id", "won");
 		
 	} else {
 		
 		session.removeAttribute("loginok");
+		session.removeAttribute("id");
+		//이거 세션 지울 때 초기화하는 session.invalidate(); 이거 써야 확실히 세션이 지워지는 것 같음
 		
 	}
 	
