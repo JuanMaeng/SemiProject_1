@@ -19,6 +19,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- asdfasdf
+ 상품리스트
 </body>
 </html>

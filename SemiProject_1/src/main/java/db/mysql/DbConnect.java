@@ -21,11 +21,11 @@ public class DbConnect {
 
 		try {
 			Class.forName(MYSQLDRIVER);
-			System.out.println("MYSQL 드라이버 성공!!!");
+			// System.out.println("MYSQL 드라이버 성공!!!");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("MYSQL 드라이버 실패!!");
+			// System.out.println("MYSQL 드라이버 실패!!");
 		}
 	}
 	
@@ -41,7 +41,7 @@ public class DbConnect {
 			conn=DriverManager.getConnection(MYSQL_URL, "ssadmin", "wndks0409!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("MYSQL 연결 실패: "+e.getMessage());
+			// System.out.println("MYSQL 연결 실패: "+e.getMessage());
 		}
 		
 		return conn;
@@ -99,9 +99,4 @@ public class DbConnect {
 				e.printStackTrace();
 			}
 	}
-	
-	
-
-
 }
-

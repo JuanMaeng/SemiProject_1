@@ -78,8 +78,8 @@
 </head>
 <%
 String loginok = (String)session.getAttribute("loginok");
-String myid = (String)session.getAttribute("myid");
-// String myid = (String)session.getAttribute("id");
+// String myid = (String)session.getAttribute("myid");
+String myid = (String)session.getAttribute("id");
 
 %>
 <body>
@@ -102,7 +102,7 @@ String myid = (String)session.getAttribute("myid");
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">마우스 & 키보드</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">마우스</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/productlist.jsp">마우스</a></li>
 								<li><a class="dropdown-item" href="#">키보드</a></li>
 				 				<li><a class="dropdown-item" href="#">콤보</a></li>
 			    			</ul>
@@ -136,7 +136,7 @@ String myid = (String)session.getAttribute("myid");
 		    			</li>
 		    			
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">악세서리</a>
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">액세서리</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="#">IPad용</a></li>
 								<li><a class="dropdown-item" href="#">스마트폰용</a></li>
