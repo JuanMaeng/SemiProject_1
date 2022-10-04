@@ -40,7 +40,7 @@
 	
 	$(function(){
 		
-		$("i.stemp").click(function(){
+		$("i.login-out").click(function(){
 			
 			location.href="index.jsp?main=login/loginmain.jsp";
 		});
@@ -100,7 +100,7 @@ String id = (String)session.getAttribute("idok");
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">마우스 & 키보드</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="index.jsp?main=product/productlist.jsp">마우스</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/list/mouse.jsp">마우스</a></li>
 								<li><a class="dropdown-item" href="#">키보드</a></li>
 				 				<li><a class="dropdown-item" href="#">콤보</a></li>
 			    			</ul>
@@ -216,14 +216,14 @@ String id = (String)session.getAttribute("idok");
                     if(loginok == null){ // login session이 없으면
                    	%>
 	                    <a class="nav-icon position-relative text-decoration-none" href="#">
-							<i class="fa fa-fw fa-sign-in-alt text-dark mr-3 stemp"></i>
+							<i class="fa fa-fw fa-sign-in-alt text-dark mr-3 login-out"></i>
 	                    </a>
                    	
                    	<%
                     } else if(id.equals("admin")) {
                    	%>
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
-							<i class="fa fa-fw fa-sign-out-alt text-dark mr-3 stemp"></i>
+							<i class="fa fa-fw fa-sign-out-alt text-dark mr-3 login-out"></i>
 	                    </a>
 	                    
                    		<a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=product/addform.jsp">
@@ -241,7 +241,7 @@ String id = (String)session.getAttribute("idok");
 	                    </a>
 	                    
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
-							<i class="fa fa-fw fa-sign-out-alt text-dark mr-3 stemp"></i>
+							<i class="fa fa-fw fa-sign-out-alt text-dark mr-3 login-out"></i>
 	                    </a>
 	                    <div id="welcome"><u><%= id %></u> 님</div>
                    	<%

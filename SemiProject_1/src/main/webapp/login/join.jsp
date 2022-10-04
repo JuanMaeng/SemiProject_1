@@ -22,10 +22,9 @@
 <style type="text/css">
 div.logform{
 	width: 500px;
-	margin-top: 600px;
-    margin-right: 200px;
-    margin-bottom: 400px;
-    margin-left: 800px;	
+	margin-top: 150px;
+    margin-bottom: 200px;
+    margin-left: 35%;	
 }
 div.loginbutton {
   color:blue; 
@@ -37,73 +36,158 @@ div.loginbutton {
   color: white;
 	}
 }
+
+a.gologin{
+	color: black;
+	text-decoration: none;
+}
 </style>
 
+<script type="text/javascript">
+	$(function(){
+		
+		$("#check").click(function(){
+			
+			var id = $("#id").val();
+			// alert(id);
+			
+			$.ajax({
+				
+				type: "get",
+				dataType: "json",
+				url: "login/checkid.jsp",
+				data: {"id":id},
+				success: function(response){
+					
+					if(response.count == 1){
+						
+						// alert("중복됨");
+						$("#check").removeClass("btn-outline-primary");
+						$("#check").removeClass("btn-success");
+						$("#check").addClass("btn-danger");
+						$("#check").val("사용 불가능");
+						
+					} else {
+						
+						// alert("중복안됨");
+						$("#check").removeClass("btn-outline-primary");
+						$("#check").removeClass("btn-danger");
+						$("#check").addClass("btn-success");
+						$("#check").val("사용 가능");
+					}
+				}
+			});
+		});
+	});
+
+</script>
 
 <body>
-<%
-//세션으로부터 아이디와 체크값 획득
-String myid=(String)session.getAttribute("idok");
-String saveid=(String)session.getAttribute("saveok");
-boolean save=true;
-if(saveid==null || saveid.equals("no"))
-{
-	myid="";
-	save=false;	//체크하지않을경우 false 그 외에는 초기값이 true
-}
-%>
 	<div class="logform">
-		<h2><span>Logitech 회원가입</span></h2>
-			<form action="joinaction.jsp" method="post">
+			<form action="login/joinaction.jsp" method="post">
+			
+				<img class="mb-4" src="assets/img/mainimg/logitechG.png" alt="" width="80" height="80" style="margin-left: 200px;">
+				<h1 class="h3 mb-3 fw-normal" style="text-align: center;">Logitech 회원가입</h1>
+	        
+				<div class="form-floating">
+					<input type="text" class="form-control" name="name" id="name" placeholder="이름 입력..." required="required">
+					<label for="name">이름</label>
+				</div>
+		         
 				<br>
-				<input type="text" name="name" style="width: 300px;"
-				class="form-control input-lg"
-					placeholder="이름" required="required">
-				<div style="padding: 5px;">
+		         
+				<div class="form-floating">
+					<input type="text" class="form-control" name="id" id="id" placeholder="아이디 입력..." required="required">
+					<input style="float: right;" class="btn btn-xs btn-outline-primary" type="button" id="check" value="중복체크">
+					<label for="id">아이디</label>
 				</div>
 				<br>
-				<br>
-				<input type="text" name="id" style="width: 300px;"
-					class="form-control input-lg"
-					placeholder="로그인시 사용할 Logitech ID" required="required" value="<%=myid%>">
-					<div style="padding: 3px;">
+		        <br>
+		         
+		        <div class="form-floating">
+					<input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호 입력..." required="required">
+					<label for="pw">비밀번호</label>
 				</div>
-				<br>
-					<input type="password" name="pw" style="width: 300px;"
-					class="form-control input-lg"
-					placeholder="비밀번호" required="required">
-					<div style="padding: 3px;">
+		         
+		        <br>
+		         
+				<div class="form-floating">
+					<input type="text" class="form-control" name="phone" id="phone" placeholder="전화번호 입력..." required="required">
+					<label for="phone">전화번호&nbsp;<sub>010-1234-5678</sub></label>
 				</div>
-				<br>
-				<br>
-					<input type="text" name="email" style="width: 300px;"
-					class="form-control input-lg"
-					placeholder="이메일" required="required">
-					<div style="padding: 3px;">
+		         
+		        <br>
+		         
+		         <div class="form-floating">
+					<input type="text" class="form-control" name="email" id="email" placeholder="이메일 입력..." required="required">
+					<label for="email">이메일&nbsp;<sub>google@gmail.com</sub></label>
 				</div>
-				<br>
-				<br>
-					<input type="text" name="hp" style="width: 300px;"
-					class="form-control input-lg"
-					placeholder="핸드폰번호" required="required">
-				<div style="padding: 3px;">
+		         
+		         <br>
+		         
+		         <div class="form-floating">
+					<input type="text" class="form-control" name="addr" id="addr" placeholder="주소 입력..." required="required">
+					<label for="addr">주소</label>
 				</div>
-				<br>
-				<br>
-					<input type="text" name="Addr" style="width: 300px;"
-					class="form-control input-lg"
-					placeholder="주소" required="required">
-					<div style="padding: 3px;">
-				</div>
-				<br>
-				<br>
-					<div class="loginbutton"> 
-					<button type="submit" class="btn-btn-success btn-lg"
-					style="width: 200px; height: 50px;">회원가입</button>
-				</div>
-			<br>
-			<br>
+		         
+		         <br>
+		         
+		         <button class="w-100 btn btn-lg btn-primary" type="submit">가입</button>
+		         
+		         <br><br>
+		         
+		         <a href="index.jsp?main=login/loginform.jsp" class="gologin">이미 로지텍의 회원이신가요?</a>
 		</form>
 	</div>
 </body>
 </html>
+
+
+<%-- <br>
+	<input type="text" name="name" style="width: 300px;"
+	class="form-control input-lg"
+		placeholder="이름" required="required">
+	<div style="padding: 5px;">
+	</div>
+	<br>
+	<br>
+	<input type="text" name="id" style="width: 300px;"
+		class="form-control input-lg"
+		placeholder="로그인시 사용할 Logitech ID" required="required" value="<%=myid%>">
+		<div style="padding: 3px;">
+	</div>
+	<br>
+		<input type="password" name="pw" style="width: 300px;"
+		class="form-control input-lg"
+		placeholder="비밀번호" required="required">
+		<div style="padding: 3px;">
+	</div>
+	<br>
+	<br>
+		<input type="text" name="email" style="width: 300px;"
+		class="form-control input-lg"
+		placeholder="이메일" required="required">
+		<div style="padding: 3px;">
+	</div>
+	<br>
+	<br>
+		<input type="text" name="hp" style="width: 300px;"
+		class="form-control input-lg"
+		placeholder="핸드폰번호" required="required">
+	<div style="padding: 3px;">
+	</div>
+	<br>
+	<br>
+		<input type="text" name="Addr" style="width: 300px;"
+		class="form-control input-lg"
+		placeholder="주소" required="required">
+		<div style="padding: 3px;">
+	</div>
+	<br>
+	<br>
+		<div class="loginbutton"> 
+		<button type="submit" class="btn-btn-success btn-lg"
+		style="width: 200px; height: 50px;">회원가입</button>
+	</div>
+<br>
+<br> --%>
