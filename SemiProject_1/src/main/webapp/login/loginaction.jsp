@@ -27,7 +27,7 @@
 <%
 String id=request.getParameter("id");
 String pw=request.getParameter("pw");
-String save=request.getParameter("savechk");
+String save=request.getParameter("savechk"); // 체크시 on, 아니면 false
 
 //아이디와 비번 맞는지
 MemberDao db=new MemberDao();
@@ -38,10 +38,13 @@ if(b)
 {
 	//로그인중이니
 	session.setAttribute("loginok", "yes");
+	
 	//아이디와 체크값 저장
 	session.setAttribute("idok", id);
+	
 	//체크하면 값으로 on 체크안하면 null
 	session.setAttribute("saveok", save);
+	// System.out.println(save);
 	
 	//세션유지시간
 	session.setMaxInactiveInterval(60*60*8); //8시간유지
@@ -54,8 +57,8 @@ if(b)
 }else
 {%>
 	<script type="text/javascript">
-	alert("아이디와 비밀번호가 맞지않습니다");
-	history.back();
+		alert("아이디와 비밀번호가 맞지않습니다");
+		history.back();
 	</script>
 <%}
 %>

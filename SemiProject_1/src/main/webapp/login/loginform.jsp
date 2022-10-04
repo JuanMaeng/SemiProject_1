@@ -21,10 +21,9 @@
 <style type="text/css">
 div.logform{
 	width: 500px;
-	margin-top: 600px;
-    margin-right: 200px;
-    margin-bottom: 400px;
-    margin-left: 800px;	
+	margin-top: 150px;
+    margin-bottom: 200px;
+    margin-left: 35%;	
 }
 div.loginbutton {
   background-color:blue; 
@@ -41,37 +40,57 @@ div.loginbutton {
 <body>
 <%
 //세션으로부터 아이디와 체크값 획득
-String myid=(String)session.getAttribute("idok");
-String saveid=(String)session.getAttribute("saveok");
-boolean save=true;
-if(saveid==null || saveid.equals("no"))
-{
-	myid="";
-	save=false;	//체크하지않을경우 false 그 외에는 초기값이 true
+String myid = (String)session.getAttribute("idok");
+String saveok = (String)session.getAttribute("saveok");
+
+System.out.println(saveok);
+
+
+if(saveok == null) {
+	
+	myid = "";
 }
 %>
 	<div class="logform">
-		<h2><span>Logitech 회원 로그인</span></h2>
-			<form action="login/loginaction.jsp" method="post">
-				<input type="text" name="id" style="width: 300px;"
-				class="form-control input-lg"
-					placeholder="로그인할 Logitech ID" required="required" value="<%=myid%>">
-				<div style="padding: 5px;">
-				</div>
-				<br>
-					<input type="password" name="pw" style="width: 300px;"
-					class="form-control input-lg"
-					placeholder="비밀번호" required="required">
-				<br>
-					<div class="loginbutton"> 
-					<button type="submit" class="btn-btn-success btn-lg"
-					style="width: 200px; height: 50px;">로그인</button>
-				</div>
-				<br>
-					<div style="padding:30px 30px;">
-					<input type="checkbox" name="savechk">아이디저장
-				</div>
-			</form>
-		</div>
+		<form action="login/loginaction.jsp" method="post">
+			<img class="mb-4" src="assets/img/mainimg/logitechG.png" alt="" width="80" height="80" style="margin-left: 200px;">
+			<h1 class="h3 mb-3 fw-normal" style="text-align: center;">Logitech 회원 로그인</h1>
+        
+	         <div class="form-floating">
+	            <input type="text" class="form-control" name="id" id="id" placeholder="아이디 입력..." value="<%= myid %>">
+	            <label for="id">id</label>
+	         </div>
+	         
+	         <div class="form-floating">
+	            <input type="password" class="form-control" name="pw" id="pw" placeholder="Password">
+	            <label for="pwd">password</label>
+	         </div>
+	         
+	         <div class="checkbox mb-3">
+	               <input type="checkbox" name="savechk" <%= saveok == null  ? "" : "checked" %>> 아이디 저장
+	         </div>
+	         
+	         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+		</form>
+	</div>
 </body>
 </html>
+
+<%-- <input type="text" name="id" style="width: 300px;"
+class="form-control input-lg"
+	placeholder="id" required="required" value="<%=myid%>">
+<div style="padding: 5px;">
+</div>
+<br>
+	<input type="password" name="pw" style="width: 300px;"
+	class="form-control input-lg"
+	placeholder="password" required="required">
+<br>
+	<div class="loginbutton"> 
+	<button type="submit" class="btn-btn-success btn-lg"
+	style="width: 200px; height: 50px;">로그인</button>
+</div>
+<br>
+	<div style="padding:30px 30px;">
+	<input type="checkbox" name="savechk">아이디저장
+</div> --%>
