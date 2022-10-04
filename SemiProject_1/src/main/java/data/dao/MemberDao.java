@@ -65,8 +65,10 @@ DbConnect db=new DbConnect();
 			
 			rs=pstmt.executeQuery();
 			
-			if(rs.next())
-				b=true; //비밀번호가 일치하지 않을떄
+			if(rs.next()) {
+				b=true;
+			}
+			
 		}	catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
