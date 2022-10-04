@@ -42,7 +42,7 @@
 		
 		$("i.stemp").click(function(){
 			
-			location.href="layout/temporarySession.jsp";
+			location.href="index.jsp?main=login/loginmain.jsp";
 		});
 		
 		
