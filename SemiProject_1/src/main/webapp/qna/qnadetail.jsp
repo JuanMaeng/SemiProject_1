@@ -23,8 +23,12 @@
 </head>
 <body>
 <%
+String loginok = (String)session.getAttribute("loginok");
+String myid = (String)session.getAttribute("idok");
+
 String num = request.getParameter("num");
 String currentPage = request.getParameter("currentPage");
+
 
 QnaBoardDao dao = new QnaBoardDao();
 QnaBoardDto dto = dao.getData(num);
@@ -48,6 +52,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
     
     <!-- 게시물 내용 start -->
     <div class="container">
+    <form id="frm">
+	<input type="hidden" name = "num" value="<%=num%>">
 		<table class="table table-bordered">
 		
 	    	<tr style="width: 150px;">
@@ -82,15 +88,19 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 			
 			<tr>
 				<td colspan="2">
-				<button type="button" class="btn btn-default" onclick="location.href='index.jsp?main=qna/qnaboard.jsp'">목록</button>
+				<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=qna/qnaboard.jsp'">목록</button>
+				<%
+				if(myid.equals(dto.getId())){%>
 				<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=qna/updateqnaform.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>'" style="float: right;">수정</button>&nbsp;&nbsp;
-				<button type="button" class="btn btn-danger" onclick="funcdel(<%=num%>,<%=currentPage%>)" style="float: right;">삭제</button>&nbsp;&nbsp;
+				<button type="button" class="btn btn-danger" onclick="" style="float: right;">삭제</button>
+				<%}
+				%>
 				</td>
 			</tr>
 			    
 	    
 	    </table>
-	    
+	</form>
     </div>
     <!-- 게시물 내용 end -->
     
