@@ -52,8 +52,7 @@ if(b)
 	//로그인 메인으로이동 
 	response.sendRedirect("../index.jsp");
 
-	
-	
+
 }else
 {%>
 	<script type="text/javascript">
