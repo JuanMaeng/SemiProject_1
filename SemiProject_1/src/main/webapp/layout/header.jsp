@@ -40,7 +40,7 @@
 	
 	$(function(){
 		
-		$("a.stemp").click(function(){
+		$("i.stemp").click(function(){
 			
 			location.href="layout/temporarySession.jsp";
 		});
@@ -54,12 +54,31 @@
 			
 			location.href="index.jsp?main=product/searchresult.jsp?keyword=" + keyword;
 		});
+		
+		
+		/* 검색창에서 엔터키 누르면 검색기능 Start */
+		$("#keyword").keypress(function(event){
+			
+			var keycode = event.keyCode;
+			// alert(keycode);
+			
+			if(keycode == 13){
+				
+				var keyword = $("#keyword").val();
+				$("#keyword").val("");
+				
+				location.href="index.jsp?main=product/searchresult.jsp?keyword=" + keyword;
+			}
+		});
+		/* 검색창에서 엔터키 누르면 검색기능 End */
+		
 	});
 </script>
 
 </head>
 <%
 String loginok = (String)session.getAttribute("loginok");
+// String myid = (String)session.getAttribute("myid");
 String myid = (String)session.getAttribute("id");
 
 %>
@@ -79,13 +98,11 @@ String myid = (String)session.getAttribute("id");
             <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
 					<ul class="nav justify-content-center">
-						<!-- <li class="nav-item">
-							<a class="nav-link" href="index.jsp?main=product/productlist.jsp">마우스&키보드</a>
-						</li> -->
+					
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">마우스 & 키보드</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">마우스</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/productlist.jsp">마우스</a></li>
 								<li><a class="dropdown-item" href="#">키보드</a></li>
 				 				<li><a class="dropdown-item" href="#">콤보</a></li>
 			    			</ul>
@@ -119,7 +136,7 @@ String myid = (String)session.getAttribute("id");
 		    			</li>
 		    			
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">악세서리</a>
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">액세서리</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="#">IPad용</a></li>
 								<li><a class="dropdown-item" href="#">스마트폰용</a></li>
@@ -154,7 +171,7 @@ String myid = (String)session.getAttribute("id");
                     </div>
                     
                     <!-- 세션용 임시아이콘 Start -->
-                   <%
+                    <%-- <%
                     if(loginok == null) {
                    	%>
 	                    <a class="nav-icon d-none d-lg-inline stemp" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
@@ -169,22 +186,24 @@ String myid = (String)session.getAttribute("id");
 	                    </a>
                    	<%
                     }
-                    %>
+                    %> --%>
                     <!-- 세션용 임시아이콘 End -->
                     
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
                     
-                    <!-- Modal -->
+                    
+                    <!-- Modal Start -->
 				    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				        <div class="modal-dialog modal-lg" role="document">
 				            <div class="w-100 pt-1 mb-5 text-right">
 				                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				            </div>
-				            <form action="#" method="get" class="modal-content modal-body border-0 p-0">
+				            
+				            <form action="index.jsp?main=product/searchresult.jsp" method="post" class="modal-content modal-body border-0 p-0" onSubmit="return false;">
 				                <div class="input-group mb-2">
-				                    <input type="text" class="form-control" id="keyword" placeholder="Search ...">
+				                    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search ...">
 				                    <button type="button" class="input-group-text bg-success text-light search">
 				                        <i class="fa fa-fw fa-search text-white"></i>
 				                    </button>
@@ -192,25 +211,27 @@ String myid = (String)session.getAttribute("id");
 				            </form>
 				        </div>
 				    </div>
+				    <!-- Modal End -->
 				    
-                    <a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=login/loginform.jsp">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span> --> <!-- 장바구니에 담긴 숫자 -->
-                    </a>
                     
                     <%
-                    if(loginok == null){
+                    if(loginok == null){ // login session이 없으면
                    	%>
 	                    <a class="nav-icon position-relative text-decoration-none" href="#">
-								<i class="fa fa-fw fa-sign-in-alt text-dark mr-3"></i>
+							<i class="fa fa-fw fa-sign-in-alt text-dark mr-3 stemp"></i>
 	                    </a>
                    	
                    	<%
-                    } else {
+                    } else { // login session이 있으면
                    	%>
-						<!-- <a style="pointer-events: none; font-size: 8px;">angel23님&nbsp;</a> -->
+                   	
+	                    <a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=cart/cartlist.jsp">
+	                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+	                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span> --> <!-- 장바구니에 담긴 제품의 수 -->
+	                    </a>
+	                    
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
-								<i class="fa fa-fw fa-sign-out-alt text-dark mr-3"></i>
+							<i class="fa fa-fw fa-sign-out-alt text-dark mr-3 stemp"></i>
 	                    </a>
 	                    <div id="welcome"><u><%= myid %></u> 님</div>
                    	<%
