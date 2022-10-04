@@ -21,10 +21,18 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
+<style type="text/css">
+	a{
+	text-decoration: none;
+	}
+</style>
+
 </head>
 
 <body>
 <%
+String loginok = (String)session.getAttribute("loginok");
+
 QnaBoardDao dao = new QnaBoardDao();
 
 //페이징에 필요한 변수
@@ -33,7 +41,7 @@ int totalPage; //총페이지수
 int startPage; //각블럭의 시작페이지
 int endPage; //각블럭의 끝페이지
 int start; //각페이지의 시작번호
-int perPage = 10; //한페이지에 보여질 글의 갯수
+int perPage = 8; //한페이지에 보여질 글의 갯수
 int perBlock = 5; //한블럭당 보여지는 페이지개수
 int currentPage;//현재페이지
 int no;
@@ -115,8 +123,8 @@ no = totalCount - (currentPage - 1) * perPage;
 				for(QnaBoardDto dto:list){
 			%>
 				<tr>
-					<td style="text-align: center"><input type="checkbox" class="alldel" value="<%=dto.getNum()%>">&nbsp;&nbsp;<%=no-- %></td>
-					<td><%=dto.getSubject()%></td>
+					<td style="text-align: center"><%=no-- %></td>
+					<td><a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>"><%=dto.getSubject()%></td>
 					<td style="text-align: center"><%=dto.getId() %></td>
 					<td style="text-align: center"><%=sdf.format(dto.getWriteday()) %></td>
 					<td style="text-align: center"><%=dto.getReadcount() %></td>
@@ -124,55 +132,58 @@ no = totalCount - (currentPage - 1) * perPage;
 				<%}
 			}
 			
-			%>
+			if(loginok!=null){%>
 			<tr>
 			<td colspan="5">
-				<input type="checkbox" class="alldelcheck">전체선택
 				<span style="float: right;">
-				<button type="button" class="btn btn-danger" id="btndel" >삭제</button>
 				<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=qna/qnaform.jsp'">글쓰기</button>
 				</span>
 			</td>
-			</tr>
+			</tr>	
+			<%}
+			%>
+			
+			
 			
 		</table>
 	</div>
+	<!-- 게시물 목록 end  -->
 	
 	
 	<!--페이징 start -->
-	<div style="width: 800px; text-align: center;" class="container">
-		<ul class="pagination">
-			<%
-			//이전
-			if(startPage>1){%>
-			<li>
-			<a href="index.jsp?main=qna/qnalist.jsp?currentPage=<%=startPage-1%>">이전</a>
-			</li>	
-			<%}
-				
-				
-			for(int pp=startPage;pp<=endPage;pp++){
-				if(pp==currentPage){%>
-					<li class="active">
-					<a href="index.jsp?main=qna/qnalist.jsp?currentPage=<%=pp%>"><%=pp %></a>
-					</li>	
-				<%}else{%>
-					<li>
-					<a href="index.jsp?main=qna/qnalist.jsp?currentPage=<%=pp%>"><%=pp %></a>
-					</li>
-					
-				<%}
-			}
-			
-			//다음
-			if(endPage<totalPage){%>
-			
-			<li>
-			<a href="index.jsp?main=qna/qnalist.jsp?currentPage=<%=endPage+1%>">다음</a>
-			</li>	
-			<%}
-			%>
-		</ul>
+	<div class="container">
+		<ul class="pagination justify-content-center">
+         <%
+         //이전
+         if(startPage>1){%>
+         <li class="page-item">
+         <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=startPage-1%>" class="page-link" tabindex="-1">이전</a>
+         </li>   
+         <%}
+            
+            
+         for(int pp=startPage;pp<=endPage;pp++){
+            if(pp==currentPage){%>
+               <li class="page-item">
+               <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=pp%>" class="page-link" ><%=pp %></a>
+               </li>   
+            <%}else{%>
+               <li class="page-item">
+               <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=pp%>" class="page-link"><%=pp %></a>
+               </li>
+               
+            <%}
+         }
+         
+         //다음
+         if(endPage<totalPage){%>
+         
+         <li class="page-item">
+         <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=endPage+1%>" class="page-link">다음</a>
+         </li>   
+         <%}
+         %>
+      </ul>
 	</div>
 	<!-- 페이징 end -->
     

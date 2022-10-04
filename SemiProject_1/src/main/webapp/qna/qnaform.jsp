@@ -25,7 +25,7 @@
 	//프로젝트의 경로
 	String root=request.getContextPath();
 
-	String id = (String)session.getAttribute("id");
+	String id = (String)session.getAttribute("idok");
 	
 %>
 <!-- se2 폴더에서 js 파일 가져오기 -->

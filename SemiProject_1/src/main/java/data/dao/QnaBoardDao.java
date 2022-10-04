@@ -20,13 +20,13 @@ public class QnaBoardDao {
 			Connection conn = db.getConnection();
 			PreparedStatement pstmt= null;
 			 
-			String sql = "insert into qnaboard(subject, content, writeday) values(?,?,now())";
+			String sql = "insert into qnaboard(id, subject, content, writeday) values(?,?,?,now())";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
-				//pstmt.setString(1, dto.getId());	
-				pstmt.setString(1, dto.getSubject());
-				pstmt.setString(2, dto.getContent());
+				pstmt.setString(1, dto.getId());	
+				pstmt.setString(2, dto.getSubject());
+				pstmt.setString(3, dto.getContent());
 						
 				pstmt.execute();
 				
@@ -57,7 +57,7 @@ public class QnaBoardDao {
 				while(rs.next()) {
 					QnaBoardDto dto = new QnaBoardDto();
 					dto.setNum(rs.getString("num"));
-					//dto.setId(rs.getString("id"));
+					dto.setId(rs.getString("id"));
 					dto.setSubject(rs.getString("subject"));
 					dto.setContent(rs.getString("content"));
 					dto.setReadcount(rs.getInt("readcount"));
@@ -108,8 +108,10 @@ public class QnaBoardDao {
 				
 		return n;
 	}
-		//페이징처리에 필요한 리스트만 내보내기 2.getList(0,5) -> 0 다음부터 5개 출력 
-		public List<QnaBoardDto> getList(int start, int perpage){
+		
+		
+	//페이징처리에 필요한 리스트만 내보내기 2.getList(0,5) -> 0 다음부터 5개 출력 
+	public List<QnaBoardDto> getList(int start, int perpage){
 		List<QnaBoardDto> list = new Vector<>();
 		
 		Connection conn = db.getConnection();
@@ -128,7 +130,7 @@ public class QnaBoardDao {
 			while(rs.next()) {
 				QnaBoardDto dto = new QnaBoardDto();
 				dto.setNum(rs.getString("num"));
-				//dto.setId(rs.getString("id"));
+				dto.setId(rs.getString("id"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
 				dto.setReadcount(rs.getInt("readcount"));
@@ -147,5 +149,25 @@ public class QnaBoardDao {
 		
 		return list;
 	}
+	
+	
+	//readcount - 조회 수
+		public void updateReadCount(String num) { //내가 3번 글을 누르면 3번의 readcount가 1 증가해야 하니까 num이 넘어와야 함
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			
+			String sql = "update smartboard set readcount=readcount+1 where num=?"; //좋아요도 같은 원리
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, num);
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+		}
 	
 }
