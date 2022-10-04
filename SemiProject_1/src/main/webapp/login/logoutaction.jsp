@@ -23,10 +23,13 @@
 //로그인에 대한 세션 값 삭제
 session.removeAttribute("loginok");
 
+session.invalidate();
 //로그인메인으로 이동.. 항상 메인을 통해 이동하게끔
-response.sendRedirect("loginmain.jsp");
-
-
+//response.sendRedirect("../index.jsp?main=login/loginmain.jsp");
 %>
+<script>
+history.back();
+
+</script>
 </body>
 </html>

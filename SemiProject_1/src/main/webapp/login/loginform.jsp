@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
-
+</head>
 <style type="text/css">
 div.logform{
 	width: 500px;
@@ -26,37 +26,33 @@ div.logform{
     margin-bottom: 400px;
     margin-left: 800px;	
 }
-
 div.loginbutton {
   background-color:blue; 
   border: 1px solid gray; 
   color: white; 
   cursor: pointer;
-  float: left; 
+  float: left;
+  button:hover;{  
   color: white;
+	}
 }
 </style>
-</head>
 
 <body>
 <%
 //세션으로부터 아이디와 체크값 획득
 String myid=(String)session.getAttribute("idok");
 String saveid=(String)session.getAttribute("saveok");
-
 boolean save=true;
-
 if(saveid==null || saveid.equals("no"))
 {
 	myid="";
 	save=false;	//체크하지않을경우 false 그 외에는 초기값이 true
 }
-
-
 %>
 	<div class="logform">
 		<h2><span>Logitech 회원 로그인</span></h2>
-			<form action="loginaction.jsp" method="post">
+			<form action="login/loginaction.jsp" method="post">
 				<input type="text" name="id" style="width: 300px;"
 				class="form-control input-lg"
 					placeholder="로그인할 Logitech ID" required="required" value="<%=myid%>">

@@ -28,7 +28,7 @@ if(loginok==null || loginok.equals("")) //로그아웃상태
 	<jsp:include page="loginform.jsp"/>
 <%}else //로그인상태
 {%>
-	<jsp:include page="logoutform.jsp"/>
+	<jsp:include page="logoutaction.jsp"/>
 <%}
 %>
 </body>

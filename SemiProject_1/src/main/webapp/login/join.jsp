@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
+</head>
 
 <style type="text/css">
 div.logform{
@@ -32,10 +33,11 @@ div.loginbutton {
   color: white; 
   cursor: pointer;
   float: left;
+  button:hover;{  
   color: white;
+	}
 }
 </style>
-</head>
 
 
 <body>
@@ -43,16 +45,12 @@ div.loginbutton {
 //세션으로부터 아이디와 체크값 획득
 String myid=(String)session.getAttribute("idok");
 String saveid=(String)session.getAttribute("saveok");
-
 boolean save=true;
-
 if(saveid==null || saveid.equals("no"))
 {
 	myid="";
 	save=false;	//체크하지않을경우 false 그 외에는 초기값이 true
 }
-
-
 %>
 	<div class="logform">
 		<h2><span>Logitech 회원가입</span></h2>

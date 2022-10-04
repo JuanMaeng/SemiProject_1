@@ -47,7 +47,14 @@ if(b)
 	session.setMaxInactiveInterval(60*60*8); //8시간유지
 	
 	//로그인 메인으로이동 
+<<<<<<< HEAD
 	response.sendRedirect("../index.jsp?main=login/loginmain.jsp");
+=======
+	response.sendRedirect("../index.jsp");
+
+	
+	
+>>>>>>> branch 'main' of https://github.com/JuanMaeng/SemiProject_1.git
 }else
 {%>
 	<script type="text/javascript">
