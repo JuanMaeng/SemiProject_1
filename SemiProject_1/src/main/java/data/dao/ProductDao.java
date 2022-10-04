@@ -86,4 +86,82 @@ public class ProductDao {
 		
 		return list;
 	}
+	
+	//해당 1개의 dto 리턴
+	public ProductDto getData(String p_num) {
+		ProductDto dto = new ProductDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from product where p_num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, p_num);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setP_num(rs.getString("p_num"));
+				dto.setName(rs.getString("name"));
+				dto.setCategory(rs.getString("category"));
+				dto.setCollection(rs.getString("collection"));
+				dto.setDescription(rs.getString("description"));
+				dto.setHand(rs.getString("hand"));
+				dto.setSize(rs.getString("size"));
+				dto.setPlatform(rs.getString("platform"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setThumbnail(rs.getString("thumbnail"));
+				dto.setRegdate(rs.getString("regdate"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return dto;
+	}
+	
+	public ProductDto getLastData() {
+		ProductDto dto = new ProductDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from product order by p_num desc limit 1";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setP_num(rs.getString("p_num"));
+				dto.setName(rs.getString("name"));
+				dto.setCategory(rs.getString("category"));
+				dto.setCollection(rs.getString("collection"));
+				dto.setDescription(rs.getString("description"));
+				dto.setHand(rs.getString("hand"));
+				dto.setSize(rs.getString("size"));
+				dto.setPlatform(rs.getString("platform"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setThumbnail(rs.getString("thumbnail"));
+				dto.setRegdate(rs.getString("regdate"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return dto;
+	}
 }
