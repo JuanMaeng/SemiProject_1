@@ -150,13 +150,50 @@ public class QnaBoardDao {
 		return list;
 	}
 	
+	//num에 맞는 데이터 출력
+		public QnaBoardDto getData(String num) {
+			QnaBoardDto dto = new QnaBoardDto();
+			
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			String sql = "select * from qnaboard where num=?";
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, num);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					dto.setNum(rs.getString("num"));
+					dto.setId(rs.getString("id"));
+					dto.setSubject(rs.getString("subject"));
+					dto.setContent(rs.getString("content"));
+					dto.setReadcount(rs.getInt("readcount"));
+					dto.setWriteday(rs.getTimestamp("writeday"));
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			
+			return dto;
+		}
+		
+	
+	
 	
 	//readcount - 조회 수
 		public void updateReadCount(String num) { //내가 3번 글을 누르면 3번의 readcount가 1 증가해야 하니까 num이 넘어와야 함
 			Connection conn = db.getConnection();
 			PreparedStatement pstmt = null;
 			
-			String sql = "update smartboard set readcount=readcount+1 where num=?"; //좋아요도 같은 원리
+			String sql = "update qnaboard set readcount=readcount+1 where num=?"; //좋아요도 같은 원리
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
