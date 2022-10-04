@@ -222,6 +222,12 @@ String myid = (String)session.getAttribute("id");
 	                    </a>
                    	
                    	<%
+                    } else if(loginok.equals("admin")) {
+                   	%>
+                   		<a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=product/addform.jsp">
+	                        <i class="fa fa-fw fa-plus text-dark mr-1"></i>
+	                    </a>
+                   	<%
                     } else { // login session이 있으면
                    	%>
                    	
