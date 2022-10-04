@@ -19,11 +19,11 @@
 <title>Insert title here</title>
 </head>
 <%
-String myid = (String)session.getAttribute("idok");
+String id = (String)session.getAttribute("idok");
 %>
 <body>
 	CartList<br>
 	
-	<%= myid %>님의 장바구니
+	<%= id %>님의 장바구니
 </body>
 </html>
