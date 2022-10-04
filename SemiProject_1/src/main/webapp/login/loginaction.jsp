@@ -47,7 +47,10 @@ if(b)
 	session.setMaxInactiveInterval(60*60*8); //8시간유지
 	
 	//로그인 메인으로이동 
-	response.sendRedirect("loginmain.jsp");
+	response.sendRedirect("../index.jsp");
+
+	
+	
 }else
 {%>
 	<script type="text/javascript">
