@@ -18,7 +18,12 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
 </head>
+<%
+String myid = (String)session.getAttribute("myid");
+%>
 <body>
-
+	CartList<br>
+	
+	<%= myid %>님의 장바구니
 </body>
 </html>
