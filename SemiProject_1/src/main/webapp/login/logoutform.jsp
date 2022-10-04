@@ -32,13 +32,11 @@
 %>
 
 <br><br>
-<b style="color: gray;"><%=name %></b>
-님이 로그인 하셨습니다
+<b style="color: gray;"><%=name %>님이 로그인 하셨습니다</b>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="button" value="로그아웃" class="btn btn-danger"
-onclick="loaction.href='logoutaction.jsp'">
+<input type="button" value="로그아웃" class="btn btn-danger" 
+onclick="location.href='logoutaction.jsp'">
 <br><br>
-
 
 </body>
 </html>

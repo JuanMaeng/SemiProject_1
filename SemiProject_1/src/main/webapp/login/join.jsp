@@ -28,7 +28,7 @@ div.logform{
     margin-left: 800px;	
 }
 div.loginbutton {
-  background-color:blue; 
+	color:blue; 
   border: 1px solid gray; 
   color: white; 
   cursor: pointer;
@@ -60,25 +60,51 @@ if(saveid==null || saveid.equals("no"))
 
 %>
 	<div class="logform">
-		<h2><span>Logitech 회원 로그인</span></h2>
-			<form action="loginaction.jsp" method="post">
-				<input type="text" name="id" style="width: 300px;"
+		<h2><span>Logitech 회원가입</span></h2>
+			<form action="joinaction.jsp" method="post">
+				<br>
+				<input type="text" name="name" style="width: 300px;"
 				class="form-control input-lg"
-					placeholder="로그인할 Logitech ID" required="required" value="<%=myid%>">
+					placeholder="이름" required="required">
 				<div style="padding: 5px;"></div>
+				<br>
+				<br>
+				<input type="text" name="id" style="width: 300px;"
+					class="form-control input-lg"
+					placeholder="로그인시 사용할 Logitech ID" required="required" value="<%=myid%>">
+					<div style="padding: 3px;"></div>
 				<br>
 					<input type="password" name="pw" style="width: 300px;"
 					class="form-control input-lg"
 					placeholder="비밀번호" required="required">
+					<div style="padding: 3px;"></div>
 				<br>
+				<br>
+				<input type="text" name="email" style="width: 300px;"
+				class="form-control input-lg"
+					placeholder="이메일" required="required">
+				<div style="padding: 3px;"></div>
+			<br>
+			<br>
+				<input type="text" name="hp" style="width: 300px;"
+				class="form-control input-lg"
+					placeholder="핸드폰번호" required="required">
+				<div style="padding: 3px;"></div>
+			<br>
+			<br>
+				<input type="text" name="Addr" style="width: 300px;"
+				class="form-control input-lg"
+					placeholder="주소" required="required">
+				<div style="padding: 3px;"></div>
+			<br>
+			<br>
 					<div class="loginbutton"> 
 					<button type="submit" class="btn-btn-success btn-lg"
-					style="width: 200px; height: 50px;">로그인</button>
-					</div><br>
-					<div style="padding:30px 30px;">
-				<input type="checkbox" name="savechk">아이디저장
-			</form>
+					style="width: 200px; height: 50px;">회원가입</button>
+				</div>
+			<br>
+	</form>
 	</div>
-</div>
+	</div>
 </body>
 </html>
