@@ -79,7 +79,7 @@
 <%
 String loginok = (String)session.getAttribute("loginok");
 // String myid = (String)session.getAttribute("myid");
-String myid = (String)session.getAttribute("id");
+String myid = (String)session.getAttribute("idok");
 %>
 <body>
 <!-- Header -->
@@ -221,11 +221,17 @@ String myid = (String)session.getAttribute("id");
 	                    </a>
                    	
                    	<%
-                    } else if(loginok.equals("admin")) {
+                    } else if(myid.equals("admin")) {
                    	%>
+                   		<a class="nav-icon position-relative text-decoration-none" href="#">
+							<i class="fa fa-fw fa-sign-out-alt text-dark mr-3 stemp"></i>
+	                    </a>
+	                    
                    		<a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=product/addform.jsp">
 	                        <i class="fa fa-fw fa-plus text-dark mr-1"></i>
 	                    </a>
+	                    
+	                    <div id="welcome"><u><%= myid %></u> 님</div>
                    	<%
                     } else { // login session이 있으면
                    	%>
