@@ -18,7 +18,6 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
 </head>
-<body>
 <style type="text/css">
 div.logform{
 	width: 500px;
@@ -39,11 +38,7 @@ div.loginbutton {
 }
 </style>
 
-
-</head>
 <body>
-
-
 <%
 //세션으로부터 아이디와 체크값 획득
 String myid=(String)session.getAttribute("idok");
@@ -65,7 +60,8 @@ if(saveid==null || saveid.equals("no"))
 				<input type="text" name="id" style="width: 300px;"
 				class="form-control input-lg"
 					placeholder="로그인할 Logitech ID" required="required" value="<%=myid%>">
-				<div style="padding: 5px;"></div>
+				<div style="padding: 5px;">
+				</div>
 				<br>
 					<input type="password" name="pw" style="width: 300px;"
 					class="form-control input-lg"
@@ -74,11 +70,12 @@ if(saveid==null || saveid.equals("no"))
 					<div class="loginbutton"> 
 					<button type="submit" class="btn-btn-success btn-lg"
 					style="width: 200px; height: 50px;">로그인</button>
-					</div><br>
+				</div>
+				<br>
 					<div style="padding:30px 30px;">
-				<input type="checkbox" name="savechk">아이디저장
+					<input type="checkbox" name="savechk">아이디저장
+				</div>
 			</form>
-	</div>
-</div>
+		</div>
 </body>
 </html>
