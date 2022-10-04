@@ -13,36 +13,33 @@
 <link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
 
-<!-- Load fonts style after rendering the layout styles -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
-</head>
-<body>
-<style type="text/css">
-div.logform{
-	width: 500px;
-	margin-top: 600px;
-    margin-right: 200px;
-    margin-bottom: 400px;
-    margin-left: 800px;	
-}
-div.loginbutton {
-	color:blue; 
-  border: 1px solid gray; 
-  color: white; 
-  cursor: pointer;
-  float: left;
-  button:hover;{  
-  color: white;
-	}
-}
-</style>
-
 
 </head>
-<body>
+	<style type="text/css">
+		div.logform{
+			width: 500px;
+			margin-top: 600px;
+		    margin-right: 200px;
+		    margin-bottom: 400px;
+		    margin-left: 800px;	
+		}
+		div.loginbutton {
+			color:blue; 
+		  border: 1px solid gray; 
+		  color: white; 
+		  cursor: pointer;
+		  float: left;
+		  button:hover;{  
+		  color: white;
+			}
+		}
+	</style>
+</head>
 
+<body>
 
 <%
 //세션으로부터 아이디와 체크값 획득
@@ -56,7 +53,6 @@ if(saveid==null || saveid.equals("no"))
 	myid="";
 	save=false;	//체크하지않을경우 false 그 외에는 초기값이 true
 }
-
 
 %>
 	<div class="logform">
@@ -104,7 +100,6 @@ if(saveid==null || saveid.equals("no"))
 				</div>
 			<br>
 	</form>
-	</div>
 	</div>
 </body>
 </html>

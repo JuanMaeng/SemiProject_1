@@ -61,24 +61,25 @@ if(saveid==null || saveid.equals("no"))
 %>
 	<div class="logform">
 		<h2><span>Logitech 회원 로그인</span></h2>
-			<form action="loginaction.jsp" method="post">
-				<input type="text" name="id" style="width: 300px;"
-				class="form-control input-lg"
-					placeholder="로그인할 Logitech ID" required="required" value="<%=myid%>">
-				<div style="padding: 5px;"></div>
-				<br>
-					<input type="password" name="pw" style="width: 300px;"
-					class="form-control input-lg"
-					placeholder="비밀번호" required="required">
-				<br>
-					<div class="loginbutton"> 
-					<button type="submit" class="btn-btn-success btn-lg"
-					style="width: 200px; height: 50px;">로그인</button>
-					</div><br>
-					<div style="padding:30px 30px;">
+		<form action="loginaction.jsp" method="post">
+			<input type="text" name="id" style="width: 300px;"
+			class="form-control input-lg"
+				placeholder="로그인할 Logitech ID" required="required" value="<%=myid%>">
+			<div style="padding: 5px;"></div>
+			<br>
+			<input type="password" name="pw" style="width: 300px;"
+			class="form-control input-lg"
+			placeholder="비밀번호" required="required">
+			<br>
+			<div class="loginbutton"> 
+				<button type="submit" class="btn-btn-success btn-lg"
+				style="width: 200px; height: 50px;">로그인</button>
+			</div><br>
+			
+			<div style="padding:30px 30px;">
 				<input type="checkbox" name="savechk">아이디저장
-			</form>
+			</div>
+		</form>
 	</div>
-</div>
 </body>
 </html>
