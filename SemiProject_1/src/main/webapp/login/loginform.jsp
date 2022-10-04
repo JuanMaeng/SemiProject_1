@@ -52,7 +52,7 @@ if(saveid==null || saveid.equals("no"))
 %>
 	<div class="logform">
 		<h2><span>Logitech 회원 로그인</span></h2>
-			<form action="loginaction.jsp" method="post">
+			<form action="login/loginaction.jsp" method="post">
 				<input type="text" name="id" style="width: 300px;"
 				class="form-control input-lg"
 					placeholder="로그인할 Logitech ID" required="required" value="<%=myid%>">
