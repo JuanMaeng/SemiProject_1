@@ -41,6 +41,13 @@ a.gologin{
 	color: black;
 	text-decoration: none;
 }
+
+.idchk{
+	position: absolute;
+	left: 405px;
+	top: 0px;
+	height: 50px;
+}
 </style>
 
 <script type="text/javascript">
@@ -65,7 +72,7 @@ a.gologin{
 						$("#check").removeClass("btn-outline-primary");
 						$("#check").removeClass("btn-success");
 						$("#check").addClass("btn-danger");
-						$("#check").val("사용 불가능");
+						$("#check").val("사용 불가");
 						
 					} else {
 						
@@ -97,8 +104,8 @@ a.gologin{
 				<br>
 		         
 				<div class="form-floating">
-					<input type="text" class="form-control" name="id" id="id" placeholder="아이디 입력..." required="required">
-					<input style="float: right;" class="btn btn-xs btn-outline-primary" type="button" id="check" value="중복체크">
+					<input type="text" class="form-control" name="id" id="id" placeholder="아이디 입력..." required="required" style="width: 395px;">
+					<input style="float: right; height: 57px !important;" class="btn btn-outline-primary idchk" type="button" id="check" value="중복 체크">
 					<label for="id">아이디</label>
 				</div>
 				<br>
@@ -119,7 +126,8 @@ a.gologin{
 		        <br>
 		         
 		         <div class="form-floating">
-					<input type="text" class="form-control" name="email" id="email" placeholder="이메일 입력..." required="required">
+					<!-- <input type="text" class="form-control" name="email" id="email" placeholder="이메일 입력..." required="required"> -->
+					<input type="email" class="form-control" name="email" id="email" placeholder="이메일 입력..." required="required">
 					<label for="email">이메일&nbsp;<sub>google@gmail.com</sub></label>
 				</div>
 		         
