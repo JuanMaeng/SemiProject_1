@@ -24,7 +24,6 @@
 </head>
 
 <body>
-<body>
 <%
 QnaBoardDao dao = new QnaBoardDao();
 
@@ -89,7 +88,7 @@ no = totalCount - (currentPage - 1) * perPage;
     
     
     <!-- 게시판 글 목록 -->
-	<div style="margin:30px 30px; widows: 800px;">
+	<div class="container-xl">
 		<br>
 		<h5 class="alert alert-info">총 <%=totalCount%>개의 게시물이 있습니다.</h5>
 		
@@ -118,7 +117,7 @@ no = totalCount - (currentPage - 1) * perPage;
 				<tr>
 					<td style="text-align: center"><input type="checkbox" class="alldel" value="<%=dto.getNum()%>">&nbsp;&nbsp;<%=no-- %></td>
 					<td><%=dto.getSubject()%></td>
-					<td style="text-align: center">id 추가</td>
+					<td style="text-align: center"><%=dto.getId() %></td>
 					<td style="text-align: center"><%=sdf.format(dto.getWriteday()) %></td>
 					<td style="text-align: center"><%=dto.getReadcount() %></td>
 				</tr>	
@@ -138,6 +137,44 @@ no = totalCount - (currentPage - 1) * perPage;
 			
 		</table>
 	</div>
+	
+	
+	<!--페이징 start -->
+	<div style="width: 800px; text-align: center;" class="container">
+		<ul class="pagination">
+			<%
+			//이전
+			if(startPage>1){%>
+			<li>
+			<a href="index.jsp?main=qna/qnalist.jsp?currentPage=<%=startPage-1%>">이전</a>
+			</li>	
+			<%}
+				
+				
+			for(int pp=startPage;pp<=endPage;pp++){
+				if(pp==currentPage){%>
+					<li class="active">
+					<a href="index.jsp?main=qna/qnalist.jsp?currentPage=<%=pp%>"><%=pp %></a>
+					</li>	
+				<%}else{%>
+					<li>
+					<a href="index.jsp?main=qna/qnalist.jsp?currentPage=<%=pp%>"><%=pp %></a>
+					</li>
+					
+				<%}
+			}
+			
+			//다음
+			if(endPage<totalPage){%>
+			
+			<li>
+			<a href="index.jsp?main=qna/qnalist.jsp?currentPage=<%=endPage+1%>">다음</a>
+			</li>	
+			<%}
+			%>
+		</ul>
+	</div>
+	<!-- 페이징 end -->
     
 </body>
 </html>
