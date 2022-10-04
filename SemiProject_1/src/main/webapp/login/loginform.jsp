@@ -35,6 +35,11 @@ div.loginbutton {
   color: white;
 	}
 }
+
+a.gojoin{
+	color: black;
+	text-decoration: none;
+}
 </style>
 
 <body>
@@ -61,6 +66,8 @@ if(saveok == null) {
 	            <label for="id">id</label>
 	         </div>
 	         
+	         <br>
+	         
 	         <div class="form-floating">
 	            <input type="password" class="form-control" name="pw" id="pw" placeholder="Password">
 	            <label for="pwd">password</label>
@@ -71,6 +78,10 @@ if(saveok == null) {
 	         </div>
 	         
 	         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+	         
+	         <br><br>
+	         
+	         <a href="index.jsp?main=login/join.jsp" class="gojoin">혹시 아직 로지텍의 회원이 아니신가요?</a>
 		</form>
 	</div>
 </body>

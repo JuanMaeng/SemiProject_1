@@ -77,28 +77,75 @@ DbConnect db=new DbConnect();
 		return b;	
 	}
 
+	
 	//회원가입
-	public int join(MemberDto memberDto) 
+	public void insertMember(MemberDto dto) 
 	{
-		Connection conn=db.getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
 		
-		String sql="insert into member values (?, ?, ?, ?, ?)";
+		String sql="INSERT INTO member VALUES (null, ?, ?, ?, ?, ?, ?, NOW())";
 		
 		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, memberDto.getName());
-			pstmt.setString(2, memberDto.getId());
-			pstmt.setString(3, memberDto.getPw());
-			pstmt.setString(4, memberDto.getEmail());
-			pstmt.setString(5, memberDto.getPhone());
-			pstmt.setString(6, memberDto.getAddr());
-			pstmt.setTimestamp(7, memberDto.getRegister());
-			return pstmt.executeUpdate();
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getId());
+			pstmt.setString(3, dto.getPw());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getPhone());
+			pstmt.setString(6, dto.getAddr());
+			
+			pstmt.execute();
+			
 		}catch (SQLException e) {
+			
 			e.printStackTrace();
+			
+		} finally {
+			
+			db.dbClose(pstmt, conn);
 		}
-		return -1; //db오류
 	}
+	
+	
+	// 아이디 체크
+		public int isIdCheck(String id) {
+
+			int isid = 0;
+
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = "SELECT COUNT(*) FROM member WHERE id=?";
+
+			try {
+
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setString(1, id);
+
+				rs = pstmt.executeQuery();
+
+				if(rs.next()) { // 아이디 존재할 경우 1, 존재하지 않을 경우 0
+
+					/*
+					 * if(rs.getInt(1) == 1) isid = 1;
+					 */
+					isid = rs.getInt(1);
+				}
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+
+			} finally {
+
+				db.dbClose(rs, pstmt, conn);
+			}
+
+			return isid;
+		}
 }
