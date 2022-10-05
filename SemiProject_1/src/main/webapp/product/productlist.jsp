@@ -86,8 +86,7 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
                 	for(ProductDto dto:list) {
                 	
                 	%>
-                	
-                	
+
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                         	
@@ -99,7 +98,7 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
                                 	</div>
                                 </a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body rounded-0 mb-4">
                             	<div class="subtitle"><%=dto.getCollection() %></div>
                             	<a href="shop-single.html" class="h3 text-decoration-none">
                                 	<%=dto.getName() %>
