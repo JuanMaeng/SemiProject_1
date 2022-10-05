@@ -1,3 +1,5 @@
+<%@page import="data.dto.QnaBoardDto"%>
+<%@page import="data.dao.QnaBoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,10 +26,13 @@
 <%
 	//프로젝트의 경로
 	String root=request.getContextPath();
-	String id = (String)session.getAttribute("idok");
 	
+	String id = (String)session.getAttribute("idok");
 	String num = request.getParameter("num");
 	String currentPage = request.getParameter("currentPage");
+	
+	QnaBoardDao dao = new QnaBoardDao();
+	QnaBoardDto dto = dao.getData(num);
 	
 %>
 <!-- se2 폴더에서 js 파일 가져오기 -->
@@ -51,8 +56,10 @@
     </div>
     <!-- 상단 고정 이미지 end -->
     
-	<form action="qna/qnainsertproc.jsp" method="post">
+	<form action="qna/qnaupdateaction.jsp" method="post">
 		<input type="hidden" name="id" id="id" value="<%=id%>">
+		<input type="hidden" name="num" value=<%=num %>>
+		<input type="hidden" name="currentPage" value=<%=currentPage %>>
 		<table class="table table-bordered" style="width:900px; height:500px; margin: 100px 500px 200px;">
 			<thead>
 				<tr>
@@ -63,15 +70,15 @@
 				<tr>
 					<th bgcolor="orange" width="100">제  목</th>
 					<td>
-						<input type="text" name="subject" class="form-control"
+						<input type="text" name="subject" value="<%=dto.getSubject() %>" class="form-control"
 							required="required" style="width: 800px;">
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<textarea name="content" id="content"		
+						<textarea name="content" id="content"
 							required="required"			
-							style="width: 100%; height: 500px; display: none;"></textarea>		
+							style="width: 100%; height: 500px; display: none;"><%=dto.getContent() %></textarea>		
 					
 					</td>
 				</tr>
