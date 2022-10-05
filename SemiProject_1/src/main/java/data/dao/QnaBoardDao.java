@@ -206,5 +206,54 @@ public class QnaBoardDao {
 				db.dbClose(pstmt, conn);
 			}
 		}
+		
+	//update
+		public void updateQna(QnaBoardDto dto) {
+			
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			
+			String sql = "update qnaboard set subject=?, content=? where num=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, dto.getSubject());
+				pstmt.setString(2, dto.getContent());
+				pstmt.setString(3, dto.getNum());
+				
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+			
+		}
+		
+		
+	//delete
+		public void deleteQna(String num) {
+			
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			
+			String sql = "delete from qnaboard where num=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, num);
+				pstmt.execute();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+			
+		}
+		
 	
 }
