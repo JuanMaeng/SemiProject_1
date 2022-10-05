@@ -26,13 +26,31 @@
 	width: 600px;
 }
 
-#btnasend{
-    background-color: #77af9c;
-    color: #d7fff1;
-	float: right;
-}
 
 </style>
+<script type="text/javascript">
+
+	//댓글 insert
+	$(function(){
+		
+		//댓글 list
+		
+		//댓글 insert ajax
+		var num = $("#num").val();
+		console.log(num);
+		
+		$("button.btnaadd").click(function(){
+			var content = $("#content").val();
+			
+			if(content.trim().length==0){
+		         alert("내용을 입력후 저장해주세요");
+		         return;
+		      }
+		});
+			
+	});
+
+</script>
 </head>
 <body>
 <%
@@ -66,7 +84,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
     <!-- 게시물 내용 start -->
     <div class="container">
     <form id="frm" class="form-inline">
-	<input type="hidden" name = "num" value="<%=num%>">
+	<input type="hidden" id ="num" value="<%=num%>">
 		<table class="table qnatable">
 	    	<tr>
 				<td colspan="2">
@@ -94,17 +112,30 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 			</tr>
 			
 	<!-- 댓글 start-->
-			
-			
+			<!-- 댓글창 start-->
 			<tr>
 		    	<td colspan="2">
-		    	<b class="acount">댓글 <span>0</span></b>
-				    <div class="aform form-inline">
-				    	<input type="text" id="content" class="form-control"  style="width: 60%;" placeholder="댓글 내용">
-				    	<button type="button" id="btnasend">저장</button>      
-				    </div>
-		      	</td>
-		   </tr>
+		    		<div>
+		    		<b class="acount">댓글 <span>0</span></b>
+		    		<br>
+		    		댓글 목록
+		    		</div>
+		    		
+		    	</td>
+		    </tr>
+		    <%
+		    if(loginok!=null){%>
+		    <tr>
+				<td style="width: 90%">
+					<textarea style="height: 70px;" id="content" required="required" class="form-control" placeholder="댓글을 입력하세요" ></textarea>
+				</td>
+				<td style="width: 10%">
+					<button type="submit" class="btn btn-success btnaadd" style="width: 100%; height: 70px;">등록</button>
+				</td>
+		   </tr>	
+		    <%}
+		    %>
+		   <!-- 댓글창 end -->
 	<!-- 댓글 end-->		
 	
 			<tr>
