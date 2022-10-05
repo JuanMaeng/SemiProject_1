@@ -2,6 +2,7 @@ package data.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import data.dto.DetailProductDto;
@@ -35,5 +36,38 @@ public class DetailProductDao {
 		}finally {
 			db.dbClose(pstmt, conn);
 		}
+	}
+	
+	//해당 1개의 dto 리턴
+	public DetailProductDto getData(String p_num) {
+		DetailProductDto dto = new DetailProductDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from detailproduct where p_num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, p_num);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setP_num(rs.getString("p_num"));
+				dto.setPhoto1(rs.getString("photo1"));
+				dto.setPhoto2(rs.getString("photo2"));
+				dto.setPhoto3(rs.getString("photo3"));
+				dto.setPhoto4(rs.getString("photo4"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return dto;
 	}
 }

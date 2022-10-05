@@ -30,6 +30,34 @@
 		font-size: 0.9em !important;
 		color: gray;
 	}
+	.banner-wrap{
+		margin: 10px auto;
+		position: relative;
+	}
+	.banner-wrap img {
+		width: 100%;
+		vertical-align: middle;
+	}
+	.banner-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+	b.b1 {
+		font-size: 44pt;
+		font-weight: bolder;
+		margin-bottom: 20px;
+	}
+	.body {
+		height: 180px;
+	}
+	.body-price{
+		position: absolute;
+		bottom: 10px;
+	}
 </style>
 </head>
 <%
@@ -39,8 +67,21 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
 %>
 <body>
 <!-- Start Content -->
+	
+	<div class="banner-wrap">
+		<div class="banner-img">
+			<img src="https://resource.logitech.com/w_1800,h_1800,c_limit,q_auto,f_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/plp/mice/hero-desktop.png?v=1">	
+		</div>
+		<div class="banner-text">
+			<b class="b1">마우스</b>
+			<p>나에게 맞는 마우스를 찾아보세요</p>
+		</div>
+	</div>
+	
 
+    
     <div class="container-xl py-5">
+	    
         <div class="row">
 
             <div class="col-lg-3">
@@ -88,25 +129,28 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
                 		if(dto.getCategory().equals("마우스")) {
                 	%>
                 	
-                	
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                         	
                             <div class="card rounded-0">
-                            	<a href="shop-single.html" class="h3 text-decoration-none">
+                            	<a href="index.jsp?main=product/detailpage.jsp?p_num=<%=dto.getP_num() %>" class="h3 text-decoration-none">
                                 	<img class="card-img rounded-0 img-fluid" src="<%=dto.getThumbnail()%>">
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
 
                                 	</div>
                                 </a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body rounded-0 body">
                             	<div class="subtitle"><%=dto.getCollection() %></div>
-                            	<a href="shop-single.html" class="h3 text-decoration-none">
-                                	<%=dto.getName() %>
-                                </a>
+                            	<div style="margin-bottom: 10px;">
+	                            	<a href="index.jsp?main=product/detailpage.jsp?p_num=<%=dto.getP_num() %>" class="h3 text-decoration-none">
+	                                	<b><%=dto.getName() %></b>
+	                                </a>
+                            	</div>
                                 <div class="subtitle"><%=dto.getDescription() %></div>
-                                <p class="text-center mb-0"><%=nf.format(dto.getPrice()) %></p>
+                                <div class="body-price">
+                                	<p class="text-center mb-0"><%=nf.format(dto.getPrice()) %></p>
+                                </div>
                             </div>
                         </div>
                     </div>
