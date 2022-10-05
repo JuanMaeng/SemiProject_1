@@ -20,35 +20,124 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
+
 <style type="text/css">
 .qnatable{
 	margin-top: 100px;
 	width: 600px;
 }
 
+.acontent{
+	font: "Noto Sans KR";
+	font-weight: 400;
+	font-size: 18pt;
+}
+.aday{
+	
+}
+
+.adel, .aupdate{
+	cursor: pointer;
+	float: right;
+}
 
 </style>
 <script type="text/javascript">
 
-	//댓글 insert
+	
 	$(function(){
 		
-		//댓글 list
+		answerlist();
 		
-		//댓글 insert ajax
-		var num = $("#num").val();
-		console.log(num);
-		
+		//댓글 insert		
 		$("button.btnaadd").click(function(){
+			var myid = $("#myid").val();
+			var num = $("#num").val();
 			var content = $("#content").val();
+			console.log(myid+num+content);
 			
 			if(content.trim().length==0){
 		         alert("내용을 입력후 저장해주세요");
 		         return;
 		      }
+			
+			$.ajax({
+		         type:"post",
+		         dataType:"html",
+		         url:"qna/answerinsert.jsp",
+		         data:{"num":num,"myid":myid,"content":content},
+		         success:function(){
+		         
+		        	//기존입력값 지우기
+		            $("#content").val("");
+		        	
+		            //alert("success");
+		            answerlist();
+		            
+		         }
+		      });
+		});
+		
+		
+		//댓글 delete
+		$(document).on("click","i.adel",function(){
+			var idx = $(this).attr("idx");
+			console.log(idx);
+			
+			var a = confirm("삭제하시겠습니까?");
+			if(!a){
+				return;
+			}
+			//삭제
+			$.ajax({
+				type:"get",
+				url:"qna/answerdelete.jsp",
+				data:{"idx":idx},
+				dataType:"html",
+				success:function(){
+					answerlist();
+					
+				}
+				
+			});
+			
 		});
 			
 	});
+	
+	
+	//사용자 함수 - list
+	function answerlist(){
+		var loginid = $("#myid").val(); //로그인 아이디
+		var num = $("#num").val();
+		
+		$.ajax({
+			type:"get",
+			url:"qna/answerlist.jsp",
+			data:{"num":num},
+			dataType:"json",
+			success:function(res){
+				var s = "";
+				
+				$.each(res,function(i,ele){
+
+					var writeid = ele.id; //작성 아이디
+					s+= writeid+"님";
+					if(loginid==writeid){
+						s+="<i class='fas fa-edit aupdate' idx='"+ele.idx+"'></i>&nbsp;&nbsp;<i class='far fa-trash-alt adel' idx='"+ele.idx+"'></i>";
+					}
+					s+="<span class='aday'>"+ele.writeday+"</span>";
+					s+="<pre class='acontent'>"+ele.content+"</pre>";
+					
+	
+				})
+				
+				$("#answerlist").html(s);
+			}
+			
+		});
+		
+	}
 
 </script>
 </head>
@@ -117,7 +206,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 		    	<td colspan="2">
 		    		<div>
 		    		<b class="acount">댓글 <span>0</span></b>
-		    		<br>
+		    		</div>
+		    		<div id="answerlist">
 		    		댓글 목록
 		    		</div>
 		    		
@@ -125,14 +215,20 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 		    </tr>
 		    <%
 		    if(loginok!=null){%>
-		    <tr>
-				<td style="width: 90%">
-					<textarea style="height: 70px;" id="content" required="required" class="form-control" placeholder="댓글을 입력하세요" ></textarea>
-				</td>
-				<td style="width: 10%">
-					<button type="submit" class="btn btn-success btnaadd" style="width: 100%; height: 70px;">등록</button>
-				</td>
-		   </tr>	
+		    <div>
+		    	<form id = "answerform" action="">
+		    	<input type="hidden" id ="num" value="<%=num%>">
+		    	<input type="hidden" name="myid" id="myid" value="<%=myid%>">
+			    <tr>
+					<td style="width: 90%">
+						<textarea style="height: 70px;" name="content" id="content" required="required" class="form-control" placeholder="댓글을 입력하세요" ></textarea>
+					</td>
+					<td style="width: 10%">
+						<button type="button" class="btn btn-success btnaadd" style="width: 100%; height: 70px;">등록</button>
+					</td>
+			   </tr>	
+			  </form>
+		   </div>
 		    <%}
 		    %>
 		   <!-- 댓글창 end -->

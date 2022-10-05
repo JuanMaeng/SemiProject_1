@@ -1,8 +1,4 @@
-
 <%@page import="data.dao.QnaAnswerDao"%>
-<%@page import="data.dto.QnaAnswerDto"%>
-<%@page import="data.dao.QnaBoardDao"%>
-<%@page import="data.dto.QnaBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,23 +22,10 @@
 <body>
 
 <%
-request.setCharacterEncoding("utf-8");
-
-String num = request.getParameter("num");
-String myid = request.getParameter("myid");
-String content = request.getParameter("content");
-
-QnaAnswerDto dto = new QnaAnswerDto();
-
-dto.setNum(num);
-dto.setId(myid);
-dto.setContent(content);
-
+String idx = request.getParameter("idx");
 QnaAnswerDao dao = new QnaAnswerDao();
-
-dao.insertAnswer(dto);
-
-
+dao.deleteAnswer(idx);
 %>
+
 </body>
 </html>
