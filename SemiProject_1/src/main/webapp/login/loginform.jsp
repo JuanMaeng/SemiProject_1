@@ -16,6 +16,7 @@
 <!-- Load fonts style after rendering the layout styles -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+
 <title>Insert title here</title>
 </head>
 <style type="text/css">
@@ -41,6 +42,15 @@ a.gojoin{
 	text-decoration: none;
 }
 </style>
+
+<script type="text/javascript">
+	
+	$(function(){
+		
+		$("#pw").val("");
+	});
+
+</script>
 
 <body>
 <%
@@ -78,7 +88,7 @@ if(saveok == null) {
 	         </div>
 	         
 	         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
-	         
+    
 	         <br><br>
 	         
 	         <a href="index.jsp?main=login/join.jsp" class="gojoin">혹시 아직 로지텍의 회원이 아니신가요?</a>

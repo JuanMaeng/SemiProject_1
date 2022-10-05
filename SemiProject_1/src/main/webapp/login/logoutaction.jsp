@@ -29,7 +29,7 @@ session.removeAttribute("loginok");
 <%
 // session.invalidate(); // loginok만 지워지는게 아니라 saveok랑 id도 다 지워져서 여기선 사용 못할것같슴다 ...
 
-response.sendRedirect("index.jsp");
+response.sendRedirect("../index.jsp");
 %>
 </body>
 </html>

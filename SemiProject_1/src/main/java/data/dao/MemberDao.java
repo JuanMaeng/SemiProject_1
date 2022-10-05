@@ -15,7 +15,7 @@ public class MemberDao {
 
 DbConnect db=new DbConnect();
 	
-	//1. 아이디를 통해 name 을 얻는다
+	// 1. 아이디를 통해 name 을 얻는다
 	
 	public String getName(String id)
 	{
@@ -131,9 +131,7 @@ DbConnect db=new DbConnect();
 
 				if(rs.next()) { // 아이디 존재할 경우 1, 존재하지 않을 경우 0
 
-					/*
-					 * if(rs.getInt(1) == 1) isid = 1;
-					 */
+					/* if(rs.getInt(1) == 1) isid = 1; */
 					isid = rs.getInt(1);
 				}
 

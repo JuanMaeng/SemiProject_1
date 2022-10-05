@@ -26,15 +26,13 @@ div.logform{
     margin-bottom: 200px;
     margin-left: 35%;	
 }
+
 div.loginbutton {
   color:blue; 
   border: 1px solid gray; 
   color: white; 
   cursor: pointer;
   float: left;
-  button:hover;{  
-  color: white;
-	}
 }
 
 a.gologin{
@@ -53,7 +51,7 @@ a.gologin{
 <script type="text/javascript">
 	$(function(){
 		
-		$("#check").click(function(){
+		/* $("#check").click(function(){
 			
 			var id = $("#id").val();
 			// alert(id);
@@ -81,6 +79,42 @@ a.gologin{
 						$("#check").removeClass("btn-danger");
 						$("#check").addClass("btn-success");
 						$("#check").val("사용 가능");
+					}
+				}
+			});
+		}); */
+		
+		
+		// 아이디 입력하면 자동으로 옆에 버튼 바뀌도록
+		$("#id").keyup(function(){
+			
+			var id = $("#id").val();
+			// alert(id);
+			
+			$.ajax({
+				
+				type: "get",
+				dataType: "json",
+				url: "login/checkid.jsp",
+				data: {"id":id},
+				success: function(response){
+					
+					if(response.count == 1){
+						
+						// alert("중복됨");
+						$("#check").removeClass("btn-outline-primary");
+						$("#check").removeClass("btn-success");
+						$("#check").addClass("btn-danger");
+						$("#check").val("사용 불가");
+						
+					} else {
+						
+						// alert("중복안됨");
+						$("#check").removeClass("btn-outline-primary");
+						$("#check").removeClass("btn-danger");
+						$("#check").addClass("btn-success");
+						$("#check").val("사용 가능");
+
 					}
 				}
 			});
@@ -140,7 +174,7 @@ a.gologin{
 		         
 		         <br>
 		         
-		         <button class="w-100 btn btn-lg btn-primary" type="submit">가입</button>
+		         <button class="w-100 btn btn-lg btn-primary" type="submit" id="submit" disabled>가입</button>
 		         
 		         <br><br>
 		         

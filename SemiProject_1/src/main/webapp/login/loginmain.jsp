@@ -29,7 +29,10 @@ if(loginok==null) { //로그아웃상태
 <%
 } else {
 %>
-	<jsp:include page="logoutaction.jsp"/>
+	<script type="text/javascript">
+		location.href = "login/logoutaction.jsp";
+	</script>
+	<%-- <jsp:include page="logoutaction.jsp"/> --%>
 <%
 }
 %>

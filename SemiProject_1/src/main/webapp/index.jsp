@@ -31,9 +31,11 @@ if(request.getParameter("main")!=null){
 <div class="layout header">
 	<jsp:include page="layout/header.jsp"/>
 </div>
+
 <div class="layout main">
 	<jsp:include page="<%=mainPage %>"/>
 </div>
+
 <div class="layout footer">
 	<jsp:include page="layout/footer.jsp"/>
 </div>
