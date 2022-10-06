@@ -23,6 +23,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
+<style type="text/css">
+	div.div-item{
+		text-align: center;
+	}
+	.item{
+		width:150px !important;
+	}
+</style>
 </head>
 <%
 String p_num = request.getParameter("p_num");
@@ -39,34 +47,33 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
         <div class="container pb-5">
             <div class="row">
                 <div class="col-lg-7 mt-5">
-                    <div class="card mb-3">
-                        <img class="card-img img-fluid" src="<%=dto.getThumbnail() %>" alt="Card image cap" id="product-detail">
-                    </div>
-                    <div class="row">
+                <div class="row">
 
                         <!--Start Carousel Wrapper-->
-                        <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
                             <!--Start Slides-->
-                            <div class="carousel-inner product-links-wap" role="listbox">
-
-                                <div class="carousel-item active">
-                                    <div class="col">
-                                        <div class="col-4">
+                                <div class="active">
+                                    <div class="row mb-3">
+                                    	<div class="col-3 item">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<%=ddto.getPhoto1() %>" alt="Product Image 1">
+                                                <img class="card-img img-fluid" src="<%=dto.getThumbnail() %>" alt="">
                                             </a>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3 item">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<%=ddto.getPhoto2() %>" alt="Product Image 2">
+                                                <img class="card-img img-fluid" src="<%=ddto.getPhoto1() %>" alt="">
                                             </a>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3 item">
+                                            <a href="#">
+                                                <img class="card-img img-fluid" src="<%=ddto.getPhoto2() %>" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="col-3 item">
                                             <a href="#">
                                                 <img class="card-img img-fluid"  src="<%=ddto.getPhoto3() %>" alt="">
                                             </a>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3 item">
                                             <a href="#">
                                                 <img class="card-img img-fluid"  src="<%=ddto.getPhoto4() %>" alt="">
                                             </a>
@@ -74,32 +81,26 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
                                     </div>
                                 </div>
 
-	                        </div>
-                        </div>
 
-                        
                     </div>
+                    <div class="card mb-3">
+                        <img class="card-img img-fluid" src="<%=dto.getThumbnail() %>" alt="Card image cap" id="product-detail">
+                    </div>
+                    
                 </div>
                 <!-- col end -->
                 <div class="col-lg-5 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">Active Wear</h1>
-                            <p class="h3 py-2">$25.00</p>
-                            <p class="py-2">
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
-                            </p>
+                            <h1 class="h2"><%=dto.getName() %></h1>
+                            <p class="h3 py-2"><%=nf.format(dto.getPrice()) %></p>
+                            
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Brand:</h6>
+                                    <h6>Collection:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Easy Wear</strong></p>
+                                    <p class="text-muted"><strong><%=dto.getCollection() %></strong></p>
                                 </li>
                             </ul>
 
