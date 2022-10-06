@@ -58,7 +58,7 @@ a.gojoin{
 String myid = (String)session.getAttribute("idok");
 String saveok = (String)session.getAttribute("saveok");
 
-System.out.println(saveok);
+// System.out.println(saveok);
 
 
 if(saveok == null) {

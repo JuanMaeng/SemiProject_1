@@ -85,7 +85,7 @@ String id = (String)session.getAttribute("idok");
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-default logo h2 align-self-center" href="index.jsp">
+            <a class="navbar-brand text-default logo h2 align-self-center" style="margin-top: 2px;" href="index.jsp">
                 LOGITECH
             </a>
 
