@@ -112,12 +112,12 @@
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/mainimg/presentation.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
-                <h2 class="h5 text-center mt-3 mb-3">프레젠테이션</h2>
+                <h5 class="text-center mt-3 mb-3">프레젠테이션</h5>
                 <p class="text-center"><a class="btn btn-success" href="#">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/mainimg/camera.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
-                <h2 class="h5 text-center mt-3 mb-3">가정용 카메라</h2>
+                <h5 class="text-center mt-3 mb-3">가정용 카메라</h5>
                 <p class="text-center"><a class="btn btn-success" href="#">Go Shop</a></p>
             </div>
         </div>
