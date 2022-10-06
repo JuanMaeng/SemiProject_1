@@ -8,6 +8,9 @@ public class DetailProductDto {
 	private String photo2;
 	private String photo3;
 	private String photo4;
+	private String description;
+	private String sysreq;
+	private String components;
 	
 	public String getIdx() {
 		return idx;
@@ -45,5 +48,27 @@ public class DetailProductDto {
 	public void setPhoto4(String photo4) {
 		this.photo4 = photo4;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getSysreq() {
+		return sysreq;
+	}
+	public void setSysreq(String sysreq) {
+		this.sysreq = sysreq;
+	}
+	public String getComponents() {
+		return components;
+	}
+	public void setComponents(String components) {
+		this.components = components;
+	}
+	
+	
+	
+	
 	
 }

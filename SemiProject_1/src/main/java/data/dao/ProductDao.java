@@ -52,7 +52,7 @@ public class ProductDao {
 		
 		List<ProductDto> list = new ArrayList<ProductDto>();
 		
-		String sql="select * from product order by p_num desc";
+		String sql="select * from product order by regdate desc";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);

@@ -18,7 +18,7 @@ public class DetailProductDao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql="insert into detailproduct(p_num, photo1, photo2, photo3, photo4) values(?,?,?,?,?)";
+		String sql="insert into detailproduct(p_num, photo1, photo2, photo3, photo4, description, sysreq, components) values(?,?,?,?,?,?,?,?)";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -28,6 +28,9 @@ public class DetailProductDao {
 			pstmt.setString(3, dto.getPhoto2());
 			pstmt.setString(4, dto.getPhoto3());
 			pstmt.setString(5, dto.getPhoto4());
+			pstmt.setString(6, dto.getDescription());
+			pstmt.setString(7, dto.getSysreq());
+			pstmt.setString(8, dto.getComponents());
 
 			pstmt.execute();
 		} catch (SQLException e) {
@@ -60,6 +63,10 @@ public class DetailProductDao {
 				dto.setPhoto2(rs.getString("photo2"));
 				dto.setPhoto3(rs.getString("photo3"));
 				dto.setPhoto4(rs.getString("photo4"));
+				dto.setDescription(rs.getString("description"));
+				dto.setSysreq(rs.getString("sysreq"));
+				dto.setComponents(rs.getString("components"));
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
