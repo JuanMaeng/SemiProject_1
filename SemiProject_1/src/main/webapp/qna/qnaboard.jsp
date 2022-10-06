@@ -125,6 +125,7 @@ no = totalCount - (currentPage - 1) * perPage;
 				<tr>
 					<td style="text-align: center"><%=no-- %></td>
 					<td><a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>"><%=dto.getSubject()%></td>
+					
 					<td style="text-align: center"><%=dto.getId() %></td>
 					<td style="text-align: center"><%=sdf.format(dto.getWriteday()) %></td>
 					<td style="text-align: center"><%=dto.getReadcount() %></td>

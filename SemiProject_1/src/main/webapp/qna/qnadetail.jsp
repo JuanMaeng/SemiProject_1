@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+
 <link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
 
@@ -103,9 +104,63 @@
 			
 		});
 			
+		
+		//댓글 update
+		//기존 값 가져오기
+		$(document).on("click","i.aupdate",function(){
+			idx = $(this).attr("idx"); 
+			console.log(idx);
+			
+			
+			var up = "<div class='upcontent'>";
+			up += "<textarea class='form-control upcontent' id ='upcontent'></textarea>";
+			up += "<button class='btn btn-success btnupdate' idx='"+idx+"'>수정</button>";
+			up += "</div>";
+			
+			$.ajax({
+				type:"get",
+				url:"qna/answerupdateform.jsp",
+				data:{"idx":idx},
+				dataType:"json",
+				success:function(res){
+				
+
+					$(".acontent"+idx).html(up);
+					console.log(".acontent"+idx);
+					console.log(idx);
+					
+					$("#upcontent").val(res.content);
+					
+				}
+				
+			});
+			
+		});
+		
+		//수정하기
+		$(document).on("click","button.btnupdate",function(){
+			
+			var content = $("#upcontent").val();
+			console.log(content);
+			
+			$.ajax({
+				type:"get",
+				url:"qna/answerupdate.jsp",
+				data:{"idx":idx, "content":content},
+				dataType:"html",
+				success:function(res){
+					answerlist();
+					//alert("success");
+				}
+				
+			});
+		});
+		
+		
+			
 	});
 	
-	
+	///////////////////////////////////////
 	//사용자 함수 - list
 	function answerlist(){
 		var loginid = $("#myid").val(); //로그인 아이디
@@ -122,12 +177,14 @@
 				$.each(res,function(i,ele){
 
 					var writeid = ele.id; //작성 아이디
+					s+="<div class='alist'>";
 					s+= writeid+"님";
 					if(loginid==writeid){
 						s+="<i class='fas fa-edit aupdate' idx='"+ele.idx+"'></i>&nbsp;&nbsp;<i class='far fa-trash-alt adel' idx='"+ele.idx+"'></i>";
 					}
 					s+="<span class='aday'>"+ele.writeday+"</span>";
-					s+="<pre class='acontent'>"+ele.content+"</pre>";
+					s+="<pre class='acontent"+ele.idx+"' idx='"+ele.idx+"'>"+ele.content+"</pre>";
+					s+="</div>";
 					
 	
 				})
@@ -136,6 +193,18 @@
 			}
 			
 		});
+		
+	}
+	
+	//사용자 함수 - 삭제
+	function qnadel(num,currentPage){
+		//alert(num+","+currentPage)
+		
+		var a = confirm("삭제하시겠습니까?");
+		
+		if(a){
+			location.href = "qna/qnadeleteaction.jsp?num="+num+"&currentPage="+currentPage;
+		}
 		
 	}
 
@@ -253,19 +322,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
     </div>
     <!-- 게시물 내용 end -->
     
+   
  	
-	<script type="text/javascript">
-		//사용자 함수 - 삭제
-		function qnadel(num,currentPage){
-			//alert(num+","+currentPage)
-			
-			var a = confirm("삭제하시겠습니까?");
-			
-			if(a){
-				location.href = "qna/qnadeleteaction.jsp?num="+num+"&currentPage="+currentPage;
-			}
-			
-		}
-	</script>
 </body>
 </html>
