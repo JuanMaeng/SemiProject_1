@@ -23,24 +23,31 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-.qnatable{
-	margin-top: 100px;
-	width: 600px;
-}
-
-.acontent{
-	font: "Noto Sans KR";
-	font-weight: 400;
-	font-size: 18pt;
-}
-.aday{
+	.qnatable{
+		margin-top: 100px;
+		width: 600px;
+	}
 	
-}
+	.acontent{
+		font: "Noto Sans KR";
+		font-weight: 400;
+		font-size: 18pt;
+	}
+	.aday{
+		font-size: 0.8em;
+		font-weight:400;
+		letter-spacing:0 !important
+	}
+	
+	.adel, .aupdate{
+		cursor: pointer;
+		float: right;
+		margin-left: 10px;
+	}
+	
 
-.adel, .aupdate{
-	cursor: pointer;
-	float: right;
-}
+	
+	
 
 </style>
 <script type="text/javascript">
@@ -112,10 +119,11 @@
 			console.log(idx);
 			
 			
-			var up = "<div class='upcontent'>";
-			up += "<textarea class='form-control upcontent' id ='upcontent'></textarea>";
-			up += "<button class='btn btn-success btnupdate' idx='"+idx+"'>수정</button>";
-			up += "</div>";
+			var up = "<div>";
+			up += "<textarea class='form-control upcontent' id ='upcontent' style='margin-bottom:10px;'></textarea></td>";
+			up += "<button class='btn btn-success btnupdate' idx='"+idx+"' style='float:right; margin-left:10px;'>수정</button>";
+			up += "<button class='btn btn-primary btncancel' idx='"+idx+"' onclick='answerlist()' style='float:right;'>취소</button>";
+			up += "</div>"; 
 			
 			$.ajax({
 				type:"get",
@@ -172,24 +180,28 @@
 			data:{"num":num},
 			dataType:"json",
 			success:function(res){
+				//댓글 개수 출력
+		         $("b.acount>span").text(res.length);
+				
 				var s = "";
 				
 				$.each(res,function(i,ele){
 
 					var writeid = ele.id; //작성 아이디
-					s+="<div class='alist'>";
-					s+= writeid+"님";
+					s+="<div>";
+					s+="<br>";
+					s+= ele.name;
 					if(loginid==writeid){
-						s+="<i class='fas fa-edit aupdate' idx='"+ele.idx+"'></i>&nbsp;&nbsp;<i class='far fa-trash-alt adel' idx='"+ele.idx+"'></i>";
+						s+="<i class='far fa-edit aupdate' idx='"+ele.idx+"'> 수정</i>&nbsp;&nbsp;<i class='far fa-trash-alt adel' idx='"+ele.idx+"'> 삭제</i>";
 					}
-					s+="<span class='aday'>"+ele.writeday+"</span>";
+					s+="&nbsp;&nbsp;<span class='aday'>"+ele.writeday+"</span>";
 					s+="<pre class='acontent"+ele.idx+"' idx='"+ele.idx+"'>"+ele.content+"</pre>";
 					s+="</div>";
 					
 	
 				})
 				
-				$("#answerlist").html(s);
+				$("#alist").html(s);
 			}
 			
 		});
@@ -238,9 +250,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
         </div>
     </div>
     <!-- 상단 고정 이미지 end -->
+   
     
     <!-- 게시물 내용 start -->
     <div class="container">
+    
     <form id="frm" class="form-inline">
 	<input type="hidden" id ="num" value="<%=num%>">
 		<table class="table qnatable">
@@ -276,14 +290,14 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 		    		<div>
 		    		<b class="acount">댓글 <span>0</span></b>
 		    		</div>
-		    		<div id="answerlist">
-		    		댓글 목록
+		    		<div id="alist">
+		    		<br>
 		    		</div>
 		    		
 		    	</td>
 		    </tr>
 		    <%
-		    if(loginok!=null){%>
+		    if(loginok!=null && myid.equals("admin")){%>
 		    <div>
 		    	<form id = "answerform" action="">
 		    	<input type="hidden" id ="num" value="<%=num%>">
@@ -309,7 +323,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 				<%
 				if(myid.equals(dto.getId())){%>
 				<button type="button" class="btn btn-danger" onclick="qnadel(<%=num %>,<%=currentPage %>)" style="float: right; margin-left: 10px;">삭제</button>
-				<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=qna/qnaupdateform.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>'" style="float: right;">수정</button> 
+				<button type="button" class="btn btn-warning" onclick="location.href='index.jsp?main=qna/qnaupdateform.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>'" style="float: right;">수정</button> 
 
 				<%}
 				%>

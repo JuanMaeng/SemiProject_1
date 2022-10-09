@@ -1,3 +1,5 @@
+<%@page import="data.dto.QnaAnswerDto"%>
+<%@page import="data.dao.QnaAnswerDao"%>
 <%@page import="data.dto.QnaBoardDto"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -22,11 +24,85 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <title>Insert title here</title>
 <style type="text/css">
-	a{
-	text-decoration: none;
+	
+	.banner-wrap{
+		margin: 10px auto;
+		position: relative;
 	}
-</style>
+	
+	.banner-wrap img {
+		width: 100%;
+		height: 400px;
+		vertical-align: middle;
+	}
+	
+	.banner-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+	
+	b.b1 {
+		font-size: 44pt;
+		font-weight: 600;
+		margin-bottom: 20px;
+	}
+	
 
+	
+</style>
+<script type="text/javascript">
+
+	$(function(){
+		//검색버튼 클릭 이벤트
+		$("#btnsearch").click(function(){
+			console.log("test");
+			search();
+		});
+		
+	});
+
+	//사용자 함수 - 검색
+	function search(subject){
+		
+		$.ajax({
+			type:"get",
+			url:"qna/qnasearchlist.jsp",
+			data:{"subject":subject},
+			dataType:"json",
+			success: function(res){
+				var s = "test";
+				s+="<table class='table table-hover'>";
+	            s+="<tr style='text-align: center; background-color: pink;'>";
+	            s+="<td width='60'>번호</td>";
+	            s+="<td width='500'>제목</td>";
+	            s+="<td width='100'>작성자</td>";
+	            s+="<td width='120'>작성일</td>";
+	            s+="<td width='60'>조회</td>";
+	            s+="</tr>"
+	            
+	            $.each(res,function(i,ele){
+	               s+="<tr>";
+	               s+="<td>"+ele.num+"</td>";
+	               s+="<td>"+ele.subject+"</td>";
+	               s+="<td>"+ele.id+"</td>";
+	               s+="<td>"+ele.content+"</td>";
+	               s+="<td>"+ele.writeday+"</td>";
+	               s+="<td>"+ele.readcount+"</td>";
+	               s+="</tr>"; 
+	            });
+	            s += "</table>";
+				$("#slist").html(s);
+			}
+			
+		});
+
+	}
+
+</script>
 </head>
 
 <body>
@@ -80,28 +156,42 @@ List<QnaBoardDto> list = dao.getList(start, perPage);
 no = totalCount - (currentPage - 1) * perPage;
 
 //댓글 변수에 댓글 총 개수 넣기
+QnaAnswerDao adao = new QnaAnswerDao();
+for(QnaBoardDto dto:list){
+	int acount=adao.getAllAnswers(dto.getNum()).size();
+	dto.setAnswercount(acount);
+}
 
 %>
 
+
 	<!-- 상단 고정 이미지 start -->
-	<div class="container-fluid bg-light py-5">
-        <div class="col-md-6 m-auto text-center">
-            <h1 class="h1">QnA 게시판</h1>
-            <p>
-                문의를 남겨주세요
-            </p>
-        </div>
-    </div>
+	<div class="banner-wrap">
+		<div class="banner-img">
+			<img src="https://images-ext-1.discordapp.net/external/_h0dYb_x1ipIuJoHuFyded4-1Cjzxr1e_LqZvaFOwk8/%3Fv%3D1/https/resource.logitech.com/w_1800%2Ch_1800%2Cc_limit%2Cq_auto%3Abest%2Cf_jpg%2Cdpr_2.0/d_transparent.gif/content/dam/logitech/en/resellers/find-a-reseller/hero-desktop.jpg?width=1440&height=409">	
+		</div>
+		<div class="banner-text">
+			<b class="b1">Q&A 게시판</b>
+			<p>문의를 남겨주세요</p>
+		</div>
+	</div>
     <!-- 상단 고정 이미지 end -->
     
     
     <!-- 게시판 글 목록 -->
-	<div class="container-xl">
+	<div class="container-xl"  id="qnalist">
 		<br>
-		<h5 class="alert alert-info">총 <%=totalCount%>개의 게시물이 있습니다.</h5>
+		<h5 class="alert alert-primary">총 <%=totalCount%>개의 문의글이 있습니다.</h5>
+		
+		<!-- 검색창 -->
+	    <div class='searchbox' style="float: right; margin-bottom: 20px;">
+			<input type="text" id="searchKeyword">
+			<button class="btn btn-secondary" id="btnsearch">검색</button>
+		</div>
+    
 		
 		<table class="table table-hover">
-			<tr style="text-align: center">
+			<tr style="text-align: center; background-color: #C1DC97;">
 				<td width="60">번호</td>
 				<td width="500">제목</td>
 				<td width="100">작성자</td>
@@ -114,7 +204,7 @@ no = totalCount - (currentPage - 1) * perPage;
 			%>
 			<tr>
 				<td colspan="5" align="center">
-				<b>등록된 게시물이 없습니다.</b>
+				<b>등록된 문의글이 없습니다.</b>
 				</td>
 			</tr>	
 			<%}else{
@@ -124,7 +214,15 @@ no = totalCount - (currentPage - 1) * perPage;
 			%>
 				<tr>
 					<td style="text-align: center"><%=no-- %></td>
-					<td><a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>"><%=dto.getSubject()%></td>
+					<td><a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;"><%=dto.getSubject()%></a>
+					<!-- 제목 옆에 댓글 갯수 출력 -->
+					<%
+					if(dto.getAnswercount()>0){
+						%>
+						<a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>#alist" style="text-decoration: none;"><b style="color:green; font-size: 0.7em;">[답변완료]<b></a>
+					<%}
+					%>
+					</td>
 					
 					<td style="text-align: center"><%=dto.getId() %></td>
 					<td style="text-align: center"><%=sdf.format(dto.getWriteday()) %></td>
@@ -149,6 +247,10 @@ no = totalCount - (currentPage - 1) * perPage;
 		</table>
 	</div>
 	<!-- 게시물 목록 end  -->
+	
+	<div id="slist">
+	검색
+	</div>
 	
 	
 	<!--페이징 start -->

@@ -255,5 +255,49 @@ public class QnaBoardDao {
 			
 		}
 		
+		
+	//검색
+		public List<QnaBoardDto> getSearchQnas(String subject){
+			
+			List<QnaBoardDto> list = new Vector<>();
+			
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			String sql = "select * from qnaboard where subject like ? order by num desc";
+			
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+subject+"%"); 
+				rs=pstmt.executeQuery();			
+				
+				while(rs.next()) {
+					
+				QnaBoardDto dto = new QnaBoardDto();
+				
+				dto.setNum(rs.getString("num"));
+				dto.setId(rs.getString("id"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setWriteday(rs.getTimestamp("writeday"));
+				
+				//list 추가
+				list.add(dto);
+					
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			
+			return list;
+			
+		}
 	
 }
