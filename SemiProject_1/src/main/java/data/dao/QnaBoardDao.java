@@ -20,13 +20,14 @@ public class QnaBoardDao {
 			Connection conn = db.getConnection();
 			PreparedStatement pstmt= null;
 			 
-			String sql = "insert into qnaboard(id, subject, content, writeday) values(?,?,?,now())";
+			String sql = "insert into qnaboard(id, subject, content, category, writeday) values(?,?,?,?,now())";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, dto.getId());	
 				pstmt.setString(2, dto.getSubject());
 				pstmt.setString(3, dto.getContent());
+				pstmt.setString(4, dto.getCategory());
 						
 				pstmt.execute();
 				
@@ -58,6 +59,7 @@ public class QnaBoardDao {
 					QnaBoardDto dto = new QnaBoardDto();
 					dto.setNum(rs.getString("num"));
 					dto.setId(rs.getString("id"));
+					dto.setCategory(rs.getString("category"));
 					dto.setSubject(rs.getString("subject"));
 					dto.setContent(rs.getString("content"));
 					dto.setReadcount(rs.getInt("readcount"));
@@ -131,6 +133,7 @@ public class QnaBoardDao {
 				QnaBoardDto dto = new QnaBoardDto();
 				dto.setNum(rs.getString("num"));
 				dto.setId(rs.getString("id"));
+				dto.setCategory(rs.getString("category"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
 				dto.setReadcount(rs.getInt("readcount"));
@@ -168,6 +171,7 @@ public class QnaBoardDao {
 				if(rs.next()) {
 					dto.setNum(rs.getString("num"));
 					dto.setId(rs.getString("id"));
+					dto.setCategory(rs.getString("category"));
 					dto.setSubject(rs.getString("subject"));
 					dto.setContent(rs.getString("content"));
 					dto.setReadcount(rs.getInt("readcount"));
@@ -213,14 +217,15 @@ public class QnaBoardDao {
 			Connection conn = db.getConnection();
 			PreparedStatement pstmt = null;
 			
-			String sql = "update qnaboard set subject=?, content=? where num=?";
+			String sql = "update qnaboard set subject=?, content=?, category=? where num=?";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setString(1, dto.getSubject());
 				pstmt.setString(2, dto.getContent());
-				pstmt.setString(3, dto.getNum());
+				pstmt.setString(3, dto.getCategory());
+				pstmt.setString(4, dto.getNum());
 				
 				pstmt.execute();
 			} catch (SQLException e) {
@@ -279,6 +284,7 @@ public class QnaBoardDao {
 				
 				dto.setNum(rs.getString("num"));
 				dto.setId(rs.getString("id"));
+				dto.setCategory(rs.getString("category"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
 				dto.setReadcount(rs.getInt("readcount"));

@@ -29,12 +29,14 @@ String num = request.getParameter("num");
 String currentPage = request.getParameter("currentPage");
 String subject = request.getParameter("subject");
 String content = request.getParameter("content");
+String category = request.getParameter("category");
 
 QnaBoardDto dto = new QnaBoardDto();
 
 dto.setNum(num);
 dto.setSubject(subject);
 dto.setContent(content);
+dto.setCategory(category);
 
 QnaBoardDao dao = new QnaBoardDao();
 

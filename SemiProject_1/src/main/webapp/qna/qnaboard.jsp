@@ -117,7 +117,7 @@ int totalPage; //총페이지수
 int startPage; //각블럭의 시작페이지
 int endPage; //각블럭의 끝페이지
 int start; //각페이지의 시작번호
-int perPage = 8; //한페이지에 보여질 글의 갯수
+int perPage = 10; //한페이지에 보여질 글의 갯수
 int perBlock = 5; //한블럭당 보여지는 페이지개수
 int currentPage;//현재페이지
 int no;
@@ -179,20 +179,24 @@ for(QnaBoardDto dto:list){
     
     
     <!-- 게시판 글 목록 -->
+       
+    
 	<div class="container-xl"  id="qnalist">
-		<br>
-		<h5 class="alert alert-primary">총 <%=totalCount%>개의 문의글이 있습니다.</h5>
+		<%-- <br>
+		<h5 class="alert alert-primary">총 <%=totalCount%>개의 문의글이 있습니다.</h5> --%>
+		
 		
 		<!-- 검색창 -->
-	    <div class='searchbox' style="float: right; margin-bottom: 20px;">
+	    <div class='searchbox' style="float: right; margin-top:20px; margin-bottom: 20px;">
 			<input type="text" id="searchKeyword">
 			<button class="btn btn-secondary" id="btnsearch">검색</button>
 		</div>
     
 		
 		<table class="table table-hover">
-			<tr style="text-align: center; background-color: #C1DC97;">
-				<td width="60">번호</td>
+			<tr style="text-align: center; font-weight: bold; background-color: #EEEEEE;">
+				<td width="40">번호</td>
+				<td width="40">분류</td>
 				<td width="500">제목</td>
 				<td width="100">작성자</td>
 				<td width="120">작성일</td>
@@ -214,12 +218,13 @@ for(QnaBoardDto dto:list){
 			%>
 				<tr>
 					<td style="text-align: center"><%=no-- %></td>
+					<td style="text-align: center"><%=dto.getCategory() %></td>
 					<td><a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;"><%=dto.getSubject()%></a>
 					<!-- 제목 옆에 댓글 갯수 출력 -->
 					<%
 					if(dto.getAnswercount()>0){
 						%>
-						<a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>#alist" style="text-decoration: none;"><b style="color:green; font-size: 0.7em;">[답변완료]<b></a>
+						<a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>#alist" style="text-decoration: none;"><b style="color:blue; font-size: 0.7em;">[답변완료]<b></a>
 					<%}
 					%>
 					</td>
@@ -233,7 +238,7 @@ for(QnaBoardDto dto:list){
 			
 			if(loginok!=null){%>
 			<tr>
-			<td colspan="5">
+			<td colspan="6">
 				<span style="float: right;">
 				<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=qna/qnaform.jsp'">글쓰기</button>
 				</span>
@@ -245,12 +250,16 @@ for(QnaBoardDto dto:list){
 			
 			
 		</table>
+		
+		<div id="slist">
+		검색test
+		</div>
 	</div>
+	
+	
+	
 	<!-- 게시물 목록 end  -->
 	
-	<div id="slist">
-	검색
-	</div>
 	
 	
 	<!--페이징 start -->
