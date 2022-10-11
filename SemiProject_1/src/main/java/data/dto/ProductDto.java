@@ -7,9 +7,7 @@ public class ProductDto {
 	private String category;
 	private String collection;
 	private String description;
-	private String hand;
-	private String size;
-	private String platform;
+	private String filter;
 	private int price;
 	private String thumbnail;
 	private String regdate;
@@ -44,23 +42,11 @@ public class ProductDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getHand() {
-		return hand;
+	public String getFilter() {
+		return filter;
 	}
-	public void setHand(String hand) {
-		this.hand = hand;
-	}
-	public String getSize() {
-		return size;
-	}
-	public void setSize(String size) {
-		this.size = size;
-	}
-	public String getPlatform() {
-		return platform;
-	}
-	public void setPlatform(String platform) {
-		this.platform = platform;
+	public void setFilter(String filter) {
+		this.filter = filter;
 	}
 	public int getPrice() {
 		return price;
@@ -80,5 +66,7 @@ public class ProductDto {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+	
+	
 	
 }

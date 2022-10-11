@@ -1,3 +1,4 @@
+<%@page import="java.util.StringTokenizer"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="data.dao.ProductDao"%>
@@ -93,10 +94,13 @@ ProductDao dao = new ProductDao();
 List<ProductDto> list= dao.getAllProduct();
 NumberFormat nf=NumberFormat.getCurrencyInstance();
 request.setCharacterEncoding("utf-8");
+
 %>
 <body>
 <!-- Start Content -->
-	
+	<script type="text/javascript">
+	var i=1;
+	</script>
 	<div class="banner-wrap">
 		<div class="banner-img">
 			<img src="https://resource.logitech.com/w_1800,h_1800,c_limit,q_auto,f_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/plp/mice/hero-desktop.png?v=1">	
@@ -108,9 +112,9 @@ request.setCharacterEncoding("utf-8");
 	</div>
 	
 
+    	필터입력값 : <input type="text" id="showFilter"/> <!--필터확인용, 기능과 무관함 -->
     
     <div class="container-xl py-5">
-	    필터입력값 : <input type="text" id="showFilter"/>
         <div class="row">
 
             <div class="col-lg-3">
@@ -139,9 +143,16 @@ request.setCharacterEncoding("utf-8");
                 <!-- start product -->
                 <%
                 	for(ProductDto dto:list) {
+                		
                 		if(dto.getCategory().equals("마우스")) {
                 	%>
-                    <div class="col-md-4 <%=dto.getCollection()%> lists">
+                	
+                    <div class="col-md-4 <%=dto.getCollection()%> lists" id="p1" filter="<%=dto.getFilter() %>">
+	                    <script type="text/javascript">
+	                    	document.querySelector('.lists').setAttribute("id", "p"+i);
+	                    	i++;
+	                    	
+	                	</script>
                         <div class="card mb-4 product-wap rounded-0" style="border:0;">
                         	
                             <div class="card rounded-0" style="border: 0;">
@@ -176,30 +187,10 @@ request.setCharacterEncoding("utf-8");
         </div>
     </div>
     <script type="text/javascript">
-    /* $(document).ready(function() {
-    	
-    	$("input:checkbox").on('click', function() {
-    		
-			if ( $(this).prop('checked') ) {
-				
-				console.log($(this).val());
-				var filter = $(this).val();
-				$(".lists").hide();
-				$("."+filter).show();
-				
-				
-				
-			} else {
-				var filter = $(this).val();
-				$(".lists").show();
-				
-			}
-		});
-	}); */
-	
+
 	var filterArr = new Array(); //필터 내용을 저장하는 배열
-    var showFilterValue = document.getElementById("showFilter");//필터입력값 보여주기 위한 text
-    
+	var showFilterValue = document.getElementById("showFilter");//필터입력값 보여주기 위한 text
+	
     function makeFilter(target) {
     	
     	var filterVal = target.value;
@@ -215,20 +206,33 @@ request.setCharacterEncoding("utf-8");
     		
     		filterArr.splice(filterArr.indexOf(filterVal), 1);
     	}
-    	showFilterValue.value = filterArsr;
+    	showFilterValue.value = filterArr; // textBox에 필터 배열 추가
+    	console.log("필터입력값 출력 : "+filterArr);
     	
+    	
+    	
+    	
+   		if(filterArr.length == 0) { //선택한 필터의 값이 없을 경우
+   	    	console.log(filterArr.length);
+			$(".lists").show();
+   		} else { //필터의 값을 하나라도 선택한 경우
+   			
+   			$(".lists").hide(); //전체 div 숨김
+	   			
+			for(var x=0; x<filterArr.length; x++){ //필터 배열의 크기만큼 반복
+				
+   				$("."+filterArr[x]).show(); //해당 클래스의 div 보이기
 		
+   				
+   			}
+   			
+   			
+   			
+   		}
+   		
     }
-    
-	/* $(document).ready(function() {
-    	
-    	$("input:checkbox").on('click', function() {
-    		
-    		if(filterArr.length == null) {
-    			alert();
-    		}
-    	}
-	}); */
+		
+	
     </script>
 </body>
 </html>

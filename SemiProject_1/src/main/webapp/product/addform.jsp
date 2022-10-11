@@ -85,32 +85,9 @@ ProductDto dto = dao.getLastData();
 						</td>
 					</tr>
 					<tr>
-						<td style="width:150px; background-color: #66cdaa"><b>손</b></td>
+						<td style="width:150px; background-color: #66cdaa"><b>필터</b></td>
 						<td>
-							<select style="width: 200px;" name="hand" class="form-control" required="required">
-								<option value="오른손" selected="selected">오른손</option>
-								<option value="왼손">왼손</option>
-								<option value="양손">양손</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td style="width:150px; background-color: #66cdaa"><b>크기</b></td>
-						<td>
-							<select style="width: 200px;" name="size" class="form-control" required="required">
-								<option value="작음">작음</option>
-								<option value="보통" selected="selected">보통</option>
-								<option value="큼">큼</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td style="width:150px; background-color: #66cdaa"><b>플랫폼</b></td>
-						<td>
-							<select style="width: 200px;" name="platform" class="form-control" required="required">
-								<option value="windows">Windows</option>
-								<option value="mac">Mac</option>
-							</select>
+							<input type="text" name="filter" class="form-control" style="width:400px;"required="required">
 						</td>
 					</tr>
 					<tr>
