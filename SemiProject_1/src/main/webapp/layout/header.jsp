@@ -245,6 +245,10 @@ String id = (String)session.getAttribute("idok");
 	                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"><%= productCnt %></span> <!-- 장바구니에 담긴 제품의 수 -->
 	                    </a>
 	                    
+	                    <a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=orderpage/myorder.jsp">
+	                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+	                    </a>
+	                    
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
 							<i class="fa fa-fw fa-sign-out-alt text-dark mr-3 login-out"></i>
 	                    </a>

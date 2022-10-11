@@ -138,16 +138,28 @@
 		
 		$("button.cart-to-order").click(function(){
 
- 			$("tr.list").each(function(index, element){
- 				
-				var p_num = $(this).attr("p_num");
-				var m_num = $(this).attr("m_num");
-				var cnt = $(this).attr("cnt");
-				var price = $(this).attr("price");
-				
-				alert(p_num + ", " + m_num + ", " + cnt + ", " + price);
- 			});
+			var a = confirm("상품을 주문하시겠습니까 ?");
 			
+			if(a){
+				
+	 			$("tr.list").each(function(index, element){
+				
+					var p_num = $(this).attr("p_num");
+					var m_num = $(this).attr("m_num");
+					var cnt = $(this).attr("cnt");
+					var price = $(this).attr("price");
+					var idx = $(this).attr("idx");
+					
+					// alert(p_num + ", " + m_num + ", " + cnt + ", " + price);
+				
+					cartorder(idx, p_num, m_num, cnt, price);
+	 			});
+			} else {
+				
+				return;
+			}
+			
+			location.href="index.jsp?main=orderpage/orderSuccess.jsp"
 		});
 		
 		
@@ -160,6 +172,20 @@
 				dataType: "html",
 				url: "cart/deletecart.jsp",
 				data: {"idx":idx},
+				success: function(){
+					
+				}
+			});
+		}
+		
+		function cartorder(idx, p_num, m_num, cnt, price){
+			
+			$.ajax({
+				
+				type: "post",
+				dataType: "html",
+				url: "orderpage/orderaction.jsp",
+				data: {"idx":idx, "p_num":p_num, "m_num":m_num, "cnt":cnt, "price":price},
 				success: function(){
 					
 				}
@@ -238,7 +264,7 @@ String m_num = mdao.getMemberInfo(id).getM_num();
 									int sum = (Integer.parseInt(map.get("price")) * Integer.parseInt(map.get("cnt")));
 									totalprice += sum;
 							%>
-									<tr class="list" p_num="<%= map.get("p_num") %>" m_num="<%= m_num %>" cnt="<%= map.get("cnt") %>" price="<%= map.get("price") %>">
+									<tr class="list" idx="<%= map.get("idx") %>" p_num="<%= map.get("p_num") %>" m_num="<%= m_num %>" cnt="<%= map.get("cnt") %>" price="<%= map.get("price") %>">
 										<td>
 											<input type="checkbox" class="del-chk" value="<%= map.get("idx") %>">
 										</td>
