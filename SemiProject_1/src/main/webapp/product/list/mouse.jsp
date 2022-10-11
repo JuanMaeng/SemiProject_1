@@ -215,21 +215,20 @@ request.setCharacterEncoding("utf-8");
     		
     		filterArr.splice(filterArr.indexOf(filterVal), 1);
     	}
-    	showFilterValue.value = filterArr;
-    	console.log("필터입력값 출력 : "+filterArr);
-    	/* var len = filter.length;
-    	if(len == 0){
-    		$(".lists").show();
-    	}
-    	else {
-    		for(let i=0; i<len; i++) {
-    			$(".lists").hide();
-    			$("."+filter[i]).show();
-    			
-    		}
-    	} */
+    	showFilterValue.value = filterArsr;
+    	
 		
     }
+    
+	/* $(document).ready(function() {
+    	
+    	$("input:checkbox").on('click', function() {
+    		
+    		if(filterArr.length == null) {
+    			alert();
+    		}
+    	}
+	}); */
     </script>
 </body>
 </html>

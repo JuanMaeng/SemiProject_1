@@ -109,7 +109,7 @@ $(function (){
 		<%}
 		else {%>
 			
-			location.href="index.jsp?main=cart/cartlist.jsp?p_num="+p_num+"&cnt="+cnt;
+			location.href = "cart/insertcart.jsp?p_num="+p_num+"&cnt="+cnt;
 		<%}
 		%>
 	});
