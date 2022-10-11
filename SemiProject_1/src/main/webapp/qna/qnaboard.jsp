@@ -58,6 +58,7 @@
 
 	$(function(){
 	
+	
 	//검색버튼 클릭 이벤트
 		$("#btnsearch").click(function(){
 			console.log("test");
@@ -102,15 +103,7 @@
 		});
 		
 		
-		$(document).ready(function() {
-            $("#searchKeyword").keyup(function() {
-                var k = $(this).val();
-                $("#qnatable > tbody > tr").hide();
-                var temp = $("#user-table > tbody > tr > td:nth-child(5n+2):contains('" + k + "')");
 
-                $(temp).parent().show();
-            })
-        })
 
 	}
 
@@ -208,7 +201,7 @@ for(QnaBoardDto dto:list){
 		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">문의 내역</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp">공지사항</a>
+		      <a class="nav-link notice" href="index.jsp?main=qna/notice.jsp">공지사항</a>
 		    </li>
 		  </ul>
 		</nav>

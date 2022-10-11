@@ -211,7 +211,7 @@
 		         $("b.acount>span").text(res.length);
 				
 				var s = "";
-				
+					
 				$.each(res,function(i,ele){
 
 					var writeid = ele.id; //작성 아이디
