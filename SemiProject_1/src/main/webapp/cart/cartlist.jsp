@@ -197,66 +197,82 @@ List<HashMap<String, String>> list = dao.getCartList(id);
 							<%
 							int totalprice = 0;
 							
-							for(int i = 0; i < list.size(); i++){
-						
-								HashMap<String, String> map = list.get(i);
-								
-								int sum = (Integer.parseInt(map.get("price")) * Integer.parseInt(map.get("cnt")));
-								totalprice += sum;
+							CartDao cdao = new CartDao();
+							int productCnt = cdao.getCartList(id).size();
+							
+							if(productCnt == 0) {
 							%>
 								<tr>
-									<td>
-										<input type="checkbox" class="del-chk" value="<%= map.get("idx") %>">
-									</td>
-									
-									<td style="text-align: left !important;">
-										<a href="#">
-											<img src="<%= map.get("thumbnail") %>">
-											<%= map.get("name") %>
-										</a>
-									</td>
-									
-									<td>
-										<%= map.get("price") %>
-									</td>
-									
-									<td>
-										<%= map.get("cnt") %>
-									</td>
-									
-									<td>
-										<%= sum %>
-									</td>
-									
-									<td>
-										<i class="fa fa-trash-alt deletecart" idx="<%= map.get("idx") %>"></i>
+									<td colspan="6" align="center">
+										<div class="alert alert-secondary" role="alert">
+											장바구니에 등록된 상품이 없습니다 !
+										</div>
 									</td>
 								</tr>
-								<!-- 장바구니에 담긴 상품목록 End -->
 							<%
-							}
-							%>
+							} else {
+								for(int i = 0; i < list.size(); i++){
 							
-							<!-- 주문서 Start -->
-							<%
-							int delivery = 3000;
-							
-							if(totalprice > 100000){
-								delivery = 0;
-							}
+									HashMap<String, String> map = list.get(i);
+									
+									int sum = (Integer.parseInt(map.get("price")) * Integer.parseInt(map.get("cnt")));
+									totalprice += sum;
 							%>
-							<tr>
-								<td colspan="4" align="center">
-									상품금액 <strong><%= nf.format(totalprice) %></strong> + 배송비 <strong class="delivery"><%= nf.format(delivery) %></strong> 
-								</td>
+									<tr>
+										<td>
+											<input type="checkbox" class="del-chk" value="<%= map.get("idx") %>">
+										</td>
+										
+										<td style="text-align: left !important;">
+											<a href="index.jsp?main=product/detailpage.jsp?p_num=<%= map.get("p_num") %>">
+												<img src="<%= map.get("thumbnail") %>">
+												<%= map.get("name") %>
+											</a>
+										</td>
+
+										<td>
+											<%= map.get("price") %>
+										</td>
+
+										<td>
+											<%= map.get("cnt") %>
+										</td>
+
+										<td>
+											<%= sum %>
+										</td>
+										
+										<td>
+											<i class="fa fa-trash-alt deletecart" idx="<%= map.get("idx") %>"></i>
+										</td>
+									</tr>
+									<!-- 장바구니에 담긴 상품목록 End -->
+								<%
+								}
+								%>
 								
-								<td colspan="2" align="center">
-									총 주문금액 <b><%= nf.format(totalprice + delivery) %></b>&nbsp;&nbsp;&nbsp;&nbsp;
-									<button class="btn btn-outline-success">주문하기</button>
-								</td>
-							</tr>
-							<!-- 주문서 End -->
-							
+								<!-- 주문서 Start -->
+								<%
+								int delivery = 3000;
+								
+								if(totalprice > 100000){
+									delivery = 0;
+								}
+								%>
+								<tr>
+									<td colspan="4" align="center">
+										상품금액 <strong><%= nf.format(totalprice) %></strong> + 배송비 <strong class="delivery"><%= nf.format(delivery) %></strong> 
+									</td>
+									
+									<td colspan="2" align="center">
+										총 주문금액 <b><%= nf.format(totalprice + delivery) %></b>&nbsp;&nbsp;&nbsp;&nbsp;
+										<button class="btn btn-outline-success">주문하기</button>
+									</td>
+								</tr>
+								<!-- 주문서 End -->
+							<%
+							}
+							%>
 						</table>
 						
 					</div>

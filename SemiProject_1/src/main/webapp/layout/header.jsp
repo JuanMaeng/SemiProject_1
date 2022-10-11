@@ -1,3 +1,4 @@
+<%@page import="data.dao.CartDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -213,6 +214,10 @@ String id = (String)session.getAttribute("idok");
 				    
                     
                     <%
+                    // 장바구니에 담긴 제품 수
+                    CartDao cdao = new CartDao();
+					int productCnt = cdao.getCartList(id).size();
+                    
                     if(loginok == null){ // login session이 없으면
                    	%>
 	                    <a class="nav-icon position-relative text-decoration-none" href="#">
@@ -220,7 +225,7 @@ String id = (String)session.getAttribute("idok");
 	                    </a>
                    	
                    	<%
-                    } else if(id.equals("admin")) {
+                    } else if(id.equals("admin")) { // 관리자 로그인
                    	%>
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
 							<i class="fa fa-fw fa-sign-out-alt text-dark mr-3 login-out"></i>
@@ -237,7 +242,7 @@ String id = (String)session.getAttribute("idok");
                    	
 	                    <a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=cart/cartlist.jsp">
 	                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-	                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span> --> <!-- 장바구니에 담긴 제품의 수 -->
+	                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"><%= productCnt %></span> <!-- 장바구니에 담긴 제품의 수 -->
 	                    </a>
 	                    
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
