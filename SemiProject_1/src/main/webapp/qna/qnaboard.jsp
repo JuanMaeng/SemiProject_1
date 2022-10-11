@@ -54,60 +54,7 @@
 
 	
 </style>
-<script type="text/javascript">
 
-	$(function(){
-	
-	
-	//검색버튼 클릭 이벤트
-		$("#btnsearch").click(function(){
-			console.log("test");
-			search();
-		});
-		
-	});
-
-	//사용자 함수 - 검색
-	function search(subject){
-		
-		$.ajax({
-			type:"get",
-			url:"qna/qnasearchlist.jsp",
-			data:{"subject":subject},
-			dataType:"json",
-			success: function(res){
-				var s = "test";
-				s+="<table class='table table-hover'>";
-	            s+="<tr style='text-align: center; background-color: pink;'>";
-	            s+="<td width='60'>번호</td>";
-	            s+="<td width='500'>제목</td>";
-	            s+="<td width='100'>작성자</td>";
-	            s+="<td width='120'>작성일</td>";
-	            s+="<td width='60'>조회</td>";
-	            s+="</tr>"
-	            
-	            $.each(res,function(i,ele){
-	               s+="<tr>";
-	               s+="<td>"+ele.num+"</td>";
-	               s+="<td>"+ele.subject+"</td>";
-	               s+="<td>"+ele.id+"</td>";
-	               s+="<td>"+ele.content+"</td>";
-	               s+="<td>"+ele.writeday+"</td>";
-	               s+="<td>"+ele.readcount+"</td>";
-	               s+="</tr>"; 
-	            });
-	            s += "</table>";
-				$("#slist").html(s);
-			}
-			
-		});
-		
-		
-
-
-	}
-
-</script>
 </head>
 
 <body>
@@ -154,7 +101,7 @@ if (endPage > totalPage)
 start = (currentPage - 1) * perPage;
 
 //각페이지에서 필요한 게시글불러오기
-List<QnaBoardDto> list = dao.getList(id, start, perPage);
+List<QnaBoardDto> list = dao.getIdList(id, start, perPage);
 
 //각글앞에 붙힐 시작번호
 //총글이 만약에 20..1페이지는 20부터 2페이지는 15부터
@@ -177,7 +124,7 @@ for(QnaBoardDto dto:list){
 			<img src="https://images-ext-1.discordapp.net/external/_h0dYb_x1ipIuJoHuFyded4-1Cjzxr1e_LqZvaFOwk8/%3Fv%3D1/https/resource.logitech.com/w_1800%2Ch_1800%2Cc_limit%2Cq_auto%3Abest%2Cf_jpg%2Cdpr_2.0/d_transparent.gif/content/dam/logitech/en/resellers/find-a-reseller/hero-desktop.jpg?width=1440&height=409">	
 		</div>
 		<div class="banner-text">
-			<b class="b1">Q&A 게시판</b>
+			<b class="b1">고객 게시판</b>
 			<p>문의를 남겨주세요</p>
 		</div>
 	</div>
@@ -195,7 +142,15 @@ for(QnaBoardDto dto:list){
     	<nav class="navbar navbar-expand-sm bg-light justify-content-center">
 		  <ul class="navbar-nav">
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
+		    	<%if(loginok!=null){
+		    	%>
+		    	<a class="nav-link"  href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
+		    	<%}else{
+		    	%>
+		    	<a class="nav-link" onclick="alert('로그인이 필요합니다.')" href="index.jsp?main=login/loginmain.jsp">1:1 문의</a>
+		    	<%} 
+		    	%>
+
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">문의 내역</a>
@@ -205,16 +160,9 @@ for(QnaBoardDto dto:list){
 		    </li>
 		  </ul>
 		</nav>
-
-    	
-    	<!-- 검색창 -->
-	    <div class='searchbox' style="float: right; margin-top:20px; margin-bottom: 20px;">
-			<input type="text" id="searchKeyword">
-			<button class="btn btn-secondary" id="btnsearch">검색</button>
-		</div>
-    	
+   	
 		
-		<table class="table table-hover" id="qnatable">
+		<table class="table table-hover" id="qnatable" style="margin-top: 20px;">
 			<thead>
 			<tr style="text-align: center; font-weight: bold; background-color: #EEEEEE;">
 				<td width="40">번호</td>
@@ -232,7 +180,13 @@ for(QnaBoardDto dto:list){
 			%>
 			<tr>
 				<td colspan="6" align="center">
+				<%if(loginok!=null){
+				%>
 				<b>문의 내역이 없습니다.</b>
+				<%}else{%>
+				<b>로그인이 필요합니다.</b>				
+				<%}
+				%>
 				</td>
 			</tr>	
 			<%}else{
@@ -277,9 +231,6 @@ for(QnaBoardDto dto:list){
 			
 		</table>
 		
-		<div id="slist">
-		검색test
-		</div>
 	</div>
 	
 	

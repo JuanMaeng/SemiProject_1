@@ -273,7 +273,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 			<img src="https://images-ext-1.discordapp.net/external/_h0dYb_x1ipIuJoHuFyded4-1Cjzxr1e_LqZvaFOwk8/%3Fv%3D1/https/resource.logitech.com/w_1800%2Ch_1800%2Cc_limit%2Cq_auto%3Abest%2Cf_jpg%2Cdpr_2.0/d_transparent.gif/content/dam/logitech/en/resellers/find-a-reseller/hero-desktop.jpg?width=1440&height=409">	
 		</div>
 		<div class="banner-text">
-			<b class="b1">Q&A 게시판</b>
+			<b class="b1">고객 게시판</b>
 			<p>문의를 남겨주세요</p>
 		</div>
 	</div>

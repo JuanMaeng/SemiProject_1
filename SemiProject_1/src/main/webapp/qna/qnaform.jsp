@@ -73,7 +73,7 @@
 			<img src="https://images-ext-1.discordapp.net/external/_h0dYb_x1ipIuJoHuFyded4-1Cjzxr1e_LqZvaFOwk8/%3Fv%3D1/https/resource.logitech.com/w_1800%2Ch_1800%2Cc_limit%2Cq_auto%3Abest%2Cf_jpg%2Cdpr_2.0/d_transparent.gif/content/dam/logitech/en/resellers/find-a-reseller/hero-desktop.jpg?width=1440&height=409">	
 		</div>
 		<div class="banner-text">
-			<b class="b1">Q&A 게시판</b>
+			<b class="b1">고객 게시판</b>
 			<p>문의를 남겨주세요</p>
 		</div>
 	</div>
@@ -84,8 +84,13 @@
 		<input type="hidden" name="id" id="id" value="<%=id%>">
 		<table class="table table-bordered" style="width:900px; height:500px; margin: 100px 500px 200px;">
 			<thead>
-				<tr>
-					<th colspan="2" style="background-color: #f8f9fa; text-align: center;">문의하기</th>						
+				<tr>	
+					<%if(id.equals("admin")){	
+						%>
+						<th colspan="2" style="background-color: #f8f9fa; text-align: center;">공지</th>	
+						<%}else{%>
+						<th colspan="2" style="background-color: #f8f9fa; text-align: center;">문의하기</th>	
+						<%}%>				
 				</tr>
 			</thead>
 			<tbody>
@@ -96,13 +101,15 @@
 							<%
 							if(id.equals("admin")){%>
 							<option value="공지">공지</option>	
+							<%}else{%>
+								<option value="배송" selected="selected">배송</option>
+								<option value="결제">결제</option>
+								<option value="교환">교환</option>
+								<option value="환불">환불</option>
+								<option value="기타">기타</option>
 							<%}
 							%>
-							<option value="배송" selected="selected">배송</option>
-							<option value="결제">결제</option>
-							<option value="교환">교환</option>
-							<option value="환불">환불</option>
-							<option value="기타">기타</option>
+							
 						</select>	
 					</td>
 				</tr>
@@ -126,9 +133,16 @@
 				<tr>
 					<td colspan="2" align="center">
 						<button type="button" class="btn btn-secondary" style="width: 120px;" onclick="history.back(-1);">뒤로 가기</button>
+						<%if(id.equals("admin")){	
+						%>
+						<button type="button" class="btn btn-success"
+							style="width: 120px;"
+							onclick="submitContents(this)">공지등록</button>
+						<%}else{%>
 						<button type="button" class="btn btn-success"
 							style="width: 120px;"
 							onclick="submitContents(this)">문의하기</button>
+						<%}%>
 
 					</td>
 				</tr>
