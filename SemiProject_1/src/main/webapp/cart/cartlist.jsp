@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.List"%>
 <%@page import="data.dao.CartDao"%>
@@ -89,8 +90,8 @@
 			if(a){
 				
 				del(idx);
-				location.reload();
 			}
+				location.reload();
 		});
 		
 		// 전체체크, 전체해제
@@ -128,10 +129,25 @@
 						// alert(idx);
 						
 						del(idx);
-						location.reload();
 					});
+						location.reload();
 				}
 			}
+		});
+		
+		
+		$("button.cart-to-order").click(function(){
+
+ 			$("tr.list").each(function(index, element){
+ 				
+				var p_num = $(this).attr("p_num");
+				var m_num = $(this).attr("m_num");
+				var cnt = $(this).attr("cnt");
+				var price = $(this).attr("price");
+				
+				alert(p_num + ", " + m_num + ", " + cnt + ", " + price);
+ 			});
+			
 		});
 		
 		
@@ -160,6 +176,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
 
 CartDao dao = new CartDao();
 List<HashMap<String, String>> list = dao.getCartList(id);
+
+MemberDao mdao = new MemberDao();
+String m_num = mdao.getMemberInfo(id).getM_num();
 %>
 <body>
 
@@ -169,7 +188,7 @@ List<HashMap<String, String>> list = dao.getCartList(id);
 		</div>
 		<div class="banner-text">
 			<b class="b1" style="color: white;"><%= id %>님의 장바구니</b>
-			<p style="color: lightgray;"><%= nf.format(100000) %> 이상 구매 시 배송비 무료</p>
+			<p style="color: lightgray;"><%= nf.format(30000) %> 이상 구매 시 배송비 무료</p>
 		</div>
 	</div>
 
@@ -186,9 +205,9 @@ List<HashMap<String, String>> list = dao.getCartList(id);
 									<input type="checkbox" id="checkall">
 								</th>
 								<th>제품 정보</th>
-								<th>단가</th>
-								<th>수량</th>
-								<th>총액</th>
+								<th style="text-align: center;" width="200">단가</th>
+								<th style="text-align: center;" width="160">수량</th>
+								<th style="text-align: center;" width="200">총액</th>
 								<th width="100">
 									<button class="btn btn-outline-danger btn-sm" id="chkdel">선택삭제</button>
 								</th>
@@ -198,9 +217,9 @@ List<HashMap<String, String>> list = dao.getCartList(id);
 							int totalprice = 0;
 							
 							CartDao cdao = new CartDao();
-							int productCnt = cdao.getCartList(id).size();
+							int cartSize = cdao.getCartList(id).size();
 							
-							if(productCnt == 0) {
+							if(cartSize == 0) {
 							%>
 								<tr>
 									<td colspan="6" align="center">
@@ -211,6 +230,7 @@ List<HashMap<String, String>> list = dao.getCartList(id);
 								</tr>
 							<%
 							} else {
+								
 								for(int i = 0; i < list.size(); i++){
 							
 									HashMap<String, String> map = list.get(i);
@@ -218,7 +238,7 @@ List<HashMap<String, String>> list = dao.getCartList(id);
 									int sum = (Integer.parseInt(map.get("price")) * Integer.parseInt(map.get("cnt")));
 									totalprice += sum;
 							%>
-									<tr>
+									<tr class="list" p_num="<%= map.get("p_num") %>" m_num="<%= m_num %>" cnt="<%= map.get("cnt") %>" price="<%= map.get("price") %>">
 										<td>
 											<input type="checkbox" class="del-chk" value="<%= map.get("idx") %>">
 										</td>
@@ -255,18 +275,18 @@ List<HashMap<String, String>> list = dao.getCartList(id);
 								<%
 								int delivery = 3000;
 								
-								if(totalprice > 100000){
+								if(totalprice > 30000){
 									delivery = 0;
 								}
 								%>
 								<tr>
-									<td colspan="4" align="center">
+									<td colspan="3" align="center">
 										상품금액 <strong><%= nf.format(totalprice) %></strong> + 배송비 <strong class="delivery"><%= nf.format(delivery) %></strong> 
 									</td>
 									
-									<td colspan="2" align="center">
+									<td colspan="3" align="center">
 										총 주문금액 <b><%= nf.format(totalprice + delivery) %></b>&nbsp;&nbsp;&nbsp;&nbsp;
-										<button class="btn btn-outline-success">주문하기</button>
+										<button class="btn btn-outline-success cart-to-order">주문하기</button>
 									</td>
 								</tr>
 								<!-- 주문서 End -->
