@@ -77,7 +77,6 @@ $(function (){
 		else {
 			$("#isys").attr("class","fa fa-fw fa-plus");
 			flag1 = true;
-;
 		}
 		
 	});
@@ -112,7 +111,7 @@ $(function (){
 		<%}
 		else {%>
 			
-			//location.href="index.jsp?main=cart/cartlist.jsp?p_num="+p_num+"&cnt="+cnt;
+			location.href="index.jsp?main=cart/cartlist.jsp?p_num="+p_num+"&cnt="+cnt;
 		<%}
 		%>
 	});
