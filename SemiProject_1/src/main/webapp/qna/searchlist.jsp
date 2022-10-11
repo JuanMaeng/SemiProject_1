@@ -59,10 +59,16 @@
 <body>
 <%
 request.setCharacterEncoding("utf-8");
+//response.setContentType("text/html; charset=UTF-8");
 String loginok = (String)session.getAttribute("loginok");
 String id = (String)session.getAttribute("idok");
 
 String searchWord = request.getParameter("searchWord");
+
+String a = request.getParameter("searchWord");
+System.out.println(a);
+
+
 
 QnaBoardDao dao = new QnaBoardDao();
 
@@ -126,7 +132,7 @@ no = searchCount - (currentPage - 1) * perPage;
 			<img src="https://images-ext-1.discordapp.net/external/_h0dYb_x1ipIuJoHuFyded4-1Cjzxr1e_LqZvaFOwk8/%3Fv%3D1/https/resource.logitech.com/w_1800%2Ch_1800%2Cc_limit%2Cq_auto%3Abest%2Cf_jpg%2Cdpr_2.0/d_transparent.gif/content/dam/logitech/en/resellers/find-a-reseller/hero-desktop.jpg?width=1440&height=409">	
 		</div>
 		<div class="banner-text">
-			<b class="b1">Q&A 게시판</b>
+			<b class="b1">고객 게시판</b>
 			<p>문의를 남겨주세요</p>
 		</div>
 	</div>
@@ -158,14 +164,9 @@ no = searchCount - (currentPage - 1) * perPage;
    	 	
 		<!-- 검색창 -->
 	       <div class='searchbox' style="float: right; margin-top:20px; margin-bottom: 20px;">
-	          <form action="index.jsp?main=qna/searchlist.jsp" method="get">
-	             <!-- <select name="searchType">
-	                <option value="subject">제목</option>
-	                <option value="content">내용</option>             
-	             </select> -->
-	             
+	          <form action="index.jsp?main=qna/searchlist.jsp" method="post">            
 	            <input type="text" name="searchWord">
-	            <input type="submit" value="검색">
+	            <button type="submit">검색</button>
 	         </form>
 	      </div>
 

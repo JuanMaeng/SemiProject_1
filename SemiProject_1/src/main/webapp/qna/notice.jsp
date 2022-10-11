@@ -63,8 +63,10 @@
 <body>
 <%
 request.setCharacterEncoding("utf-8");
+//response.setContentType("text/html; charset=UTF-8");
 String loginok = (String)session.getAttribute("loginok");
 String id = (String)session.getAttribute("idok");
+
 
 QnaBoardDao dao = new QnaBoardDao();
 
@@ -160,14 +162,10 @@ for(QnaBoardDto dto:list){
     	
     	<!-- 검색창 -->
 	       <div class='searchbox' style="float: right; margin-top:20px; margin-bottom: 20px;">
-	          <form action="index.jsp?main=qna/searchlist.jsp" method="post">
-	             <!-- <select name="searchType">
-	                <option value="subject">제목</option>
-	                <option value="content">내용</option>             
-	             </select> -->
-	             
+	          <form action="index.jsp?main=qna/searchlist.jsp?" method="post">
+
 	            <input type="text" name="searchWord">
-	            <input type="submit" value="검색">
+	            <button type="submit">검색</button>
 	         </form>
 	      </div>
     	

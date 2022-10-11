@@ -349,8 +349,10 @@ public class QnaBoardDao {
 				pstmt.setString(1, "%"+searchWord+"%"); 
 				pstmt.setInt(2, start);
 				pstmt.setInt(3, perPage);
-
-				rs=pstmt.executeQuery();			
+				
+				
+				rs=pstmt.executeQuery();
+				
 				
 				while(rs.next()) {
 					
@@ -366,6 +368,7 @@ public class QnaBoardDao {
 				
 				//list 추가
 				list.add(dto);
+				
 					
 				}
 			} catch (SQLException e) {
@@ -391,10 +394,14 @@ public class QnaBoardDao {
 			
 			String sql = "select count(*) from qnaboard where subject like ? and id='admin'";
 			
+			
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, "%"+searchWord+"%");
+				
+				
 				rs = pstmt.executeQuery();
+				
 				
 				if(rs.next()) {
 					n=rs.getInt(1);
@@ -409,6 +416,7 @@ public class QnaBoardDao {
 			}
 			
 			return n;
+			
 		}
 	
 }
