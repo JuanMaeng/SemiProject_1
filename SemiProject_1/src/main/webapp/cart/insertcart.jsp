@@ -24,5 +24,5 @@ dto.setCnt(cnt);
 CartDao dao = new CartDao();
 dao.InsertCart(dto);
 
-response.sendRedirect("index.jsp?main=cart/cartlist.jsp");
+response.sendRedirect("../index.jsp?main=cart/cartlist.jsp");
 %>

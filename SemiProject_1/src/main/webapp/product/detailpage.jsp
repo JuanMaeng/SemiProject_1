@@ -82,7 +82,6 @@ $(function (){
 	});
 	
 	$(document).on("click",".compoblock",function() {
-
 		$("#components").slideToggle(100);
 		
 		if(flag2){
@@ -103,7 +102,6 @@ $(function (){
 		//alert(p_num+", "+cnt);
 		<%
 		String loginok=(String)session.getAttribute("loginok");
-
 		if(loginok==null) {%>
 			
 			alert("로그인이 필요한 서비스입니다.");
@@ -118,7 +116,6 @@ $(function (){
 	
 	$("#order").click(function() {
 		<%
-
 		if(loginok==null) {%>
 			
 			alert("로그인이 필요한 서비스입니다.");
@@ -128,18 +125,14 @@ $(function (){
 		%>
 	});
 });
-
-
 </script>
 </head>
 <%
 String p_num = request.getParameter("p_num");
 ProductDao dao = new ProductDao();
 ProductDto dto = dao.getData(p_num);
-
 DetailProductDao ddao = new DetailProductDao();
 DetailProductDto ddto = ddao.getData(p_num);
-
 NumberFormat nf=NumberFormat.getCurrencyInstance();
 %>
 <body>
@@ -268,7 +261,6 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
 			}
 			$("#count").val(cnt);
 		}
-
 		function add() {
 			
 			var cnt = $("#count").val();
