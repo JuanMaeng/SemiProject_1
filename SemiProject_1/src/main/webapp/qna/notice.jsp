@@ -161,7 +161,7 @@ if (endPage > totalPage)
 start = (currentPage - 1) * perPage;
 
 //각페이지에서 필요한 게시글불러오기
-List<QnaBoardDto> list = dao.getList(id, start, perPage);
+List<QnaBoardDto> list = dao.getList("admin", start, perPage);
 
 //각글앞에 붙힐 시작번호
 //총글이 만약에 20..1페이지는 20부터 2페이지는 15부터

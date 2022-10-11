@@ -41,19 +41,21 @@ public class QnaBoardDao {
 			
 		}
 	
-	//전체 출력
-	public List<QnaBoardDto> getAllQnas() {
+	//카테고리별 출력
+	public List<QnaBoardDto> getAllCategory(String category) {
 			List<QnaBoardDto> list = new Vector<>();
 			
 			Connection conn = db.getConnection();
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
-			String sql = "select * from qnaboard order by num desc"; //최신글이 맨 위로 올라오도록 desc로 설정
+			String sql = "select * from qnaboard where category=? order by num desc"; //최신글이 맨 위로 올라오도록 desc로 설정
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, category);
 				rs = pstmt.executeQuery();
+				
 				
 				while(rs.next()) {
 					QnaBoardDto dto = new QnaBoardDto();
@@ -83,17 +85,18 @@ public class QnaBoardDao {
 	
 	//pagingList
 	//페이징 처리 1. 전체 갯수 구하기
-		public int getTotalCount() {
+		public int getTotalCount(String id) {
 		int n =0;
 		
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select count(*) from qnaboard";
+		String sql = "select count(*) from qnaboard where id=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -113,19 +116,20 @@ public class QnaBoardDao {
 		
 		
 	//페이징처리에 필요한 리스트만 내보내기 2.getList(0,5) -> 0 다음부터 5개 출력 
-	public List<QnaBoardDto> getList(int start, int perpage){
+	public List<QnaBoardDto> getList(String id, int start, int perpage){
 		List<QnaBoardDto> list = new Vector<>();
 		
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from qnaboard order by num desc limit ?,?";
+		String sql = "select * from qnaboard where id=? order by num desc limit ?,?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, perpage);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, perpage);
 			
 			rs = pstmt.executeQuery();
 			
@@ -270,12 +274,12 @@ public class QnaBoardDao {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
-			String sql = "select * from qnaboard where subject like ? order by num desc";
+			String sql = "select * from qnaboard where subject like '%?%' order by num desc";
 			
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, "%"+subject+"%"); 
+				pstmt.setString(1, subject); 
 				rs=pstmt.executeQuery();			
 				
 				while(rs.next()) {
