@@ -27,7 +27,6 @@ for(QnaAnswerDto dto:list){
 	
 	ob.put("idx",dto.getIdx());
 	ob.put("num", dto.getNum());
-	ob.put("name", mdao.getName(dto.getId()));
 	ob.put("id", dto.getId());
 	ob.put("content", dto.getContent());
 	ob.put("writeday", sdf.format(dto.getWriteday()));

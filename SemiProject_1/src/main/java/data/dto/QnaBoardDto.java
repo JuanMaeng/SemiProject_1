@@ -11,6 +11,7 @@ public class QnaBoardDto {
 	private int readcount;
 	private Timestamp writeday;
 	private int answercount;
+	private String category;
 	
 	public String getNum() {
 		return num;
@@ -54,6 +55,14 @@ public class QnaBoardDto {
 	public void setAnswercount(int answercount) {
 		this.answercount = answercount;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	
 	
 
 	

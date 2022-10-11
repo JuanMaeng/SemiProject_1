@@ -23,24 +23,58 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-.qnatable{
-	margin-top: 100px;
-	width: 600px;
-}
 
-.acontent{
-	font: "Noto Sans KR";
-	font-weight: 400;
-	font-size: 18pt;
-}
-.aday{
+	.banner-wrap{
+		margin: 10px auto;
+		position: relative;
+	}
 	
-}
+	.banner-wrap img {
+		width: 100%;
+		height: 400px;
+		vertical-align: middle;
+	}
+	
+	.banner-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+	
+	b.b1 {
+		font-size: 44pt;
+		font-weight: 600;
+		margin-bottom: 20px;
+	}
+	
+	.qnatable{
+		margin-top: 100px;
+		width: 600px;
+	}
+	
+	.acontent{
+		font: "Noto Sans KR";
+		font-weight: 400;
+		font-size: 18pt;
+	}
+	.aday{
+		font-size: 0.8em;
+		font-weight:400;
+		letter-spacing:0 !important
+	}
+	
+	.adel, .aupdate{
+		cursor: pointer;
+		float: right;
+		margin-left: 10px;
+	}
+	
 
-.adel, .aupdate{
-	cursor: pointer;
-	float: right;
-}
+	
+	
 
 </style>
 <script type="text/javascript">
@@ -112,10 +146,11 @@
 			console.log(idx);
 			
 			
-			var up = "<div class='upcontent'>";
-			up += "<textarea class='form-control upcontent' id ='upcontent'></textarea>";
-			up += "<button class='btn btn-success btnupdate' idx='"+idx+"'>수정</button>";
-			up += "</div>";
+			var up = "<div>";
+			up += "<textarea class='form-control upcontent' id ='upcontent' style='margin-bottom:10px;'></textarea></td>";
+			up += "<button class='btn btn-success btnupdate' idx='"+idx+"' style='float:right; margin-left:10px;'>수정</button>";
+			up += "<button class='btn btn-primary btncancel' idx='"+idx+"' onclick='answerlist()' style='float:right;'>취소</button>";
+			up += "</div>"; 
 			
 			$.ajax({
 				type:"get",
@@ -172,24 +207,28 @@
 			data:{"num":num},
 			dataType:"json",
 			success:function(res){
-				var s = "";
+				//댓글 개수 출력
+		         $("b.acount>span").text(res.length);
 				
+				var s = "";
+					
 				$.each(res,function(i,ele){
 
 					var writeid = ele.id; //작성 아이디
-					s+="<div class='alist'>";
-					s+= writeid+"님";
+					s+="<div>";
+					s+="<br>";
+					s+= ele.name;
 					if(loginid==writeid){
-						s+="<i class='fas fa-edit aupdate' idx='"+ele.idx+"'></i>&nbsp;&nbsp;<i class='far fa-trash-alt adel' idx='"+ele.idx+"'></i>";
+						s+="<i class='far fa-edit aupdate' idx='"+ele.idx+"'> 수정</i>&nbsp;&nbsp;<i class='far fa-trash-alt adel' idx='"+ele.idx+"'> 삭제</i>";
 					}
-					s+="<span class='aday'>"+ele.writeday+"</span>";
+					s+="&nbsp;&nbsp;<span class='aday'>"+ele.writeday+"</span>";
 					s+="<pre class='acontent"+ele.idx+"' idx='"+ele.idx+"'>"+ele.content+"</pre>";
 					s+="</div>";
 					
 	
 				})
 				
-				$("#answerlist").html(s);
+				$("#alist").html(s);
 			}
 			
 		});
@@ -229,18 +268,21 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 %>
 
 	<!-- 상단 고정 이미지 start -->
-	<div class="container-fluid bg-light py-5">
-        <div class="col-md-6 m-auto text-center">
-            <h1 class="h1">QnA 게시판</h1>
-            <p>
-                문의를 남겨주세요
-            </p>
-        </div>
-    </div>
+	<div class="banner-wrap">
+		<div class="banner-img">
+			<img src="https://images-ext-1.discordapp.net/external/_h0dYb_x1ipIuJoHuFyded4-1Cjzxr1e_LqZvaFOwk8/%3Fv%3D1/https/resource.logitech.com/w_1800%2Ch_1800%2Cc_limit%2Cq_auto%3Abest%2Cf_jpg%2Cdpr_2.0/d_transparent.gif/content/dam/logitech/en/resellers/find-a-reseller/hero-desktop.jpg?width=1440&height=409">	
+		</div>
+		<div class="banner-text">
+			<b class="b1">고객 게시판</b>
+			<p>문의를 남겨주세요</p>
+		</div>
+	</div>
     <!-- 상단 고정 이미지 end -->
+   
     
     <!-- 게시물 내용 start -->
     <div class="container">
+    
     <form id="frm" class="form-inline">
 	<input type="hidden" id ="num" value="<%=num%>">
 		<table class="table qnatable">
@@ -276,14 +318,14 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 		    		<div>
 		    		<b class="acount">댓글 <span>0</span></b>
 		    		</div>
-		    		<div id="answerlist">
-		    		댓글 목록
+		    		<div id="alist">
+		    		<br>
 		    		</div>
 		    		
 		    	</td>
 		    </tr>
 		    <%
-		    if(loginok!=null){%>
+		    if(loginok!=null && myid.equals("admin")){%>
 		    <div>
 		    	<form id = "answerform" action="">
 		    	<input type="hidden" id ="num" value="<%=num%>">
@@ -309,7 +351,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 				<%
 				if(myid.equals(dto.getId())){%>
 				<button type="button" class="btn btn-danger" onclick="qnadel(<%=num %>,<%=currentPage %>)" style="float: right; margin-left: 10px;">삭제</button>
-				<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=qna/qnaupdateform.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>'" style="float: right;">수정</button> 
+				<button type="button" class="btn btn-warning" onclick="location.href='index.jsp?main=qna/qnaupdateform.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage %>'" style="float: right;">수정</button> 
 
 				<%}
 				%>

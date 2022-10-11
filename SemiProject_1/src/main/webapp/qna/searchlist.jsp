@@ -1,9 +1,7 @@
-<%@page import="data.dto.QnaAnswerDto"%>
-<%@page import="data.dao.QnaAnswerDao"%>
-<%@page import="data.dto.QnaBoardDto"%>
-<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dao.QnaBoardDao"%>
+<%@page import="java.util.List"%>
+<%@page import="data.dto.QnaBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -51,72 +49,82 @@
 		margin-bottom: 20px;
 	}
 	
+</style>
+<script type="text/javascript">
+
 
 	
-</style>
-
+</script>
 </head>
-
 <body>
 <%
+request.setCharacterEncoding("utf-8");
+//response.setContentType("text/html; charset=UTF-8");
 String loginok = (String)session.getAttribute("loginok");
 String id = (String)session.getAttribute("idok");
+
+String searchWord = request.getParameter("searchWord");
+
+String a = request.getParameter("searchWord");
+System.out.println(a);
+
+
 
 QnaBoardDao dao = new QnaBoardDao();
 
 //페이징에 필요한 변수
 int totalCount;
-int totalPage; //총페이지수
-int startPage; //각블럭의 시작페이지
-int endPage; //각블럭의 끝페이지
-int start; //각페이지의 시작번호
-int perPage = 10; //한페이지에 보여질 글의 갯수
-int perBlock = 5; //한블럭당 보여지는 페이지개수
-int currentPage;//현재페이지
+int totalPage; //총 페이지 수
+int startPage; //각 블럭의 시작 페이지
+int endPage; //각 블럭의 끝 페이지
+int start; //각 페이지의 시작 번호
+int perPage = 3; //한 페이지에 보여질 글 갯수
+int perBlock = 5; //한 블럭 당 보여지는 페이지 갯수
+int currentPage; //현재 페이지
 int no;
+int searchCount;
 
-//총갯수:
-totalCount = dao.getTotalCount(id);
+//총 갯수: 
+//totalCount = dao.getTotalCount();
+//검색 갯수:
+searchCount = dao.getSearchCount(searchWord);
 
-//현재페이지번호 읽기(null일경우는 1페이지로 설정)
-if (request.getParameter("currentPage") == null)
- currentPage = 1;
-else
- currentPage = Integer.parseInt(request.getParameter("currentPage"));
+//현재 페이지 번호 읽기(null일 경우 1페이지로 설정)
+if(request.getParameter("currentPage")==null){
+	currentPage=1;
+}else{
+	currentPage=Integer.parseInt(request.getParameter("currentPage"));
+}
 
-//총페이지갯수 구하기
-totalPage = totalCount / perPage + (totalCount % perPage == 0 ? 0 : 1);
+//총 페이지 갯수 구하기
+totalPage = searchCount/perPage + (searchCount%perPage==0?0:1);
 
-//각블럭의 시작페이지(현재페이지 3: 시작:1 끝:5)
-//각블럭의 시작페이지(현재페이지 6: 시작:6 끝:10)
-startPage = (currentPage - 1) / perBlock * perBlock + 1;
-endPage = startPage + perBlock - 1;
+//각 블럭의 시작페이지(ex.현재 페이지가 3인 경우, 시작:1, 끝:5 / 현재: 6, 시작: 6, 끝: 10)
+startPage = (currentPage -1)/perBlock*perBlock+1;
+endPage = startPage + perBlock -1;
 
-//총페이지수가 8 ..2번재 블럭은 startpage6 endpage 10...endpage 8로수정
-if (endPage > totalPage)
- endPage = totalPage;
+//총 페이지 수가 8이라고 할 때, 2번째 블럭은 startPage= 6, endPage=10이 되어야 하는데 총 페이지가 8까지니까 endPage를 10=>8로 수정해줘야 한다
+if(endPage>totalPage){
+	endPage = totalPage;
+}
 
-//각페이지에서 불러올 시작번호
-//현재페이지가 1일경우 strt 1, 2일경우 6
-start = (currentPage - 1) * perPage;
+//각 페이지에서 불러올 시작 번호
+//ex.현재페이지 1일 경우 start=1 / 현재 2, start = 6 / 
+start = (currentPage-1)*perPage;
 
 //각페이지에서 필요한 게시글불러오기
-List<QnaBoardDto> list = dao.getIdList(id, start, perPage);
+List<QnaBoardDto> list = dao.getSearchList(start, perPage, searchWord);
+
 
 //각글앞에 붙힐 시작번호
 //총글이 만약에 20..1페이지는 20부터 2페이지는 15부터
 //출력해서 1씩 감소하면서 출력
-no = totalCount - (currentPage - 1) * perPage;
+no = searchCount - (currentPage - 1) * perPage;
 
 //댓글 변수에 댓글 총 개수 넣기
-QnaAnswerDao adao = new QnaAnswerDao();
-for(QnaBoardDto dto:list){
-	int acount=adao.getAllAnswers(dto.getNum()).size();
-	dto.setAnswercount(acount);
-}
+
 
 %>
-
 
 	<!-- 상단 고정 이미지 start -->
 	<div class="banner-wrap">
@@ -142,27 +150,29 @@ for(QnaBoardDto dto:list){
     	<nav class="navbar navbar-expand-sm bg-light justify-content-center">
 		  <ul class="navbar-nav">
 		    <li class="nav-item">
-		    	<%if(loginok!=null){
-		    	%>
-		    	<a class="nav-link"  href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
-		    	<%}else{
-		    	%>
-		    	<a class="nav-link" onclick="alert('로그인이 필요합니다.')" href="index.jsp?main=login/loginmain.jsp">1:1 문의</a>
-		    	<%} 
-		    	%>
-
+		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">문의 내역</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link notice" href="index.jsp?main=qna/notice.jsp">공지사항</a>
+		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp">공지사항</a>
 		    </li>
 		  </ul>
 		</nav>
-   	
+
+   	 	
+		<!-- 검색창 -->
+	       <div class='searchbox' style="float: right; margin-top:20px; margin-bottom: 20px;">
+	          <form action="index.jsp?main=qna/searchlist.jsp" method="post">            
+	            <input type="text" name="searchWord">
+	            <button type="submit">검색</button>
+	         </form>
+	      </div>
+
+    	
 		
-		<table class="table table-hover" id="qnatable" style="margin-top: 20px;">
+		<table class="table table-hover" id="qnatable">
 			<thead>
 			<tr style="text-align: center; font-weight: bold; background-color: #EEEEEE;">
 				<td width="40">번호</td>
@@ -176,17 +186,11 @@ for(QnaBoardDto dto:list){
 			
 			<tbody>
 			<%
-			if(totalCount==0){
+			if(searchCount==0){
 			%>
 			<tr>
 				<td colspan="6" align="center">
-				<%if(loginok!=null){
-				%>
-				<b>문의 내역이 없습니다.</b>
-				<%}else{%>
-				<b>로그인이 필요합니다.</b>				
-				<%}
-				%>
+				<b>검색 내역이 없습니다.</b>
 				</td>
 			</tr>	
 			<%}else{
@@ -230,15 +234,9 @@ for(QnaBoardDto dto:list){
 			
 			
 		</table>
-		
-	</div>
-	
-	
-	
-	<!-- 게시물 목록 end  -->
-	
-	
-	
+
+
+
 	<!--페이징 start -->
 	<div class="container">
 		<ul class="pagination justify-content-center">
@@ -246,7 +244,7 @@ for(QnaBoardDto dto:list){
          //이전
          if(startPage>1){%>
          <li class="page-item">
-         <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=startPage-1%>" class="page-link" tabindex="-1">이전</a>
+         <a href="index.jsp?main=qna/notice.jsp?currentPage=<%=startPage-1%>" class="page-link" tabindex="-1">이전</a>
          </li>   
          <%}
             
@@ -254,11 +252,11 @@ for(QnaBoardDto dto:list){
          for(int pp=startPage;pp<=endPage;pp++){
             if(pp==currentPage){%>
                <li class="page-item">
-               <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=pp%>" class="page-link" ><%=pp %></a>
+               <a href="index.jsp?main=qna/notice.jsp?currentPage=<%=pp%>" class="page-link" ><%=pp %></a>
                </li>   
             <%}else{%>
                <li class="page-item">
-               <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=pp%>" class="page-link"><%=pp %></a>
+               <a href="index.jsp?main=qna/notice.jsp?currentPage=<%=pp%>" class="page-link"><%=pp %></a>
                </li>
                
             <%}
@@ -268,7 +266,7 @@ for(QnaBoardDto dto:list){
          if(endPage<totalPage){%>
          
          <li class="page-item">
-         <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=endPage+1%>" class="page-link">다음</a>
+         <a href="index.jsp?main=qna/notice.jsp?currentPage=<%=endPage+1%>" class="page-link">다음</a>
          </li>   
          <%}
          %>

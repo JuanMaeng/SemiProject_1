@@ -54,13 +54,19 @@
 
 	
 </style>
+<script type="text/javascript">
 
+
+</script>
 </head>
 
 <body>
 <%
+request.setCharacterEncoding("utf-8");
+//response.setContentType("text/html; charset=UTF-8");
 String loginok = (String)session.getAttribute("loginok");
 String id = (String)session.getAttribute("idok");
+
 
 QnaBoardDao dao = new QnaBoardDao();
 
@@ -76,7 +82,7 @@ int currentPage;//현재페이지
 int no;
 
 //총갯수:
-totalCount = dao.getTotalCount(id);
+totalCount = dao.getTotalCount("admin");
 
 //현재페이지번호 읽기(null일경우는 1페이지로 설정)
 if (request.getParameter("currentPage") == null)
@@ -101,7 +107,7 @@ if (endPage > totalPage)
 start = (currentPage - 1) * perPage;
 
 //각페이지에서 필요한 게시글불러오기
-List<QnaBoardDto> list = dao.getIdList(id, start, perPage);
+List<QnaBoardDto> list = dao.getIdList("admin", start, perPage);
 
 //각글앞에 붙힐 시작번호
 //총글이 만약에 20..1페이지는 20부터 2페이지는 15부터
@@ -142,27 +148,29 @@ for(QnaBoardDto dto:list){
     	<nav class="navbar navbar-expand-sm bg-light justify-content-center">
 		  <ul class="navbar-nav">
 		    <li class="nav-item">
-		    	<%if(loginok!=null){
-		    	%>
-		    	<a class="nav-link"  href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
-		    	<%}else{
-		    	%>
-		    	<a class="nav-link" onclick="alert('로그인이 필요합니다.')" href="index.jsp?main=login/loginmain.jsp">1:1 문의</a>
-		    	<%} 
-		    	%>
-
+		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">문의 내역</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link notice" href="index.jsp?main=qna/notice.jsp">공지사항</a>
+		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp">공지사항</a>
 		    </li>
 		  </ul>
 		</nav>
-   	
+
+    	
+    	<!-- 검색창 -->
+	       <div class='searchbox' style="float: right; margin-top:20px; margin-bottom: 20px;">
+	          <form action="index.jsp?main=qna/searchlist.jsp?" method="post">
+
+	            <input type="text" name="searchWord">
+	            <button type="submit">검색</button>
+	         </form>
+	      </div>
+    	
 		
-		<table class="table table-hover" id="qnatable" style="margin-top: 20px;">
+		<table class="table table-hover" id="qnatable">
 			<thead>
 			<tr style="text-align: center; font-weight: bold; background-color: #EEEEEE;">
 				<td width="40">번호</td>
@@ -180,13 +188,7 @@ for(QnaBoardDto dto:list){
 			%>
 			<tr>
 				<td colspan="6" align="center">
-				<%if(loginok!=null){
-				%>
-				<b>문의 내역이 없습니다.</b>
-				<%}else{%>
-				<b>로그인이 필요합니다.</b>				
-				<%}
-				%>
+				<b>공지 내역이 없습니다.</b>
 				</td>
 			</tr>	
 			<%}else{
@@ -216,7 +218,7 @@ for(QnaBoardDto dto:list){
 			}
 			
 			
-			if(loginok!=null){%>
+			if(loginok!=null && id.equals("admin")){%>
 			<tr>
 			<td colspan="6">
 				<span style="float: right;">
@@ -230,12 +232,10 @@ for(QnaBoardDto dto:list){
 			
 			
 		</table>
-		
 	</div>
 	
-	
-	
 	<!-- 게시물 목록 end  -->
+	
 	
 	
 	
@@ -246,7 +246,7 @@ for(QnaBoardDto dto:list){
          //이전
          if(startPage>1){%>
          <li class="page-item">
-         <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=startPage-1%>" class="page-link" tabindex="-1">이전</a>
+         <a href="index.jsp?main=qna/notice.jsp?currentPage=<%=startPage-1%>" class="page-link" tabindex="-1">이전</a>
          </li>   
          <%}
             
@@ -254,11 +254,11 @@ for(QnaBoardDto dto:list){
          for(int pp=startPage;pp<=endPage;pp++){
             if(pp==currentPage){%>
                <li class="page-item">
-               <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=pp%>" class="page-link" ><%=pp %></a>
+               <a href="index.jsp?main=qna/notice.jsp?currentPage=<%=pp%>" class="page-link" ><%=pp %></a>
                </li>   
             <%}else{%>
                <li class="page-item">
-               <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=pp%>" class="page-link"><%=pp %></a>
+               <a href="index.jsp?main=qna/notice.jsp?currentPage=<%=pp%>" class="page-link"><%=pp %></a>
                </li>
                
             <%}
@@ -268,7 +268,7 @@ for(QnaBoardDto dto:list){
          if(endPage<totalPage){%>
          
          <li class="page-item">
-         <a href="index.jsp?main=qna/qnaboard.jsp?currentPage=<%=endPage+1%>" class="page-link">다음</a>
+         <a href="index.jsp?main=qna/notice.jsp?currentPage=<%=endPage+1%>" class="page-link">다음</a>
          </li>   
          <%}
          %>

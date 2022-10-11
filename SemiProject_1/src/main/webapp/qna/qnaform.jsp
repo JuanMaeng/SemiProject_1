@@ -17,8 +17,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 
-
-
 <title>Insert title here</title>
 
 <%
@@ -30,38 +28,93 @@
 	String currentPage = request.getParameter("currentPage");
 	
 %>
+
+<style type="text/css">
+	.banner-wrap{
+		margin: 10px auto;
+		position: relative;
+	}
+	
+	.banner-wrap img {
+		width: 100%;
+		height: 400px;
+		vertical-align: middle;
+	}
+	
+	.banner-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+	
+	b.b1 {
+		font-size: 44pt;
+		font-weight: 600;
+		margin-bottom: 20px;
+	}
+</style>
+
 <!-- se2 폴더에서 js 파일 가져오기 -->
 <script type="text/javascript" src="<%=root%>/se2/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
 
 <script type="text/javascript" src="<%=root%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js"
 	charset="utf-8"></script>	
-	
+
 </head>
 
 <body>
 	<!-- 상단 고정 이미지 start -->
-	<div class="container-fluid bg-light py-5">
-        <div class="col-md-6 m-auto text-center">
-            <h1 class="h1">QnA 게시판</h1>
-            <p>
-                문의를 남겨주세요
-            </p>
-        </div>
-    </div>
+	<div class="banner-wrap">
+		<div class="banner-img">
+			<img src="https://images-ext-1.discordapp.net/external/_h0dYb_x1ipIuJoHuFyded4-1Cjzxr1e_LqZvaFOwk8/%3Fv%3D1/https/resource.logitech.com/w_1800%2Ch_1800%2Cc_limit%2Cq_auto%3Abest%2Cf_jpg%2Cdpr_2.0/d_transparent.gif/content/dam/logitech/en/resellers/find-a-reseller/hero-desktop.jpg?width=1440&height=409">	
+		</div>
+		<div class="banner-text">
+			<b class="b1">고객 게시판</b>
+			<p>문의를 남겨주세요</p>
+		</div>
+	</div>
     <!-- 상단 고정 이미지 end -->
+    
     
 	<form action="qna/qnainsertproc.jsp" method="post">
 		<input type="hidden" name="id" id="id" value="<%=id%>">
 		<table class="table table-bordered" style="width:900px; height:500px; margin: 100px 500px 200px;">
 			<thead>
-				<tr>
-					<th colspan="2" style="background-color: #f8f9fa; text-align: center;">문의하기</th>						
+				<tr>	
+					<%if(id.equals("admin")){	
+						%>
+						<th colspan="2" style="background-color: #f8f9fa; text-align: center;">공지</th>	
+						<%}else{%>
+						<th colspan="2" style="background-color: #f8f9fa; text-align: center;">문의하기</th>	
+						<%}%>				
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th bgcolor="orange" width="100">제  목</th>
+					<th width="100">분 류</th>
+					<td>
+						<select id="category" name="category" class="form-control"  style="width: 20%;">
+							<%
+							if(id.equals("admin")){%>
+							<option value="공지">공지</option>	
+							<%}else{%>
+								<option value="배송" selected="selected">배송</option>
+								<option value="결제">결제</option>
+								<option value="교환">교환</option>
+								<option value="환불">환불</option>
+								<option value="기타">기타</option>
+							<%}
+							%>
+							
+						</select>	
+					</td>
+				</tr>
+				<tr>
+					<th width="100">제 목</th>
 					<td>
 						<input type="text" name="subject" class="form-control"
 							required="required" style="width: 800px;">
@@ -79,10 +132,18 @@
 			<tfoot>
 				<tr>
 					<td colspan="2" align="center">
+						<button type="button" class="btn btn-secondary" style="width: 120px;" onclick="history.back(-1);">뒤로 가기</button>
+						<%if(id.equals("admin")){	
+						%>
+						<button type="button" class="btn btn-success"
+							style="width: 120px;"
+							onclick="submitContents(this)">공지등록</button>
+						<%}else{%>
 						<button type="button" class="btn btn-success"
 							style="width: 120px;"
 							onclick="submitContents(this)">문의하기</button>
-						
+						<%}%>
+
 					</td>
 				</tr>
 			
