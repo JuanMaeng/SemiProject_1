@@ -19,7 +19,7 @@ public class ProductDao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql="insert into product(name, category, collection, description, hand, size, platform, price, thumbnail, regdate) values(?,?,?,?,?,?,?,?,?,?)";
+		String sql="insert into product(name, category, collection, description, filter, price, thumbnail, regdate) values(?,?,?,?,?,?,?,?)";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -28,12 +28,10 @@ public class ProductDao {
 			pstmt.setString(2, dto.getCategory());
 			pstmt.setString(3, dto.getCollection());
 			pstmt.setString(4, dto.getDescription());
-			pstmt.setString(5, dto.getHand());
-			pstmt.setString(6, dto.getSize());
-			pstmt.setString(7, dto.getPlatform());
-			pstmt.setInt(8, dto.getPrice());
-			pstmt.setString(9, dto.getThumbnail());
-			pstmt.setString(10, dto.getRegdate());
+			pstmt.setString(5, dto.getFilter());
+			pstmt.setInt(6, dto.getPrice());
+			pstmt.setString(7, dto.getThumbnail());
+			pstmt.setString(8, dto.getRegdate());
 			
 			pstmt.execute();
 		} catch (SQLException e) {
@@ -65,9 +63,7 @@ public class ProductDao {
 				dto.setCategory(rs.getString("category"));
 				dto.setCollection(rs.getString("collection"));
 				dto.setDescription(rs.getString("description"));
-				dto.setHand(rs.getString("hand"));
-				dto.setSize(rs.getString("size"));
-				dto.setPlatform(rs.getString("platform"));
+				dto.setFilter(rs.getString("filter"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setThumbnail(rs.getString("thumbnail"));
 				dto.setRegdate(rs.getString("regdate"));
@@ -109,9 +105,7 @@ public class ProductDao {
 				dto.setCategory(rs.getString("category"));
 				dto.setCollection(rs.getString("collection"));
 				dto.setDescription(rs.getString("description"));
-				dto.setHand(rs.getString("hand"));
-				dto.setSize(rs.getString("size"));
-				dto.setPlatform(rs.getString("platform"));
+				dto.setFilter(rs.getString("filter"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setThumbnail(rs.getString("thumbnail"));
 				dto.setRegdate(rs.getString("regdate"));
@@ -147,9 +141,7 @@ public class ProductDao {
 				dto.setCategory(rs.getString("category"));
 				dto.setCollection(rs.getString("collection"));
 				dto.setDescription(rs.getString("description"));
-				dto.setHand(rs.getString("hand"));
-				dto.setSize(rs.getString("size"));
-				dto.setPlatform(rs.getString("platform"));
+				dto.setFilter(rs.getString("filter"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setThumbnail(rs.getString("thumbnail"));
 				dto.setRegdate(rs.getString("regdate"));
