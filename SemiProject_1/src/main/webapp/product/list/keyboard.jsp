@@ -43,7 +43,7 @@
 	.banner-text {
 		position: absolute;
 		top: 50%;
-		left: 50%;
+		left: 30%;
 		width: 100%;
 		transform: translate(-50%, -50%);
 		text-align: center;
@@ -56,6 +56,10 @@
 	.body {
 		height: 180px;
 	}
+	.thumb{
+		height: 200px !important;
+	}
+	
 	.body-price{
 		position: absolute;
 		bottom: 10px;
@@ -83,31 +87,31 @@ $(function(){
 		
 	});
 	
-	$(document).on("click",".handblock",function() {
+	$(document).on("click",".typeblock",function() {
 		
-		if($("#handcon").is(":visible") != true) {
-			$("#ihand").attr("class","fa fa-fw fa-plus");
-			$("#handcon").slideDown(200);
+		if($("#typecon").is(":visible") != true) {
+			$("#itype").attr("class","fa fa-fw fa-plus");
+			$("#typecon").slideDown(200);
 			
 		}
 		else {
-			$("#ihand").attr("class","fa fa-fw fa-minus");
-			$("#handcon").slideUp(200);
+			$("#itype").attr("class","fa fa-fw fa-minus");
+			$("#typecon").slideUp(200);
 			
 		}
 		
 	});
 	
-	$(document).on("click",".prefhandblock",function() {
+	$(document).on("click",".layoutblock",function() {
 		
-		if($("#prefhandcon").is(":visible") != true) {
-			$("#iprefhand").attr("class","fa fa-fw fa-plus");
-			$("#prefhandcon").slideDown(200);
+		if($("#layoutcon").is(":visible") != true) {
+			$("#ilayout").attr("class","fa fa-fw fa-plus");
+			$("#layoutcon").slideDown(200);
 			
 		}
 		else {
-			$("#iprefhand").attr("class","fa fa-fw fa-minus");
-			$("#prefhandcon").slideUp(200);
+			$("#ilayout").attr("class","fa fa-fw fa-minus");
+			$("#layoutcon").slideUp(200);
 			
 		}
 		
@@ -146,11 +150,11 @@ request.setCharacterEncoding("utf-8");
 	</script>
 	<div class="banner-wrap">
 		<div class="banner-img">
-			<img src="https://resource.logitech.com/w_1800,h_1800,c_limit,q_auto,f_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/plp/mice/hero-desktop.png?v=1">	
+			<img src="https://resource.logitech.com/w_1800,h_1800,c_limit,q_auto,f_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/plp/keyboards/keyboards-hero-desktop-2022-2.png?v=1">	
 		</div>
 		<div class="banner-text">
-			<b class="b1">마우스</b>
-			<p>나에게 맞는 마우스를 찾아보세요.</p>
+			<b class="b1">키보드</b>
+			<p>나에게 맞는 키보드를 선택해보세요.</p>
 		</div>
 	</div>
 	
@@ -177,36 +181,40 @@ request.setCharacterEncoding("utf-8");
 						<p><label for="master" style="cursor: pointer;"><input type="checkbox" class="filters" id="master" value="마스터시리즈" onchange="makeFilter(this);">&nbsp;&nbsp;마스터시리즈</label></p>
 						<p><label for="ergo" style="cursor: pointer;"><input type="checkbox" class="filters" id="ergo" value="Ergo시리즈" onchange="makeFilter(this);">&nbsp;&nbsp;Ergo시리즈</label></p>
 						<p><label for="wireless" style="cursor: pointer;"><input type="checkbox" class="filters" id="wireless" value="무선" onchange="makeFilter(this);">&nbsp;&nbsp;무선</label></p>
+						<p><label for="wired" style="cursor: pointer;"><input type="checkbox" class="filters" id="wired" value="유선" onchange="makeFilter(this);">&nbsp;&nbsp;유선</label></p>
 					</div>
 					<hr style="width: 95%;">
-					<div class="handblock titleblock row pb-2" style="cursor: pointer;">
+					
+					<div class="typeblock titleblock row pb-2" style="cursor: pointer;">
 						<div class="col">
-							<span class="collapse show pl-3"><strong>손 크기</strong></span>
+							<span class="collapse show pl-3"><strong>타이핑 느낌</strong></span>
 						</div>
 						<div class="col" style="text-align: right;">
-							<i class="fa fa-fw fa-plus" id="ihand"></i>
+							<i class="fa fa-fw fa-plus" id="itype"></i>
 						</div>
 					</div>
-					<div id="handcon" style="margin-left: 20px;">
-						<p><label for="small" style="cursor: pointer;"><input type="checkbox" class="filters" id="small" value="작음" onchange="makeFilter(this);">&nbsp;&nbsp;작음</label></p>
-						<p><label for="normal" style="cursor: pointer;"><input type="checkbox" class="filters" id="normal" value="보통" onchange="makeFilter(this);">&nbsp;&nbsp;보통</label></p>
-						<p><label for="big" style="cursor: pointer;"><input type="checkbox" class="filters" id="big" value="큼" onchange="makeFilter(this);">&nbsp;&nbsp;큼</label></p>
+					<div id="typecon" style="margin-left: 20px;">
+						<p><label for="notebook" style="cursor: pointer;"><input type="checkbox" class="filters" id="notebook" value="노트북" onchange="makeFilter(this);">&nbsp;&nbsp;노트북 같은 키</label></p>
+						<p><label for="deep" style="cursor: pointer;"><input type="checkbox" class="filters" id="deep" value="딥" onchange="makeFilter(this);">&nbsp;&nbsp;딥 프로파일 키</label></p>
+						<p><label for="mecha" style="cursor: pointer;"><input type="checkbox" class="filters" id="mecha" value="기계식" onchange="makeFilter(this);">&nbsp;&nbsp;기계적 키</label></p>
 					</div>
 					<hr style="width: 95%;">
-					<div class="prefhandblock titleblock row pb-2" style="cursor: pointer;">
-						<div class="col">
-							<span class="collapse show pl-3"><strong>주 사용손</strong></span>
+					
+					<div class="layoutblock titleblock row pb-2" style="cursor: pointer;">
+						<div class="col" >
+							<span class="collapse show pl-3"><strong>레이아웃 크기</strong></span>
 						</div>
 						<div class="col" style="text-align: right;">
-							<i class="fa fa-fw fa-plus" id="iprefhand"></i>
+							<i class="fa fa-fw fa-plus" id="ilayout"></i>
 						</div>
 					</div>
-					<div id="prefhandcon" style="margin-left: 20px;">
-						<p><label for="right" style="cursor: pointer;"><input type="checkbox" class="filters" id="right" value="오른손" onchange="makeFilter(this);">&nbsp;&nbsp;오른손</label></p>
-						<p><label for="left" style="cursor: pointer;"><input type="checkbox" class="filters" id="left" value="왼손" onchange="makeFilter(this);">&nbsp;&nbsp;왼손</label></p>
-						<p><label for="both" style="cursor: pointer;"><input type="checkbox" class="filters" id="both" value="양손" onchange="makeFilter(this);">&nbsp;&nbsp;양손</label></p>
+					<div id="layoutcon" style="margin-left: 20px;">
+						<p><label for="full" style="cursor: pointer;"><input type="checkbox" class="filters" id="full" value="full" onchange="makeFilter(this);">&nbsp;&nbsp;풀 사이즈 숫자 키패드</label></p>
+						<p><label for="compact" style="cursor: pointer;"><input type="checkbox" class="filters" id="compact" value="compact" onchange="makeFilter(this);">&nbsp;&nbsp;컴팩트형 숫자 키패드</label></p>
+						<p><label for="minimal" style="cursor: pointer;"><input type="checkbox" class="filters" id="minimal" value="minimal" onchange="makeFilter(this);">&nbsp;&nbsp;미니멀한 레이아웃</label></p>
 					</div>
 					<hr style="width: 95%;">
+					
 					<div class="platformblock titleblock row pb-2" style="cursor: pointer;">
 						<div class="col">
 							<span class="collapse show pl-3"><strong>플랫폼</strong></span>
@@ -229,7 +237,7 @@ request.setCharacterEncoding("utf-8");
                 <%
                 	for(ProductDto dto:list) {
                 		
-                		if(dto.getCategory().equals("마우스")) {
+                		if(dto.getCategory().equals("키보드")) {
                 	%>
                 	
                     <div class="col-md-4 <%=dto.getCollection()%> lists" id="p1" filter="<%=dto.getFilter() %>">
@@ -240,7 +248,7 @@ request.setCharacterEncoding("utf-8");
 	                	</script>
                         <div class="card mb-4 product-wap rounded-0" style="border:0;">
                         	
-                            <div class="card rounded-0" style="border: 0;">
+                            <div class="card rounded-0 thumb" style="border: 0; align-items: center;">
                             	<a href="index.jsp?main=product/detailpage.jsp?p_num=<%=dto.getP_num() %>" class="h3 text-decoration-none">
                                 	<img class="card-img rounded-0 img-fluid" src="<%=dto.getThumbnail()%>">
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
