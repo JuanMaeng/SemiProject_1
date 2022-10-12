@@ -234,7 +234,7 @@ String id = (String)session.getAttribute("idok");
 	                    </a>
 	                    
 	                    <a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=orderpage/myorder.jsp">
-	                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+	                        <i class="fa fa-fw fa-user-alt text-dark mr-1"></i>
 	                    </a>
 	                    
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
@@ -246,7 +246,6 @@ String id = (String)session.getAttribute("idok");
                     %>
                 </div>
             </div>
-
         </div>
     </nav>
 </body>

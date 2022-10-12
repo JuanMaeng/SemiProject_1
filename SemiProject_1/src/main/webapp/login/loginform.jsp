@@ -80,7 +80,7 @@ String myid = "";
 	         
 	         <div class="form-floating">
 	            <input type="password" class="form-control" name="pw" id="pw" placeholder="Password">
-	            <label for="pwd">password</label>
+	            <label for="pwd">password</label><br>
 	         </div>
 	         
 	         <%-- <div class="checkbox mb-3">
