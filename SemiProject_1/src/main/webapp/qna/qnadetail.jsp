@@ -16,6 +16,8 @@
 
 <link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-light-green.css">
 
 <!-- Load fonts style after rendering the layout styles -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -51,7 +53,7 @@
 	}
 	
 	.qnatable{
-		margin-top: 100px;
+		margin-top: 40px;
 		width: 600px;
 	}
 	
@@ -71,6 +73,7 @@
 		float: right;
 		margin-left: 10px;
 	}
+	
 	
 
 	
@@ -216,13 +219,12 @@
 
 					var writeid = ele.id; //작성 아이디
 					s+="<div>";
-					s+="<br>";
-					s+= ele.name;
+					s+= "[운영자]";
 					if(loginid==writeid){
 						s+="<i class='far fa-edit aupdate' idx='"+ele.idx+"'> 수정</i>&nbsp;&nbsp;<i class='far fa-trash-alt adel' idx='"+ele.idx+"'> 삭제</i>";
 					}
 					s+="&nbsp;&nbsp;<span class='aday'>"+ele.writeday+"</span>";
-					s+="<pre class='acontent"+ele.idx+"' idx='"+ele.idx+"'>"+ele.content+"</pre>";
+					s+="<pre class='acontent"+ele.idx+"' idx='"+ele.idx+"' style='font-family:Noto Sans KR; font-size:16pt;'>"+ele.content+"</pre>";
 					s+="</div>";
 					
 	
@@ -256,6 +258,12 @@ String myid = (String)session.getAttribute("idok");
 
 String num = request.getParameter("num");
 String currentPage = request.getParameter("currentPage");
+String category = request.getParameter("category");
+String subject = request.getParameter("subject");
+
+System.out.println(category);
+System.out.println(num);
+System.out.println(subject);
 
 
 QnaBoardDao dao = new QnaBoardDao();
@@ -278,18 +286,33 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 		</div>
 	</div>
     <!-- 상단 고정 이미지 end -->
-   
-    
+       
     <!-- 게시물 내용 start -->
     <div class="container">
     
+    <!-- nav -->
+    <nav class="navbar navbar-expand-sm w3-theme-l3 justify-content-center" style="margin-top: 50px;">
+		  <ul class="navbar-nav">
+		    <li class="nav-item">
+		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp"><b>1:1 문의</b></a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp"><b>문의 내역</b></a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp"><b>공지사항</b></a>
+		    </li>
+		  </ul>
+	</nav>
+    
+    <!-- table -->
     <form id="frm" class="form-inline">
 	<input type="hidden" id ="num" value="<%=num%>">
 		<table class="table qnatable">
 	    	<tr>
 				<td colspan="2">
-				<h1><%=dto.getSubject() %></h1>
-				<span  style="float: right;"><b>작성일:</b> <%=dto.getWriteday() %></span>
+				<Strong style="font-size: 24pt;">[<%=dto.getCategory()%>] <%=dto.getSubject() %></Strong>
+				<b style="float: right;">작성일: <%=dto.getWriteday() %></b> 
 				</td>
 			</tr>
 			<tr>
@@ -315,13 +338,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 			<!-- 댓글창 start-->
 			<tr>
 		    	<td colspan="2">
-		    		<div>
+		    		<div style="margin-bottom: 10px;">
 		    		<b class="acount">댓글 <span>0</span></b>
 		    		</div>
 		    		<div id="alist">
-		    		<br>
 		    		</div>
-		    		
 		    	</td>
 		    </tr>
 		    <%
@@ -335,7 +356,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm");
 						<textarea style="height: 70px;" name="content" id="content" required="required" class="form-control" placeholder="댓글을 입력하세요" ></textarea>
 					</td>
 					<td style="width: 10%">
-						<button type="button" class="btn btn-success btnaadd" style="width: 100%; height: 70px;">등록</button>
+						<button type="button" class="btn btn-primary btnaadd" style="width: 100%; height: 70px;">등록</button>
 					</td>
 			   </tr>	
 			  </form>
