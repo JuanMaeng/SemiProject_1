@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-light-green.css">
 
 <!-- Load fonts style after rendering the layout styles -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -30,10 +32,13 @@
 	String id = (String)session.getAttribute("idok");
 	String num = request.getParameter("num");
 	String currentPage = request.getParameter("currentPage");
-	//String category = request.getParameter("category");
+	String category = request.getParameter("category");
 	
 	QnaBoardDao dao = new QnaBoardDao();
 	QnaBoardDto dto = dao.getData(num);
+	
+	System.out.println(category);
+	
 	
 %>
 <style type="text/css">
@@ -63,7 +68,6 @@
 		margin-bottom: 20px;
 	}
 </style>
-
 <!-- se2 폴더에서 js 파일 가져오기 -->
 <script type="text/javascript" src="<%=root%>/se2/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
@@ -74,6 +78,8 @@
 </head>
 
 <body>
+
+	
 	<!-- 상단 고정 이미지 start -->
 	<div class="banner-wrap">
 		<div class="banner-img">
@@ -86,11 +92,29 @@
 	</div>
     <!-- 상단 고정 이미지 end -->
     
-	<form action="qna/qnaupdateaction.jsp" method="post">
+    <!-- 게시물 내용 start -->
+    <div class="container">
+    
+    <!-- nav -->
+    <nav class="navbar navbar-expand-sm w3-theme-l3 justify-content-center" style="margin-top: 50px;">
+		  <ul class="navbar-nav">
+		    <li class="nav-item">
+		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp"><b>1:1 문의</b></a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp"><b>문의 내역</b></a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp"><b>공지사항</b></a>
+		    </li>
+		  </ul>
+	</nav>
+	
+	<form action="qna/qnaupdateaction.jsp" method="get">
 		<input type="hidden" name="id" id="id" value="<%=id%>">
 		<input type="hidden" name="num" value=<%=num %>>
 		<input type="hidden" name="currentPage" value=<%=currentPage %>>
-		<table class="table table-bordered" style="width:900px; height:500px; margin: 100px 500px 200px;">
+		<table class="table table-bordered" style="text-align:center; height:500px; margin-top: 40px;">
 			<thead>
 				<tr>
 					<th colspan="2" style="background-color: #f8f9fa; text-align: center;">문의하기</th>						
@@ -100,12 +124,11 @@
 				<tr>
 					<th width="100">분 류</th>
 					<td>
-						<select id="category" name="category" class="form-control"  style="width: 20%;">
+						<select name="category" class="form-control"  style="width: 20%;">
 							<%
 							if(id.equals("admin")){%>
 							<option value="공지">공지</option>	
 							<%}
-							
 							
 							%>
 							<option value="배송">배송</option>
@@ -113,7 +136,7 @@
 							<option value="교환">교환</option>
 							<option value="환불">환불</option>
 							<option value="기타">기타</option>
-							<%-- <option value="기타" <%=category.equals("기타")?"selected":""%>>기타</option> --%>
+							<%-- <option value="기타"  <%=category.equals("기타")?"selected":"" %>>기타</option> --%>
 						</select>	
 					</td>
 				</tr>
@@ -147,6 +170,7 @@
 		</table>
 	
 	</form>
+	</div>
 	
 	<!-- 스마트게시판에 대한 스크립트 코드 넣기 -->
 	<script type="text/javascript">

@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dao.QnaBoardDao"%>
 <%@page import="java.util.List"%>
@@ -16,6 +17,8 @@
 
 <link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-light-green.css">
 
 <!-- Load fonts style after rendering the layout styles -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -52,8 +55,13 @@
 </style>
 <script type="text/javascript">
 
+	function search(){
+		
+		let searchWord = $("#searchWord").val().trim();
+		console.log(searchWord);
+		location.href="index.jsp?main=qna/searchlist.jsp?searchWord="+searchWord;
+	}
 
-	
 </script>
 </head>
 <body>
@@ -64,7 +72,6 @@ String loginok = (String)session.getAttribute("loginok");
 String id = (String)session.getAttribute("idok");
 
 String searchWord = request.getParameter("searchWord");
-
 String a = request.getParameter("searchWord");
 System.out.println(a);
 
@@ -147,7 +154,7 @@ no = searchCount - (currentPage - 1) * perPage;
 		<h5 class="alert alert-primary">총 <%=totalCount%>개의 문의글이 있습니다.</h5> --%>
 		
 		
-    	<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+    	<nav class="navbar navbar-expand-sm w3-theme-l3 justify-content-center" style="margin-top: 50px;">
 		  <ul class="navbar-nav">
 		    <li class="nav-item">
 		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
@@ -164,19 +171,19 @@ no = searchCount - (currentPage - 1) * perPage;
    	 	
 		<!-- 검색창 -->
 	       <div class='searchbox' style="float: right; margin-top:20px; margin-bottom: 20px;">
-	          <form action="index.jsp?main=qna/searchlist.jsp" method="post">            
-	            <input type="text" name="searchWord">
-	            <button type="submit">검색</button>
+	          <form method="get" onSubmit="return false;">         
+	            <input type="text" name="searchWord" id="searchWord">
+	            <button type="button" class="btn btn-secondary" id="searchbtn" onclick="search()" onkeypress="if(event.keyCode==13){search();}">검색</button>
 	         </form>
 	      </div>
 
     	
 		
-		<table class="table table-hover" id="qnatable">
+		<table class="table table-hover" id="qnatable" style="margin-top: 40px;">
 			<thead>
 			<tr style="text-align: center; font-weight: bold; background-color: #EEEEEE;">
-				<td width="40">번호</td>
-				<td width="40">분류</td>
+				<td width="50">번호</td>
+				<td width="60">분류</td>
 				<td width="500">제목</td>
 				<td width="100">작성자</td>
 				<td width="120">작성일</td>
@@ -195,13 +202,30 @@ no = searchCount - (currentPage - 1) * perPage;
 			</tr>	
 			<%}else{
 				//날짜
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				
+				//글 쓴 당일 동안 new 표시 넣기
+				Date date = new Date();
+				String today = sdf.format(date);
+				
+				
 				for(QnaBoardDto dto:list){
 			%>
 				<tr>
 					<td style="text-align: center"><%=no-- %></td>
 					<td style="text-align: center"><%=dto.getCategory() %></td>
 					<td><a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;"><%=dto.getSubject()%></a>
+					
+					<!-- new 표시 넣기 -->
+					<%
+					String wday = sdf.format(dto.getWriteday());
+					if(wday.equals(today)){
+					%>
+					<img alt="" src="assets/img/newicon.jpeg" width="12px;">
+					<%
+					}
+					%>
+					
 					<!-- 제목 옆에 댓글 갯수 출력 -->
 					<%
 					if(dto.getAnswercount()>0){
@@ -223,9 +247,15 @@ no = searchCount - (currentPage - 1) * perPage;
 			if(loginok!=null){%>
 			<tr>
 			<td colspan="6">
+				<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=qna/qnaboard.jsp'">목록</button>
+				<%if(id.equals("admin")) {
+				%>
 				<span style="float: right;">
 				<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=qna/qnaform.jsp'">글쓰기</button>
 				</span>
+				<%
+				}%>
+				
 			</td>
 			</tr>	
 			<%}

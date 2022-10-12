@@ -12,6 +12,8 @@
 
 <link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-light-green.css">
 
 <!-- Load fonts style after rendering the layout styles -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -79,10 +81,28 @@
 	</div>
     <!-- 상단 고정 이미지 end -->
     
+    <!-- 게시물 내용 start -->
+    <div class="container">
     
-	<form action="qna/qnainsertproc.jsp" method="post">
+    <!-- nav -->
+    <nav class="navbar navbar-expand-sm w3-theme-l3 justify-content-center" style="margin-top: 50px;">
+		  <ul class="navbar-nav">
+		    <li class="nav-item">
+		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp"><b>1:1 문의</b></a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp"><b>문의 내역</b></a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp"><b>공지사항</b></a>
+		    </li>
+		  </ul>
+	</nav>
+   
+    
+	<form action="qna/qnainsertproc.jsp" method="get">
 		<input type="hidden" name="id" id="id" value="<%=id%>">
-		<table class="table table-bordered" style="width:900px; height:500px; margin: 100px 500px 200px;">
+		<table class="table table-bordered" style="text-align:center; height:500px; margin-top: 40px;">
 			<thead>
 				<tr>	
 					<%if(id.equals("admin")){	
@@ -97,16 +117,17 @@
 				<tr>
 					<th width="100">분 류</th>
 					<td>
-						<select id="category" name="category" class="form-control"  style="width: 20%;">
+						<select name="category" class="form-control"  style="width: 10%;">
 							<%
 							if(id.equals("admin")){%>
 							<option value="공지">공지</option>	
-							<%}else{%>
-								<option value="배송" selected="selected">배송</option>
-								<option value="결제">결제</option>
-								<option value="교환">교환</option>
-								<option value="환불">환불</option>
-								<option value="기타">기타</option>
+							<%}else{
+							%>
+								<option value="배송" name="category">배송</option>
+								<option value="결제" name="category">결제</option>
+								<option value="교환" name="category">교환</option>
+								<option value="환불" name="category">환불</option>
+								<option value="기타" name="category">기타</option>
 							<%}
 							%>
 							
@@ -117,7 +138,7 @@
 					<th width="100">제 목</th>
 					<td>
 						<input type="text" name="subject" class="form-control"
-							required="required" style="width: 800px;">
+							required="required">
 					</td>
 				</tr>
 				<tr>
@@ -151,6 +172,7 @@
 		</table>
 	
 	</form>
+	</div>
 	
 	<!-- 스마트게시판에 대한 스크립트 코드 넣기 -->
 	<script type="text/javascript">
