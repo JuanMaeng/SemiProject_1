@@ -46,10 +46,10 @@ NumberFormat nf = NumberFormat.getCurrencyInstance();
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-success"><b>리프트</b> 인체공학 마우스</h1>
-                                <h3 class="h2">이제 리프트로 업해보세요!</h3>
+                                <h1 class="h1 text-success pb-2"><b>리프트</b> 인체공학 마우스</h1>
+                                <h3 class="h2 pb-3">이제 리프트로 업해보세요!</h3>
                                 <p>
-                                    손을 올려 편안함을 높여보세요. 리프트 버티컬 마우스가 자연스럽게 자세를 유지하게 합니다. 편안하게 일에 집중할 수 있을 거예요. 
+                                    손을 올려 편안함을 높여보세요. 리프트 버티컬 마우스가 <br>자연스럽게 자세를 유지하게 합니다. 편안하게 일에 집중할 수 있을 거예요. 
                                     조금 작거나 보통 크기의 손에 잘 맞아요.
                                 </p>
                             </div>
@@ -60,16 +60,16 @@ NumberFormat nf = NumberFormat.getCurrencyInstance();
             <div class="carousel-item">
                 <div class="container">
                     <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-first">
                             <img class="img-fluid" src="./assets/img/mainimg/MX_MASTER.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">MX MECHANICAL</h1>
-                                <h3 class="h2">무선 일루미네이티드 퍼포먼스 키보드</h3>
+                                <h1 class="h1 pb-2">MX MECHANICAL</h1>
+                                <h3 class="h2 pb-3">무선 일루미네이티드 퍼포먼스 키보드</h3>
                                 <p>
                                     MX Mechanical만의 독특한 택타일 감성을 느껴보세요.<br>
-									부드러우면서도 구분감이 있는 새로운 로우프로파일 카일 스위치는 반응속도와 정확도는 물론, 중독성있는 타건감을 선사합니다.
+									부드러우면서도 구분감이 있는 새로운 로우프로파일 카일 스위치는<br>반응속도와 정확도는 물론, 중독성있는 타건감을 선사합니다.
                                 </p>
                             </div>
                         </div>
@@ -84,8 +84,8 @@ NumberFormat nf = NumberFormat.getCurrencyInstance();
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">새로운 OPTIONS+ 기능</h1>
-                                <h3 class="h2">Logi Options+로 로지텍 마우스와 키보드를 원하는대로 커스터마이징해보세요.</h3>
+                                <h1 class="h1 pb-2">새로운 OPTIONS+ 기능</h1>
+                                <h3 class="h2 pb-3">Logi Options+로 로지텍 마우스와 키보드를 원하는대로 커스터마이징해보세요.</h3>
                                 <p>
                                     업그레이드된 경험. Logi Options+는 강력하고 편리한 차세대 애플리케이션입니다. 원하는 방식대로 로지텍 마우스와 키보드를 커스텀해보세요.
                                 </p>

@@ -40,10 +40,10 @@
 	.banner-text {
 		position: absolute;
 		top: 50%;
-		left: 50%;
+		left: 60%;
 		width: 100%;
 		transform: translate(-50%, -50%);
-		text-align: center;
+		text-align: left;
 	}
 	
 	b.b1 {
@@ -140,7 +140,8 @@ no = searchCount - (currentPage - 1) * perPage;
 		</div>
 		<div class="banner-text">
 			<b class="b1">고객 게시판</b>
-			<p>문의를 남겨주세요</p>
+			<p>logitech 고객 게시판에 오신 것을 환영합니다. <br>
+			자세한 문의는 1:1 문의 게시판을 이용해주세요.</p>
 		</div>
 	</div>
     <!-- 상단 고정 이미지 end -->

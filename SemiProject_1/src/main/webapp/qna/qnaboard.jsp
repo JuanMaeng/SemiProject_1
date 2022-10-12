@@ -16,6 +16,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
@@ -42,10 +43,10 @@
 	.banner-text {
 		position: absolute;
 		top: 50%;
-		left: 50%;
+		left: 60%;
 		width: 100%;
 		transform: translate(-50%, -50%);
-		text-align: center;
+		text-align: left;
 	}
 	
 	b.b1 {
@@ -64,6 +65,7 @@
 <%
 String loginok = (String)session.getAttribute("loginok");
 String id = (String)session.getAttribute("idok");
+String num = request.getParameter("num");
 
 QnaBoardDao dao = new QnaBoardDao();
 
@@ -79,7 +81,7 @@ int currentPage;//현재페이지
 int no;
 
 //총갯수:
-totalCount = dao.getTotalCount(id);
+totalCount = dao.getTotalCount();
 
 //현재페이지번호 읽기(null일경우는 1페이지로 설정)
 if (request.getParameter("currentPage") == null)
@@ -104,7 +106,7 @@ if (endPage > totalPage)
 start = (currentPage - 1) * perPage;
 
 //각페이지에서 필요한 게시글불러오기
-List<QnaBoardDto> list = dao.getIdList(id, start, perPage);
+List<QnaBoardDto> list = dao.getList(start, perPage);
 
 //각글앞에 붙힐 시작번호
 //총글이 만약에 20..1페이지는 20부터 2페이지는 15부터
@@ -120,7 +122,6 @@ for(QnaBoardDto dto:list){
 
 %>
 
-
 	<!-- 상단 고정 이미지 start -->
 	<div class="banner-wrap">
 		<div class="banner-img">
@@ -128,7 +129,8 @@ for(QnaBoardDto dto:list){
 		</div>
 		<div class="banner-text">
 			<b class="b1">고객 게시판</b>
-			<p>문의를 남겨주세요</p>
+			<p>logitech 고객 게시판에 오신 것을 환영합니다. <br>
+			자세한 문의는 1:1 문의 게시판을 이용해주세요.</p>
 		</div>
 	</div>
     <!-- 상단 고정 이미지 end -->
@@ -137,10 +139,7 @@ for(QnaBoardDto dto:list){
     <!-- 게시판 글 목록 -->
        
     
-	<div class="container-xl"  id="qnalist">
-		<%-- <br>
-		<h5 class="alert alert-primary">총 <%=totalCount%>개의 문의글이 있습니다.</h5> --%>
-		
+	<div class="container-xl"  id="qnalist">		
 		
     	<nav class="navbar navbar-expand-sm w3-theme-l3 justify-content-center" style="margin-top: 50px;">
 		  <ul class="navbar-nav">
@@ -184,13 +183,7 @@ for(QnaBoardDto dto:list){
 			%>
 			<tr>
 				<td colspan="6" align="center">
-				<%if(loginok!=null){
-				%>
 				<b>문의 내역이 없습니다.</b>
-				<%}else{%>
-				<b>로그인이 필요합니다.</b>				
-				<%}
-				%>
 				</td>
 			</tr>	
 			<%}else{
@@ -205,8 +198,21 @@ for(QnaBoardDto dto:list){
 			%>
 				<tr>
 					<td style="text-align: center"><%=no-- %></td>
-					<td style="text-align: center"><%=dto.getCategory() %></td>
-					<td><a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;"><%=dto.getSubject()%></a>
+					<td style="text-align: center"><%=dto.getCategory() %></td>					
+					<td>
+					<%
+	               if(dto.getId().equals(id)||id=="admin"){
+	               %>
+	                  <a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;">
+	                  <%=dto.getSubject()%>
+	                  </a>
+	               <%}else{
+	               %>
+	                  <a href="index.jsp?main=qna/qnaboard.jsp" onclick="alert('본인이 작성한 글만 조회할 수 있습니다.')" style="color:black; text-decoration: none;">
+	                  <%=dto.getSubject()%>
+	                  </a>
+	               <%}
+	               %>
 					<!-- new 표시 넣기 -->
 					<%
 					String wday = sdf.format(dto.getWriteday());
@@ -220,7 +226,7 @@ for(QnaBoardDto dto:list){
 					<!-- 제목 옆에 댓글 갯수 출력 -->
 					<%
 					if(dto.getAnswercount()>0){
-						%>
+					%>
 						<a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>#alist" style="text-decoration: none;"><b style="color:blue; font-size: 0.7em;">[답변완료]<b></a>
 					<%}
 					%>
@@ -246,8 +252,6 @@ for(QnaBoardDto dto:list){
 			<%}
 			%>
 			
-			
-			
 		</table>
 		
 	</div>
@@ -256,6 +260,7 @@ for(QnaBoardDto dto:list){
 	
 	<!-- 게시물 목록 end  -->
 	
+
 	
 	
 	<!--페이징 start -->
