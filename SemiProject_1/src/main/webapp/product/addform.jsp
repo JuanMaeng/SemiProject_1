@@ -55,8 +55,18 @@ ProductDto dto = dao.getLastData();
 								<option value="마우스">마우스</option>
 								<option value="키보드">키보드</option>
 								<option value="콤보">콤보</option>
-								<option value="웹캠" selected="selected">웹캠</option>
+								<option value="웹캠">웹캠</option>
 								<option value="크리에이터용 제품">크리에이터용 제품</option>
+								<option value="컨퍼런스 카메라" selected="selected">컨퍼런스 카메라</option>
+								<option value="통합 회의실 솔루션">통합 회의실 솔루션</option>
+								<option value="유선 헤드셋">유선 헤드셋</option>
+								<option value="무선 헤드셋">무선 헤드셋</option>
+								<option value="BLUETOOTH 스피커">BLUETOOTH 스피커</option>
+								<option value="컴퓨터 스피커">컴퓨터 스피커</option>
+								<option value="컴퓨터 스피커">컴퓨터 스피커</option>
+								<option value="컴퓨터 스피커">컴퓨터 스피커</option>
+								<option value="컴퓨터 스피커">컴퓨터 스피커</option>
+								
 							</select>
 						</td>
 					</tr>
