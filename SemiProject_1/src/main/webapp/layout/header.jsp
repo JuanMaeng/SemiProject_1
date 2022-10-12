@@ -169,25 +169,6 @@ String id = (String)session.getAttribute("idok");
                         </div>
                     </div>
                     
-                    <!-- 세션용 임시아이콘 Start -->
-                    <%-- <%
-                    if(loginok == null) {
-                   	%>
-	                    <a class="nav-icon d-none d-lg-inline stemp" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-	                        NoSession
-	                    </a>
-                    	
-                    <%
-                    } else {
-                   	%>
-                   		<a class="nav-icon d-none d-lg-inline stemp" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-	                        YesSession
-	                    </a>
-                   	<%
-                    }
-                    %> --%>
-                    <!-- 세션용 임시아이콘 End -->
-                    
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>

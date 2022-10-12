@@ -21,13 +21,9 @@
 <body>
 <%
 //로그인에 대한 세션 값 삭제
-session.removeAttribute("loginok");
-%>
-<script type="text/javascript">
-	alert("session 지워짐");
-</script>
-<%
+/* session.removeAttribute("loginok"); */
 session.invalidate(); 
+
 response.sendRedirect("../index.jsp");
 %>
 </body>

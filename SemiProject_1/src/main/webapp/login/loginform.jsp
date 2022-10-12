@@ -55,16 +55,16 @@ a.gojoin{
 <body>
 <%
 //세션으로부터 아이디와 체크값 획득
-String myid = (String)session.getAttribute("idok");
-String saveok = (String)session.getAttribute("saveok");
-
+/* String myid = (String)session.getAttribute("idok");
+String saveok = (String)session.getAttribute("saveok"); */
+String myid = "";
 // System.out.println(saveok);
 
 
-if(saveok == null) {
+/* if(saveok == null) {
 	
 	myid = "";
-}
+} */
 %>
 	<div class="logform">
 		<form action="login/loginaction.jsp" method="post">
@@ -83,9 +83,9 @@ if(saveok == null) {
 	            <label for="pwd">password</label>
 	         </div>
 	         
-	         <div class="checkbox mb-3">
+	         <%-- <div class="checkbox mb-3">
 	               <input type="checkbox" name="savechk" <%= saveok == null  ? "" : "checked" %>> 아이디 저장
-	         </div>
+	         </div> --%>
 	         
 	         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
     
