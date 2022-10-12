@@ -52,10 +52,10 @@ ProductDto dto = dao.getLastData();
 						<td style="width:150px; background-color: #66cdaa"><b>카테고리</b></td>
 						<td>
 							<select style="width: 200px;" name="category" class="form-control" required="required">
-								<option value="마우스" selected="selected">마우스</option>
+								<option value="마우스">마우스</option>
 								<option value="키보드">키보드</option>
 								<option value="콤보">콤보</option>
-								<option value="웹캠">웹캠</option>
+								<option value="웹캠" selected="selected">웹캠</option>
 								<option value="크리에이터용 제품">크리에이터용 제품</option>
 							</select>
 						</td>
@@ -64,9 +64,14 @@ ProductDto dto = dao.getLastData();
 						<td style="width:150px; background-color: #66cdaa"><b>컬렉션</b></td>
 						<td>
 							<select style="width: 200px;" name="collection" class="form-control" required="required">
-								<option value="Ergo 시리즈" selected="selected">Ergo 시리즈</option>
-								<option value="마스터 시리즈">마스터 시리즈</option>
+								<option value="Ergo시리즈">Ergo시리즈</option>
+								<option value="마스터시리즈">마스터시리즈</option>
 								<option value="무선">무선</option>
+								<option value="유선">유선</option>
+								<option value="화상회의" selected="selected">화상 회의</option>
+								<option value="교육용">교육용</option>
+								<option value="게임">게임</option>
+								<option value=" ">없음</option>
 							</select>
 						</td>
 					</tr>
@@ -87,7 +92,7 @@ ProductDto dto = dao.getLastData();
 					<tr>
 						<td style="width:150px; background-color: #66cdaa"><b>필터</b></td>
 						<td>
-							<input type="text" name="filter" class="form-control" style="width:400px;"required="required">
+							<input type="text" name="filter" class="form-control" style="width:400px;"required="required" value="4k30fps,1080p60fps,1080p30fps,720p90fps,720p60fps,720p30fps">
 						</td>
 					</tr>
 					<tr>

@@ -56,6 +56,10 @@
 	.body {
 		height: 180px;
 	}
+	.thumb{
+		/* height: 200px !important; */
+	}
+	
 	.body-price{
 		position: absolute;
 		bottom: 10px;
@@ -83,50 +87,21 @@ $(function(){
 		
 	});
 	
-	$(document).on("click",".handblock",function() {
+	$(document).on("click",".resblock",function() {
 		
-		if($("#handcon").is(":visible") != true) {
-			$("#ihand").attr("class","fa fa-fw fa-plus");
-			$("#handcon").slideDown(200);
+		if($("#rescon").is(":visible") != true) {
+			$("#ires").attr("class","fa fa-fw fa-plus");
+			$("#rescon").slideDown(200);
 			
 		}
 		else {
-			$("#ihand").attr("class","fa fa-fw fa-minus");
-			$("#handcon").slideUp(200);
+			$("#ires").attr("class","fa fa-fw fa-minus");
+			$("#rescon").slideUp(200);
 			
 		}
 		
 	});
 	
-	$(document).on("click",".prefhandblock",function() {
-		
-		if($("#prefhandcon").is(":visible") != true) {
-			$("#iprefhand").attr("class","fa fa-fw fa-plus");
-			$("#prefhandcon").slideDown(200);
-			
-		}
-		else {
-			$("#iprefhand").attr("class","fa fa-fw fa-minus");
-			$("#prefhandcon").slideUp(200);
-			
-		}
-		
-	});
-	
-	$(document).on("click",".platformblock",function() {
-		
-		if($("#platformcon").is(":visible") != true) {
-			$("#iplatform").attr("class","fa fa-fw fa-plus");
-			$("#platformcon").slideDown(200);
-			
-		}
-		else {
-			$("#iplatform").attr("class","fa fa-fw fa-minus");
-			$("#platformcon").slideUp(200);
-			
-		}
-		
-	});
 });
 
 
@@ -146,11 +121,11 @@ request.setCharacterEncoding("utf-8");
 	</script>
 	<div class="banner-wrap">
 		<div class="banner-img">
-			<img src="https://resource.logitech.com/w_1800,h_1800,c_limit,q_auto,f_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/plp/mice/hero-desktop.png?v=1">	
+			<img src="https://resource.logitech.com/w_1800,h_1800,c_limit,q_auto,f_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/plp/webcams/webcam-hero-desktop.png?v=1">	
 		</div>
 		<div class="banner-text">
-			<b class="b1">마우스</b>
-			<p>나에게 맞는 마우스를 찾아보세요.</p>
+			<b class="b1">웹캠</b>
+			<p>원격 수업, 화상 회의용 웹캠을 선택해보세요.</p>
 		</div>
 	</div>
 	
@@ -174,50 +149,27 @@ request.setCharacterEncoding("utf-8");
 						</div>
 					</div>
 					<div id="collectioncon" style="margin-left: 20px;">
-						<p><label for="master" style="cursor: pointer;"><input type="checkbox" class="filters" id="master" value="마스터시리즈" onchange="makeFilter(this);">&nbsp;&nbsp;마스터시리즈</label></p>
-						<p><label for="ergo" style="cursor: pointer;"><input type="checkbox" class="filters" id="ergo" value="Ergo시리즈" onchange="makeFilter(this);">&nbsp;&nbsp;Ergo시리즈</label></p>
-						<p><label for="wireless" style="cursor: pointer;"><input type="checkbox" class="filters" id="wireless" value="무선" onchange="makeFilter(this);">&nbsp;&nbsp;무선</label></p>
+						<p><label for="meeting" style="cursor: pointer;"><input type="checkbox" class="filters" id="meeting" value="화상회의" onchange="makeFilter(this);">&nbsp;&nbsp;화상 회의</label></p>
+						<p><label for="edu" style="cursor: pointer;"><input type="checkbox" class="filters" id="edu" value="교육용" onchange="makeFilter(this);">&nbsp;&nbsp;교육용</label></p>
+						<p><label for="game" style="cursor: pointer;"><input type="checkbox" class="filters" id="game" value="게임" onchange="makeFilter(this);">&nbsp;&nbsp;게임</label></p>
 					</div>
 					<hr style="width: 95%;">
-					<div class="handblock titleblock row pb-2" style="cursor: pointer;">
+					
+					<div class="resblock titleblock row pb-2" style="cursor: pointer;">
 						<div class="col">
-							<span class="collapse show pl-3"><strong>손 크기</strong></span>
+							<span class="collapse show pl-3"><strong>화질, 프레임</strong></span>
 						</div>
 						<div class="col" style="text-align: right;">
-							<i class="fa fa-fw fa-plus" id="ihand"></i>
+							<i class="fa fa-fw fa-plus" id="ires"></i>
 						</div>
 					</div>
-					<div id="handcon" style="margin-left: 20px;">
-						<p><label for="small" style="cursor: pointer;"><input type="checkbox" class="filters" id="small" value="작음" onchange="makeFilter(this);">&nbsp;&nbsp;작음</label></p>
-						<p><label for="normal" style="cursor: pointer;"><input type="checkbox" class="filters" id="normal" value="보통" onchange="makeFilter(this);">&nbsp;&nbsp;보통</label></p>
-						<p><label for="big" style="cursor: pointer;"><input type="checkbox" class="filters" id="big" value="큼" onchange="makeFilter(this);">&nbsp;&nbsp;큼</label></p>
-					</div>
-					<hr style="width: 95%;">
-					<div class="prefhandblock titleblock row pb-2" style="cursor: pointer;">
-						<div class="col">
-							<span class="collapse show pl-3"><strong>주 사용손</strong></span>
-						</div>
-						<div class="col" style="text-align: right;">
-							<i class="fa fa-fw fa-plus" id="iprefhand"></i>
-						</div>
-					</div>
-					<div id="prefhandcon" style="margin-left: 20px;">
-						<p><label for="right" style="cursor: pointer;"><input type="checkbox" class="filters" id="right" value="오른손" onchange="makeFilter(this);">&nbsp;&nbsp;오른손</label></p>
-						<p><label for="left" style="cursor: pointer;"><input type="checkbox" class="filters" id="left" value="왼손" onchange="makeFilter(this);">&nbsp;&nbsp;왼손</label></p>
-						<p><label for="both" style="cursor: pointer;"><input type="checkbox" class="filters" id="both" value="양손" onchange="makeFilter(this);">&nbsp;&nbsp;양손</label></p>
-					</div>
-					<hr style="width: 95%;">
-					<div class="platformblock titleblock row pb-2" style="cursor: pointer;">
-						<div class="col">
-							<span class="collapse show pl-3"><strong>플랫폼</strong></span>
-						</div>
-						<div class="col" style="text-align: right;">
-							<i class="fa fa-fw fa-plus" id="iplatform"></i>
-						</div>
-					</div>
-					<div id="platformcon" style="margin-left: 20px;">
-						<p><label for="windows" style="cursor: pointer;"><input type="checkbox" class="filters" id="windows" value="windows" onchange="makeFilter(this);">&nbsp;&nbsp;Windows</label></p>
-						<p><label for="mac" style="cursor: pointer;"><input type="checkbox" class="filters" id="mac" value="mac" onchange="makeFilter(this);">&nbsp;&nbsp;Mac</label></p>
+					<div id="rescon" style="margin-left: 20px;">
+						<p><label for="4k1" style="cursor: pointer;"><input type="checkbox" class="filters" id="4k1" value="4k30fps" onchange="makeFilter(this);">&nbsp;&nbsp;4k 30fps</label></p>
+						<p><label for="1080p60" style="cursor: pointer;"><input type="checkbox" class="filters" id="1080p60" value="1080p60fps" onchange="makeFilter(this);">&nbsp;&nbsp;1080p 60fps</label></p>
+						<p><label for="1080p30" style="cursor: pointer;"><input type="checkbox" class="filters" id="1080p30" value="1080p30fps" onchange="makeFilter(this);">&nbsp;&nbsp;1080p 30fps</label></p>
+						<p><label for="720p90" style="cursor: pointer;"><input type="checkbox" class="filters" id="720p90" value="720p90fps" onchange="makeFilter(this);">&nbsp;&nbsp;720p 90fps</label></p>
+						<p><label for="720p60" style="cursor: pointer;"><input type="checkbox" class="filters" id="720p60" value="720p60fps" onchange="makeFilter(this);">&nbsp;&nbsp;720p 60fps</label></p>
+						<p><label for="720p30" style="cursor: pointer;"><input type="checkbox" class="filters" id="720p30" value="720p30fps" onchange="makeFilter(this);">&nbsp;&nbsp;720p 30fps</label></p>
 					</div>
 					<hr style="width: 95%;">
 				</div>
@@ -229,7 +181,7 @@ request.setCharacterEncoding("utf-8");
                 <%
                 	for(ProductDto dto:list) {
                 		
-                		if(dto.getCategory().equals("마우스")) {
+                		if(dto.getCategory().equals("웹캠")) {
                 	%>
                 	
                     <div class="col-md-4 <%=dto.getCollection()%> lists" id="p1" filter="<%=dto.getFilter() %>">
@@ -240,7 +192,7 @@ request.setCharacterEncoding("utf-8");
 	                	</script>
                         <div class="card mb-4 product-wap rounded-0" style="border:0;">
                         	
-                            <div class="card rounded-0" style="border: 0;">
+                            <div class="card rounded-0 thumb" style="border: 0; align-items: center;">
                             	<a href="index.jsp?main=product/detailpage.jsp?p_num=<%=dto.getP_num() %>" class="h3 text-decoration-none">
                                 	<img class="card-img rounded-0 img-fluid" src="<%=dto.getThumbnail()%>">
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
@@ -249,7 +201,6 @@ request.setCharacterEncoding("utf-8");
                                 </a>
                             </div>
                             <div class="card-body rounded-0 body">
-                            	<div class="subtitle"><%=dto.getCollection() %></div>
                             	<div style="margin-bottom: 10px;">
 	                            	<a href="index.jsp?main=product/detailpage.jsp?p_num=<%=dto.getP_num() %>" class="h3 text-decoration-none">
 	                                	<b><%=dto.getName() %></b>
