@@ -124,42 +124,42 @@ String id = (String)session.getAttribute("idok");
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">비디오 협업</a>
 							<ul class="dropdown-menu">
-				 				<li><a class="dropdown-item" href="#">컨퍼런스 카메라</a></li>
-								<li><a class="dropdown-item" href="#">통합 회의실 솔루션</a></li>
-								<li><a class="dropdown-item" href="#">Logi Dock</a></li>
+				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/conferenceCam.jsp">컨퍼런스 카메라</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/list/conferenceroom.jsp">통합 회의실 솔루션</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/list/logidock.jsp">Logi Dock</a></li>
 			    			</ul>
 		    			</li>
 		    			
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">헤드셋 &amp; 스피커</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">유선 헤드셋</a></li>
-								<li><a class="dropdown-item" href="#">무선 헤드셋</a></li>
-				 				<li><a class="dropdown-item" href="#">BLUETOOTH 스피커</a></li>
-				 				<li><a class="dropdown-item" href="#">컴퓨터 스피커</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/list/cableHeadset.jsp">유선 헤드셋</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/list/headset.jsp">무선 헤드셋</a></li>
+				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/bluetooth.jsp">BLUETOOTH 스피커</a></li>
+				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/computer.jsp">컴퓨터 스피커</a></li>
 			    			</ul>
 		    			</li>
 		    			
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">액세서리</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">IPad용</a></li>
-								<li><a class="dropdown-item" href="#">스마트폰용</a></li>
-				 				<li><a class="dropdown-item" href="#">화상회의</a></li>
-				 				<li><a class="dropdown-item" href="#">프레젠테이션 리모컨</a></li>
-				 				<li><a class="dropdown-item" href="#">충전기</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/list/iPad.jsp">IPad용</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/list/smartPhone.jsp">스마트폰용</a></li>
+				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/webConference.jsp">화상회의</a></li>
+				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/ptRemote.jsp">프레젠테이션 리모컨</a></li>
+				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/charger.jsp">충전기</a></li>
 			    			</ul>
 		    			</li>
 		    			
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">스마트홈</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">보안 카메라</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/list/securityCamera.jsp">보안 카메라</a></li>
 			    			</ul>
 		    			</li>
 		    			
 						<li class="nav-item">
-							<a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">Q&amp;A</a>
+							<a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">고객지원</a>
 						</li>
 					</ul>
                 </div>
