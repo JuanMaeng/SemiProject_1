@@ -1,3 +1,6 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="data.dao.ProductDao"%>
 <%@page import="data.dto.ProductDto"%>
 <%@page import="data.dao.MemberDao"%>
@@ -100,7 +103,6 @@ ProductDao pdao = new ProductDao();
 		</div>
 		<div class="banner-text">
 			<b class="b1" style="color: white;"><%= id %>님의 주문 목록</b>
-			<p style="color: lightgray;">최근 3개월 내의 주문목록만 표시합니다.</p>
 		</div>
 	</div>
 
@@ -143,11 +145,24 @@ ProductDao pdao = new ProductDao();
 									String p_num = dto.getP_num();
 									totalprice = dto.getCnt() * dto.getPrice();
 									
+									Calendar orderTime = Calendar.getInstance(); // 주문시간
+									orderTime.setTime(dto.getOrderday());
+									orderTime.add(Calendar.HOUR_OF_DAY, 9); // 왜인지는 모르지만 9시간이 빠져서 저장되네요 ....
+									
+									Calendar deliveryStart = Calendar.getInstance(); // 주문시간 + 4시간
+									deliveryStart.setTime(dto.getOrderday());
+									deliveryStart.add(Calendar.HOUR_OF_DAY, 13);
+									
+									Calendar deliveryEnd = Calendar.getInstance(); // 주문시간 + 24시간
+									deliveryEnd.setTime(dto.getOrderday());
+									deliveryEnd.add(Calendar.HOUR_OF_DAY, 9);
+									deliveryEnd.add(Calendar.DATE, 1);
+									
 									pdto = pdao.getData(p_num);
 							%>
 									<tr>
 										<td>
-											<%= sdf.format(dto.getOrderday()) %>
+											<%= sdf.format(orderTime.getTime()) %>
 										</td>
 										
 										<td style="text-align: left !important;">
@@ -170,7 +185,23 @@ ProductDao pdao = new ProductDao();
 										</td>
 										
 										<td>
-											<!-- 배송상태 어떻게 할건지 ... -->
+											<%
+											Calendar now = Calendar.getInstance();
+													
+											if(now.before(deliveryStart)){
+											%>
+												배송준비중
+											<%
+											} else if(now.after(deliveryStart) && now.before(deliveryEnd)){
+											%>
+												배송중
+											<%
+											} else {
+											%>
+												배송완료
+											<%
+											}
+											%>
 										</td>
 									</tr>
 									<!-- 주문목록 End -->
