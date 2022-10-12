@@ -1,3 +1,6 @@
+<%@page import="java.text.NumberFormat"%>
+<%@page import="data.dto.ProductDto"%>
+<%@page import="data.dao.ProductDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,6 +28,12 @@
 </style>
 
 </head>
+
+<%
+ProductDao pdao = new ProductDao();
+NumberFormat nf = NumberFormat.getCurrencyInstance();
+%>
+
 <body>
 <!-- Start Banner -->
     <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -108,7 +117,7 @@
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/mainimg/category_1.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
                 <h5 class="text-center mt-3 mb-3">화상 회의</h5>
-                <p class="text-center"><a class="btn btn-success" href="#">Go Shop</a></p>
+                <p class="text-center"><a class="btn btn-success" href="index.jsp?main=product/list/webcam.jsp">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/mainimg/presentation.jpg" class="rounded-circle img-fluid border" style="width: 400px; height: 400px;"></a>
@@ -138,18 +147,18 @@
             <div class="row">
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+                        <a href="index.jsp?main=product/detailpage.jsp?p_num=27">
+                        <%
+                        String p_num = "27";
+                        int price = pdao.getData(p_num).getPrice();
+                        %>
                             <img src="./assets/img/mainimg/recommend_mouse.jpg" class="card-img-top recommend" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-black fa fa-circle"></i>
-                                    <i class="text-white fa fa-circle" style="border: 1px solid black; border-radius: 100px;"></i>
-                                </li>
-                                <li class="text-muted text-right">&#8361;가격 입력</li>
+                                <li class="text-muted text-right"><%= nf.format(price) %></li>
                             </ul>
-                            <a href="#" class="h2 text-decoration-none text-dark">MX Master 3s</a>
+                            <a href="index.jsp?main=product/detailpage.jsp?p_num=27" class="h2 text-decoration-none text-dark">MX Master 3s</a>
                             <p class="card-text">
                                 <br>마스터 시리즈,<br>7개의 버튼 및 엄지손가락 휠 제공
                             </p>
@@ -159,17 +168,18 @@
                 
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+                        <a href="index.jsp?main=product/detailpage.jsp?p_num=38">
+	                        <%
+	                        p_num = "38";
+	                        price = pdao.getData(p_num).getPrice();
+	                        %>
                             <img src="./assets/img/mainimg/recommend_keyboard.jpg" class="card-img-top recommend" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-black fa fa-circle"></i>
-                                </li>
-								<li class="text-muted text-right">&#8361;가격 입력</li>
+								<li class="text-muted text-right"><%= nf.format(price) %></li>
 							</ul>
-                            <a href="#" class="h2 text-decoration-none text-dark">MX MECHANICAL</a>
+                            <a href="index.jsp?main=product/detailpage.jsp?p_num=38" class="h2 text-decoration-none text-dark">MX MECHANICAL</a>
                             <p class="card-text">
                                 <br>마스터 시리즈,<br>무선 일루미네이티드 퍼포먼스 키보드
                             </p>
@@ -179,17 +189,18 @@
                 
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+						<a href="index.jsp?main=product/detailpage.jsp?p_num=52">
+                        	<%
+	                        p_num = "52";
+	                        price = pdao.getData(p_num).getPrice();
+	                        %>
                             <img src="./assets/img/mainimg/recommend_camera.jpg" class="card-img-top recommend" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-black fa fa-circle"></i>
-                                </li>
-                                <li class="text-muted text-right">&#8361;가격 입력</li>
+                                <li class="text-muted text-right"><%= nf.format(price) %></li>
                             </ul>
-                            <a href="#" class="h2 text-decoration-none text-dark">C922 PRO HD STREAM WEBCAM</a>
+                            <a href="index.jsp?main=product/detailpage.jsp?p_num=52" class="h2 text-decoration-none text-dark">C922 PRO HD STREAM WEBCAM</a>
                             <p class="card-text">
                                <br>제대로 된 스트리밍 웹캠<br>초고속 HD 720p/60fps.
                             </p>

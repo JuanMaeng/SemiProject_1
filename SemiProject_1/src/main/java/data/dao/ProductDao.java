@@ -156,4 +156,57 @@ public class ProductDao {
 		
 		return dto;
 	}
+	
+	
+	
+	// 검색결과
+	public List<ProductDto> getSearchResult(String keyword){
+		
+		List<ProductDto> list = new ArrayList<>();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM product WHERE name like ? OR category like ? OR description like ? OR filter like ? ORDER BY p_num DESC";
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setString(2, "%" + keyword + "%");
+			pstmt.setString(3, "%" + keyword + "%");
+			pstmt.setString(4, "%" + keyword + "%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProductDto dto = new ProductDto();
+				
+				dto.setP_num(rs.getString("p_num"));
+				dto.setName(rs.getString("name"));
+				dto.setCategory(rs.getString("category"));
+				dto.setCollection(rs.getString("collection"));
+				dto.setDescription(rs.getString("description"));
+				dto.setFilter(rs.getString("filter"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setThumbnail(rs.getString("thumbnail"));
+				dto.setRegdate(rs.getString("regdate"));
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+			
+		} finally {
+			
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return list;
+	}
 }

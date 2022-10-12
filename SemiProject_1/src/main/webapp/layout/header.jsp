@@ -53,6 +53,12 @@
 			
 			// alert(keyword);
 			
+			if(keyword == ""){
+				
+				alert("검색어를 입력해주세요");
+				return;
+			}
+			
 			location.href="index.jsp?main=product/searchresult.jsp?keyword=" + keyword;
 		});
 		
@@ -99,21 +105,21 @@ String id = (String)session.getAttribute("idok");
 					<ul class="nav justify-content-center">
 					
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">마우스 & 키보드</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="index.jsp?main=product/list/mouse.jsp">마우스</a></li>
-								<li><a class="dropdown-item" href="#">키보드</a></li>
-				 				<li><a class="dropdown-item" href="#">콤보</a></li>
-			    			</ul>
-		    			</li>
-						
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">스트리밍</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">웹캠</a></li>
-								<li><a class="dropdown-item" href="#">크리에이터용 제품</a></li>
-			    			</ul>
-		    			</li>
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">마우스 &amp; 키보드</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.jsp?main=product/list/mouse.jsp">마우스</a></li>
+                                <li><a class="dropdown-item" href="index.jsp?main=product/list/keyboard.jsp">키보드</a></li>
+                                 <li><a class="dropdown-item" href="index.jsp?main=product/list/combo.jsp">콤보</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">스트리밍</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.jsp?main=product/list/webcam.jsp">웹캠</a></li>
+                                <li><a class="dropdown-item" href="index.jsp?main=product/detailpage.jsp?p_num=54">크리에이터용 제품</a></li>
+                            </ul>
+                        </li>
 		    			
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">비디오 협업</a>
@@ -125,7 +131,7 @@ String id = (String)session.getAttribute("idok");
 		    			</li>
 		    			
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">헤드셋 & 스피커</a>
+							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">헤드셋 &amp; 스피커</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="#">유선 헤드셋</a></li>
 								<li><a class="dropdown-item" href="#">무선 헤드셋</a></li>
@@ -153,7 +159,7 @@ String id = (String)session.getAttribute("idok");
 		    			</li>
 		    			
 						<li class="nav-item">
-							<a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">Q&A</a>
+							<a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">Q&amp;A</a>
 						</li>
 					</ul>
                 </div>
@@ -182,6 +188,7 @@ String id = (String)session.getAttribute("idok");
 				            </div>
 				            
 				            <form action="index.jsp?main=product/searchresult.jsp" method="post" class="modal-content modal-body border-0 p-0" onSubmit="return false;">
+				                	검색 키워드를 입력해주세요.<br><br>
 				                <div class="input-group mb-2">
 				                    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search ...">
 				                    <button type="button" class="input-group-text bg-success text-light search">

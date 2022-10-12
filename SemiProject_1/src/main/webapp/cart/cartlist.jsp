@@ -277,7 +277,7 @@ String m_num = mdao.getMemberInfo(id).getM_num();
 										</td>
 
 										<td>
-											<%= map.get("price") %>
+											<%= nf.format(Integer.parseInt(map.get("price"))) %>
 										</td>
 
 										<td>
@@ -285,7 +285,7 @@ String m_num = mdao.getMemberInfo(id).getM_num();
 										</td>
 
 										<td>
-											<%= sum %>
+											<%= nf.format(sum) %>
 										</td>
 										
 										<td>
@@ -311,7 +311,7 @@ String m_num = mdao.getMemberInfo(id).getM_num();
 									</td>
 									
 									<td colspan="3" align="center">
-										총 주문금액 <b><%= nf.format(totalprice + delivery) %></b>&nbsp;&nbsp;&nbsp;&nbsp;
+										총 금액 <b><%= nf.format(totalprice + delivery) %></b>&nbsp;&nbsp;&nbsp;&nbsp;
 										<button class="btn btn-outline-success cart-to-order">주문하기</button>
 									</td>
 								</tr>
