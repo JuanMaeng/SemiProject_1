@@ -25,25 +25,18 @@
 
 <%
 request.setCharacterEncoding("utf-8");
-
 String id = request.getParameter("id");
 String subject = request.getParameter("subject");
 String content = request.getParameter("content");
 String category = request.getParameter("category");
-
 QnaBoardDto dto = new QnaBoardDto();
-
 dto.setId(id);
 dto.setSubject(subject);
 dto.setContent(content);
 dto.setCategory(category);
-
 QnaBoardDao dao = new QnaBoardDao();
-
 dao.insertQna(dto);
-
 response.sendRedirect("../index.jsp?main=qna/qnadetail2.jsp");
-
 %>
 </body>
 </html>
