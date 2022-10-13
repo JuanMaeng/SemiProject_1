@@ -35,12 +35,12 @@
 			location.href="index.jsp?main=product/list/conference.jsp";
 		});
 		
-		$("#rec1").click(function(){
+		$("#rec2").click(function(){
 			
 			location.href="index.jsp?main=product/list/remotecon.jsp";
 		});
 		
-		$("#rec1").click(function(){
+		$("#rec3").click(function(){
 	
 			location.href="index.jsp?main=product/detailpage.jsp?p_num=81";
 		});

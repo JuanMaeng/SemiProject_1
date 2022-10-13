@@ -98,6 +98,8 @@ $(function (){
 	$("#cart").click(function() {
 		var p_num = $(this).attr("p_num");
 		var cnt = $("#count").val();
+		var p_name = $("#p_name").text();
+		var price = $("#price").val();
 		
 		//alert(p_num+", "+cnt);
 		<%
@@ -108,8 +110,17 @@ $(function (){
 			location.href="index.jsp?main=login/loginmain.jsp";
 		<%}
 		else {%>
+		
+			var cartok = confirm("상품을 확인해주세요.\n제품명 : "+p_name+"\n수량 : "+cnt+"개\n총 금액 : "+price*cnt+"원");
 			
-			location.href = "cart/insertcart.jsp?p_num="+p_num+"&cnt="+cnt;
+			if(cartok){
+				
+				//alert();
+				location.href = "cart/insertcart.jsp?p_num="+p_num+"&cnt="+cnt;
+			} else {
+				
+				return;
+			}
 		<%}
 		%>
 	});

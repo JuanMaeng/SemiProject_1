@@ -161,7 +161,7 @@
 					<td colspan="2" align="center">
 						<button type="button" class="btn btn-success"
 							style="width: 120px;"
-							onclick="submitContents(this)">문의하기</button>
+							onclick="submitContents(this)">수정하기</button>
 						
 					</td>
 				</tr>
