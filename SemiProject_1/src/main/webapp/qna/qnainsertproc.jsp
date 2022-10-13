@@ -42,7 +42,9 @@ QnaBoardDao dao = new QnaBoardDao();
 
 dao.insertQna(dto);
 
-response.sendRedirect("../index.jsp?main=qna/qnadetail2.jsp");
+String num = dao.getDetail().getNum();
+
+response.sendRedirect("../index.jsp?main=qna/qnadetail.jsp?num=" + num);
 
 %>
 </body>
