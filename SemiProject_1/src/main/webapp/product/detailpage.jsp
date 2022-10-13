@@ -91,7 +91,6 @@ $(function (){
 		else {
 			$("#icompo").attr("class","fa fa-fw fa-plus");
 			flag2 = true;
-;
 		}
 	});
 	
@@ -115,15 +114,46 @@ $(function (){
 	});
 	
 	$("#order").click(function() {
+		var p_num = $(this).attr("p_num");
+		var cnt = $("#count").val();
+		var p_name = $("#p_name").text();
+		var price = $("#price").val();
+		
+		//confirm(p_num+", "+cnt+", "+p_name+", "+price);
+		
 		<%
 		if(loginok==null) {%>
-			
+		
 			alert("로그인이 필요한 서비스입니다.");
 			location.href="index.jsp?main=login/loginmain.jsp";
 		<%}
-		
+		else {%>
+			
+			
+			
+			if(jumunok) {
+				location.href = "orderpage/orderSuccess.jsp?p_num="+p_num+"&cnt="+cnt+"&price="+price;
+			}
+			else {
+				return;
+			}
+		<%}
 		%>
 	});
+	
+	function cartorder(idx, p_num, m_num, cnt, price){
+		
+		$.ajax({
+			
+			type: "post",
+			dataType: "html",
+			url: "orderpage/orderaction.jsp",
+			data: {"idx":idx, "p_num":p_num, "m_num":m_num, "cnt":cnt, "price":price},
+			success: function(){
+				
+			}
+		});
+	}
 });
 </script>
 </head>
@@ -174,7 +204,7 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
                     <div class="card">
                         <div class="card-body">
                         	<p class="text-muted"><strong><%=dto.getCollection() %></strong></p>
-                            <h1 class="h2"><%=dto.getName() %></h1>
+                            <h1 class="h2" id="p_name"><%=dto.getName() %></h1>
                             <p class="text-muted"><%=dto.getDescription() %></p>
                             <p class="h3 py-3"><%=nf.format(dto.getPrice()) %></p>
 
@@ -222,6 +252,7 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
 										<input type="text" name="cnt" class="count" id="count" value="1" size="3" style="text-align: center; width: 40px;">
 										<input type="button" class="btn btn-light btn-sm" value=" + " onclick="add();">
                                 	</div>
+                                	<input type="hidden" value="<%=dto.getPrice()%>" id="price">
 								</div>
 											
                                 <div class="row pb-3 mt-4">

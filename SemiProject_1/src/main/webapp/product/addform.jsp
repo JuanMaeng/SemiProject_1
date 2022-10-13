@@ -57,16 +57,17 @@ ProductDto dto = dao.getLastData();
 								<option value="콤보">콤보</option>
 								<option value="웹캠">웹캠</option>
 								<option value="크리에이터용 제품">크리에이터용 제품</option>
-								<option value="컨퍼런스 카메라" selected="selected">컨퍼런스 카메라</option>
+								<option value="컨퍼런스 카메라">컨퍼런스 카메라</option>
 								<option value="통합 회의실 솔루션">통합 회의실 솔루션</option>
-								<option value="유선 헤드셋">유선 헤드셋</option>
-								<option value="무선 헤드셋">무선 헤드셋</option>
-								<option value="BLUETOOTH 스피커">BLUETOOTH 스피커</option>
+								<option value="logi Dock">Logi Dock</option>
+								<option value="헤드셋 및 이어폰">헤드셋 및 이어폰</option>
+								<option value="Bluetooth 스피커">Bluetooth 스피커</option>
 								<option value="컴퓨터 스피커">컴퓨터 스피커</option>
-								<option value="컴퓨터 스피커">컴퓨터 스피커</option>
-								<option value="컴퓨터 스피커">컴퓨터 스피커</option>
-								<option value="컴퓨터 스피커">컴퓨터 스피커</option>
-								
+								<option value="iPad용">iPad용</option>
+								<option value="스마트폰용">스마트폰용</option>
+								<option value="화상회의용" selected="selected">화상회의용</option>
+								<option value="프레젠테이션 리모컨">프레젠테이션 리모컨</option>
+								<option value="보안 카메라">보안 카메라</option>
 							</select>
 						</td>
 					</tr>
@@ -78,10 +79,12 @@ ProductDto dto = dao.getLastData();
 								<option value="마스터시리즈">마스터시리즈</option>
 								<option value="무선">무선</option>
 								<option value="유선">유선</option>
-								<option value="화상회의" selected="selected">화상 회의</option>
+								<option value="화상회의">화상 회의</option>
 								<option value="교육용">교육용</option>
 								<option value="게임">게임</option>
-								<option value=" ">없음</option>
+								<option value="컴퓨터용">컴퓨터용</option>
+								<option value="모바일장치용">모바일 장치용</option>
+								<option value=" " selected="selected">없음</option>
 							</select>
 						</td>
 					</tr>
@@ -102,7 +105,7 @@ ProductDto dto = dao.getLastData();
 					<tr>
 						<td style="width:150px; background-color: #66cdaa"><b>필터</b></td>
 						<td>
-							<input type="text" name="filter" class="form-control" style="width:400px;"required="required" value="4k30fps,1080p60fps,1080p30fps,720p90fps,720p60fps,720p30fps">
+							<input type="text" name="filter" class="form-control" style="width:400px;"required="required" value="windows,chrome,mac">
 						</td>
 					</tr>
 					<tr>
