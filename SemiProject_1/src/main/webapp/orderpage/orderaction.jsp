@@ -24,5 +24,9 @@ CartOrderDao dao = new CartOrderDao();
 CartDao cartdao = new CartDao();
 
 dao.insertOrder(dto);
-cartdao.deleteCart(idx); // 주문목록으로 이동된 장바구니 내역 삭제
+
+if(idx != null){
+	
+	cartdao.deleteCart(idx); // 주문목록으로 이동된 장바구니 내역 삭제
+}
 %>

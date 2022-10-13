@@ -39,10 +39,10 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">마우스 & 키보드</a></li>
+                        <li><a class="text-decoration-none" href="#">마우스</a> &amp; <a class="text-decoration-none" href="#">키보드</a></li>
                         <li><a class="text-decoration-none" href="#">스트리밍</a></li>
                         <li><a class="text-decoration-none" href="#">비디오 협업</a></li>
-                        <li><a class="text-decoration-none" href="#">헤드셋 & 스피커</a></li>
+                        <li><a class="text-decoration-none" href="#">헤드셋</a> &amp; <a class="text-decoration-none" href="#">스피커</a></li>
                         <li><a class="text-decoration-none" href="#">액세서리</a></li>
                         <li><a class="text-decoration-none" href="#">스마트 홈</a></li>
                     </ul>

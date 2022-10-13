@@ -153,6 +153,7 @@
 					// alert(p_num + ", " + m_num + ", " + cnt + ", " + price);
 				
 					cartorder(idx, p_num, m_num, cnt, price);
+					// cartorder2(p_num, m_num, cnt, price);
 	 			});
 			} else {
 				
@@ -191,6 +192,20 @@
 				}
 			});
 		}
+		
+		/* function cartorder2(p_num, m_num, cnt, price){ // idx값 안넘기기
+			
+			$.ajax({
+				
+				type: "post",
+				dataType: "html",
+				url: "orderpage/orderaction.jsp",
+				data: {"p_num":p_num, "m_num":m_num, "cnt":cnt, "price":price},
+				success: function(){
+					
+				}
+			});
+		} */
 	});
 </script>
 
