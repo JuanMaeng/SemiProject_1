@@ -204,18 +204,9 @@ for(QnaBoardDto dto:list){
 					<td>
 					
 					<!-- admin이거나 본인 작성글일 경우에만 게시물 조회 -->
-	                <%
-	                if(dto.getId().equals(id)||id.equals("admin")){
-	                %>
-	                <a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;">
+	                <span class="subject" loginid=<%=id%> writeid=<%=dto.getId()%> num=<%=dto.getNum()%> currentPage=<%=currentPage%> style="color:black; text-decoration: none;">
 	                <%=dto.getSubject()%>
-	                </a>
-	                <%}else{%>
-	              	<em onclick="alert('본인이 작성한 글만 조회할 수 있습니다.')" style="color:black; text-decoration: none;">
-                    <%=dto.getSubject() %>
-                    </em>
-	                <%}
-	                %>
+	                </span>
 	                
 					<!-- new 표시 넣기 -->
 					<%
@@ -303,6 +294,32 @@ for(QnaBoardDto dto:list){
       </ul>
 	</div>
 	<!-- 페이징 end -->
+    
+    <script type="text/javascript">
+
+	//사용자 함수
+	$(".subject").click(function(){
+		
+		var writeid = $(this).attr("writeid");
+		var loginid = $(this).attr("loginid");
+		var num = $(this).attr("num");
+		var currentPage = $(this).attr("currentPage");
+		console.log(loginid);
+		console.log(num);
+		console.log(writeid);
+		
+		if(loginid=="null"){
+			alert("로그인이 필요합니다.");
+			location.href = "index.jsp?main=login/loginmain.jsp";
+		}else if(loginid=="admin"||loginid==writeid){
+			location.href = "index.jsp?main=qna/qnadetail.jsp?num="+num+"currentPage"+currentPage;
+		}else{
+			alert("본인이 작성한 글만 조회 가능합니다.");
+		}
+		
+	});
+
+	</script>
     
 </body>
 </html>
