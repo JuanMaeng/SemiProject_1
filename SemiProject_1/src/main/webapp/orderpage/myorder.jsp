@@ -190,15 +190,15 @@ ProductDao pdao = new ProductDao();
 													
 											if(now.before(deliveryStart)){
 											%>
-												배송준비중
+												<strong>배송준비중</strong>
 											<%
 											} else if(now.after(deliveryStart) && now.before(deliveryEnd)){
 											%>
-												배송중
+												<strong>배송중</strong>
 											<%
 											} else {
 											%>
-												배송완료
+												<strong>배송완료</strong>
 											<%
 											}
 											%>
