@@ -91,7 +91,7 @@
 		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp"><b>1:1 문의</b></a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp"><b>문의 내역</b></a>
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp"><b>고객게시판</b></a>
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp"><b>공지사항</b></a>

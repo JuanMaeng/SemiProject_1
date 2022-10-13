@@ -160,7 +160,7 @@ no = searchCount - (currentPage - 1) * perPage;
 		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">문의 내역</a>
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">고객게시판</a>
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp">공지사항</a>

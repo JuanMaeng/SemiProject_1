@@ -162,10 +162,17 @@ for(QnaBoardDto dto:list){
     	<nav class="navbar navbar-expand-sm w3-theme-l3 justify-content-center" style="margin-top: 50px;">
 		  <ul class="navbar-nav">
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
+		      <%if(loginok!=null){
+		    	%>
+		    	<a class="nav-link"  href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
+		    	<%}else{
+		    	%>
+		    	<a class="nav-link" onclick="alert('로그인이 필요합니다.')" href="index.jsp?main=login/loginmain.jsp">1:1 문의</a>
+		    	<%} 
+		    	%>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">문의 내역</a>
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">고객게시판</a>
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp">공지사항</a>

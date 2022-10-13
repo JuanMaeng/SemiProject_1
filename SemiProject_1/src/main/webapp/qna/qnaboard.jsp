@@ -58,6 +58,7 @@
 	
 </style>
 
+
 </head>
 
 <body>
@@ -156,7 +157,7 @@ for(QnaBoardDto dto:list){
 
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">문의 내역</a>
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">고객게시판</a>
 		      
 		    </li>
 		    <li class="nav-item">
@@ -201,19 +202,21 @@ for(QnaBoardDto dto:list){
 					<td style="text-align: center"><%=no-- %></td>
 					<td style="text-align: center"><%=dto.getCategory() %></td>					
 					<td>
-					<%
-	               if(dto.getId().equals(id)||id.equals("admin")){
-	               %>
-	                  <a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;">
-	                  <%=dto.getSubject()%>
-	                  </a>
-	               <%}else{
-	               %>
-	                  <a href="index.jsp?main=qna/qnaboard.jsp" onclick="alert('본인이 작성한 글만 조회할 수 있습니다.')" style="color:black; text-decoration: none;">
-	                  <%=dto.getSubject()%>
-	                  </a>
-	               <%}
-	               %>
+					
+					<!-- admin이거나 본인 작성글일 경우에만 게시물 조회 -->
+	                <%
+	                if(dto.getId().equals(id)||id.equals("admin")){
+	                %>
+	                <a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;">
+	                <%=dto.getSubject()%>
+	                </a>
+	                <%}else{%>
+	              	<em onclick="alert('본인이 작성한 글만 조회할 수 있습니다.')" style="color:black; text-decoration: none;">
+                    <%=dto.getSubject() %>
+                    </em>
+	                <%}
+	                %>
+	                
 					<!-- new 표시 넣기 -->
 					<%
 					String wday = sdf.format(dto.getWriteday());
