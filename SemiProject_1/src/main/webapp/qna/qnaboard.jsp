@@ -36,14 +36,13 @@
 	
 	.banner-wrap img {
 		width: 100%;
-		height: 400px;
 		vertical-align: middle;
 	}
 	
 	.banner-text {
 		position: absolute;
 		top: 50%;
-		left: 60%;
+		left: 67%;
 		width: 100%;
 		transform: translate(-50%, -50%);
 		text-align: left;
@@ -58,6 +57,7 @@
 
 	
 </style>
+
 
 </head>
 
@@ -108,12 +108,14 @@ start = (currentPage - 1) * perPage;
 //각페이지에서 필요한 게시글불러오기
 List<QnaBoardDto> list = dao.getList(start, perPage);
 
+
 //각글앞에 붙힐 시작번호
 //총글이 만약에 20..1페이지는 20부터 2페이지는 15부터
 //출력해서 1씩 감소하면서 출력
 no = totalCount - (currentPage - 1) * perPage;
 
-//댓글 변수에 댓글 총 개수 넣기
+
+//댓글 갯수 카운트(1이상이면 '답변완료' 표시)
 QnaAnswerDao adao = new QnaAnswerDao();
 for(QnaBoardDto dto:list){
 	int acount=adao.getAllAnswers(dto.getNum()).size();
@@ -155,7 +157,7 @@ for(QnaBoardDto dto:list){
 
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">문의 내역</a>
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">고객게시판</a>
 		      
 		    </li>
 		    <li class="nav-item">
@@ -200,19 +202,12 @@ for(QnaBoardDto dto:list){
 					<td style="text-align: center"><%=no-- %></td>
 					<td style="text-align: center"><%=dto.getCategory() %></td>					
 					<td>
-					<%
-	               if(dto.getId().equals(id)||id=="admin"){
-	               %>
-	                  <a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;">
-	                  <%=dto.getSubject()%>
-	                  </a>
-	               <%}else{
-	               %>
-	                  <a href="index.jsp?main=qna/qnaboard.jsp" onclick="alert('본인이 작성한 글만 조회할 수 있습니다.')" style="color:black; text-decoration: none;">
-	                  <%=dto.getSubject()%>
-	                  </a>
-	               <%}
-	               %>
+					
+					<!-- admin이거나 본인 작성글일 경우에만 게시물 조회 -->
+	                <span class="subject" loginid=<%=id%> writeid=<%=dto.getId()%> num=<%=dto.getNum()%> currentPage=<%=currentPage%> style="color:black; text-decoration: none;">
+	                <%=dto.getSubject()%>
+	                </span>
+	                
 					<!-- new 표시 넣기 -->
 					<%
 					String wday = sdf.format(dto.getWriteday());
@@ -299,6 +294,32 @@ for(QnaBoardDto dto:list){
       </ul>
 	</div>
 	<!-- 페이징 end -->
+    
+    <script type="text/javascript">
+
+	//사용자 함수
+	$(".subject").click(function(){
+		
+		var writeid = $(this).attr("writeid");
+		var loginid = $(this).attr("loginid");
+		var num = $(this).attr("num");
+		var currentPage = $(this).attr("currentPage");
+		console.log(loginid);
+		console.log(num);
+		console.log(writeid);
+		
+		if(loginid=="null"){
+			alert("로그인이 필요합니다.");
+			location.href = "index.jsp?main=login/loginmain.jsp";
+		}else if(loginid=="admin"||loginid==writeid){
+			location.href = "index.jsp?main=qna/qnadetail.jsp?num="+num+"currentPage"+currentPage;
+		}else{
+			alert("본인이 작성한 글만 조회 가능합니다.");
+		}
+		
+	});
+
+	</script>
     
 </body>
 </html>

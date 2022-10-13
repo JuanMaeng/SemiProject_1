@@ -276,7 +276,7 @@ String category = request.getParameter("category");
 String subject = request.getParameter("subject");
 
 QnaBoardDao dao = new QnaBoardDao();
-QnaBoardDto dto = dao.getData(num);
+QnaBoardDto dto = dao.getDetail();
 
 dao.updateReadCount(num);
 

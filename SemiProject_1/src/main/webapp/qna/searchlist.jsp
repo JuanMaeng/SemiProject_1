@@ -33,14 +33,13 @@
 	
 	.banner-wrap img {
 		width: 100%;
-		height: 400px;
 		vertical-align: middle;
 	}
 	
 	.banner-text {
 		position: absolute;
 		top: 50%;
-		left: 60%;
+		left: 67%;
 		width: 100%;
 		transform: translate(-50%, -50%);
 		text-align: left;
@@ -161,7 +160,7 @@ no = searchCount - (currentPage - 1) * perPage;
 		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp">1:1 문의</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">문의 내역</a>
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp">고객게시판</a>
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp">공지사항</a>

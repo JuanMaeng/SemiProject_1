@@ -49,14 +49,13 @@
 	
 	.banner-wrap img {
 		width: 100%;
-		height: 400px;
 		vertical-align: middle;
 	}
 	
 	.banner-text {
 		position: absolute;
 		top: 50%;
-		left: 60%;
+		left: 67%;
 		width: 100%;
 		transform: translate(-50%, -50%);
 		text-align: left;
@@ -103,7 +102,7 @@
 		      <a class="nav-link" href="index.jsp?main=qna/qnaform.jsp"><b>1:1 문의</b></a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp"><b>문의 내역</b></a>
+		      <a class="nav-link" href="index.jsp?main=qna/qnaboard.jsp"><b>고객게시판</b></a>
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" href="index.jsp?main=qna/notice.jsp"><b>공지사항</b></a>
