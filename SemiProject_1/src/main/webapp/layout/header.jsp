@@ -126,16 +126,15 @@ String id = (String)session.getAttribute("idok");
 							<ul class="dropdown-menu">
 				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/conference.jsp">컨퍼런스 카메라</a></li>
 								<li><a class="dropdown-item" href="index.jsp?main=product/list/meetingroom.jsp">통합 회의실 솔루션</a></li>
-								<li><a class="dropdown-item" href="index.jsp?main=product/list/logidock.jsp">Logi Dock</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/detailpage.jsp?p_num=63">Logi Dock</a></li>
 			    			</ul>
 		    			</li>
 		    			
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">헤드셋 &amp; 스피커</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="index.jsp?main=product/list/wired.jsp">유선 헤드셋</a></li>
-								<li><a class="dropdown-item" href="index.jsp?main=product/list/wireless.jsp">무선 헤드셋</a></li>
-				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/bluetooth.jsp">BLUETOOTH 스피커</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/list/headsets.jsp">헤드셋 및 이어폰</a></li>
+				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/bluetooth.jsp">Bluetooth 스피커</a></li>
 				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/speaker.jsp">컴퓨터 스피커</a></li>
 			    			</ul>
 		    			</li>
@@ -143,7 +142,7 @@ String id = (String)session.getAttribute("idok");
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">액세서리</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="index.jsp?main=product/list/ipad.jsp">IPad용</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/detailpage.jsp?p_num=68">IPad용</a></li>
 								<li><a class="dropdown-item" href="index.jsp?main=product/list/smartphone.jsp">스마트폰용</a></li>
 				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/webconference.jsp">화상회의용</a></li>
 				 				<li><a class="dropdown-item" href="index.jsp?main=product/list/remotecon.jsp">프레젠테이션 리모컨</a></li>
@@ -153,7 +152,7 @@ String id = (String)session.getAttribute("idok");
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" style="pointer-events: none;">스마트홈</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="index.jsp?main=product/list/securityCamera.jsp">보안 카메라</a></li>
+								<li><a class="dropdown-item" href="index.jsp?main=product/detailpage.jsp?p_num=81">보안 카메라</a></li>
 			    			</ul>
 		    			</li>
 		    			
