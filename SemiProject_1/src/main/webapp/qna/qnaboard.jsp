@@ -54,6 +54,9 @@
 		margin-bottom: 20px;
 	}
 	
+	span.subject{
+		cursor: pointer;
+	}
 
 	
 </style>
@@ -312,7 +315,7 @@ for(QnaBoardDto dto:list){
 			alert("로그인이 필요합니다.");
 			location.href = "index.jsp?main=login/loginmain.jsp";
 		}else if(loginid=="admin"||loginid==writeid){
-			location.href = "index.jsp?main=qna/qnadetail.jsp?num="+num+"currentPage"+currentPage;
+			location.href = "index.jsp?main=qna/qnadetail.jsp?num="+num+"&currentPage="+currentPage;
 		}else{
 			alert("본인이 작성한 글만 조회 가능합니다.");
 		}

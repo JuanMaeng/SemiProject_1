@@ -1,4 +1,3 @@
-
 <%@page import="data.dao.QnaBoardDao"%>
 <%@page import="data.dto.QnaBoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -36,7 +35,8 @@ dto.setContent(content);
 dto.setCategory(category);
 QnaBoardDao dao = new QnaBoardDao();
 dao.insertQna(dto);
-response.sendRedirect("../index.jsp?main=qna/qnadetail2.jsp");
+String num = dao.getDetail().getNum();
+response.sendRedirect("../index.jsp?main=qna/qnadetail.jsp?num=" + num);
 %>
 </body>
 </html>
