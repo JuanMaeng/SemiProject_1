@@ -41,6 +41,40 @@ public class QnaBoardDao {
 			
 		}
 	
+	//insert 후 디테일 페이지 이동
+			public QnaBoardDto getDetail() {
+				QnaBoardDto dto = new QnaBoardDto();
+				
+				Connection conn = db.getConnection();
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				
+				String sql = "select * from qnaboard order by num desc limit 1";
+
+				try {
+					pstmt = conn.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						dto.setNum(rs.getString("num"));
+						dto.setId(rs.getString("id"));
+						dto.setCategory(rs.getString("category"));
+						dto.setSubject(rs.getString("subject"));
+						dto.setContent(rs.getString("content"));
+						dto.setReadcount(rs.getInt("readcount"));
+						dto.setWriteday(rs.getTimestamp("writeday"));
+					}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					db.dbClose(rs, pstmt, conn);
+				}
+				
+				return dto;
+			}
+	
 	//전체출력
 	public List<QnaBoardDto> getAllQnas() {
 			List<QnaBoardDto> list = new Vector<>();
@@ -112,6 +146,7 @@ public class QnaBoardDao {
 		return n;
 	}
 		
+		//id별 갯수 카운트
 		public int getTotalCount(String id) {
 			int n =0;
 			
@@ -142,7 +177,7 @@ public class QnaBoardDao {
 		}
 		
 		
-	//(아이디별) 페이징처리에 필요한 리스트만 내보내기 2.getList(0,5) -> 0 다음부터 5개 출력 
+	//(아이디별) 페이징처리에 필요한 리스트만 내보내기
 	public List<QnaBoardDto> getIdList(String id, int start, int perPage){
 		List<QnaBoardDto> list = new Vector<>();
 		
@@ -185,7 +220,7 @@ public class QnaBoardDao {
 	}
 	
 	//페이징처리에 필요한 리스트만 내보내기 3.getList(0,5) -> 0 다음부터 5개 출력 
-		public List<QnaBoardDto> getList(int start, int perpage){
+		public List<QnaBoardDto> getList(int start, int perPage){
 			List<QnaBoardDto> list = new Vector<>();
 			
 			Connection conn = db.getConnection();
@@ -197,7 +232,7 @@ public class QnaBoardDao {
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, start);
-				pstmt.setInt(2, perpage);
+				pstmt.setInt(2, perPage);
 				
 				rs = pstmt.executeQuery();
 				
@@ -283,7 +318,7 @@ public class QnaBoardDao {
 			}
 		}
 		
-	//update
+	//update - 수정
 		public void updateQna(QnaBoardDto dto) {
 			
 			Connection conn = db.getConnection();

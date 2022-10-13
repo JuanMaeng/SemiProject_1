@@ -36,14 +36,13 @@
 	
 	.banner-wrap img {
 		width: 100%;
-		height: 400px;
 		vertical-align: middle;
 	}
 	
 	.banner-text {
 		position: absolute;
 		top: 50%;
-		left: 60%;
+		left: 67%;
 		width: 100%;
 		transform: translate(-50%, -50%);
 		text-align: left;

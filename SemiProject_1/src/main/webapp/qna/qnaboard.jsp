@@ -36,14 +36,13 @@
 	
 	.banner-wrap img {
 		width: 100%;
-		height: 400px;
 		vertical-align: middle;
 	}
 	
 	.banner-text {
 		position: absolute;
 		top: 50%;
-		left: 60%;
+		left: 67%;
 		width: 100%;
 		transform: translate(-50%, -50%);
 		text-align: left;
@@ -108,12 +107,14 @@ start = (currentPage - 1) * perPage;
 //각페이지에서 필요한 게시글불러오기
 List<QnaBoardDto> list = dao.getList(start, perPage);
 
+
 //각글앞에 붙힐 시작번호
 //총글이 만약에 20..1페이지는 20부터 2페이지는 15부터
 //출력해서 1씩 감소하면서 출력
 no = totalCount - (currentPage - 1) * perPage;
 
-//댓글 변수에 댓글 총 개수 넣기
+
+//댓글 갯수 카운트(1이상이면 '답변완료' 표시)
 QnaAnswerDao adao = new QnaAnswerDao();
 for(QnaBoardDto dto:list){
 	int acount=adao.getAllAnswers(dto.getNum()).size();
@@ -201,7 +202,7 @@ for(QnaBoardDto dto:list){
 					<td style="text-align: center"><%=dto.getCategory() %></td>					
 					<td>
 					<%
-	               if(dto.getId().equals(id)||id=="admin"){
+	               if(dto.getId().equals(id)||id.equals("admin")){
 	               %>
 	                  <a href="index.jsp?main=qna/qnadetail.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>" style="color:black; text-decoration: none;">
 	                  <%=dto.getSubject()%>
