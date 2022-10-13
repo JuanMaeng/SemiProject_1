@@ -1,3 +1,5 @@
+<%@page import="data.dao.MemberDao"%>
+<%@page import="data.dao.CartOrderDao"%>
 <%@page import="data.dao.CartDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -28,8 +30,8 @@
 	
 	#welcome{
 		position: absolute;
-		top: 30px;
-		left: 0px;
+		top: 8px;
+		left: 150px;
 		width: 110px;
 		font-size: 12px;
 		text-align: center;
@@ -86,6 +88,8 @@
 <%
 String loginok = (String)session.getAttribute("loginok");
 String id = (String)session.getAttribute("idok");
+MemberDao mdao = new MemberDao();
+String m_num = mdao.getMemberInfo(id).getM_num();
 %>
 <body>
 <!-- Header -->
@@ -179,30 +183,32 @@ String id = (String)session.getAttribute("idok");
                     
                     
                     <!-- Modal Start -->
-				    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				        <div class="modal-dialog modal-lg" role="document">
-				            <div class="w-100 pt-1 mb-5 text-right">
-				                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				            </div>
-				            
-				            <form action="index.jsp?main=product/searchresult.jsp" method="post" class="modal-content modal-body border-0 p-0" onSubmit="return false;">
-				                	검색 키워드를 입력해주세요.<br><br>
-				                <div class="input-group mb-2">
-				                    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search ...">
-				                    <button type="button" class="input-group-text bg-success text-light search">
-				                        <i class="fa fa-fw fa-search text-white"></i>
-				                    </button>
-				                </div>
-				            </form>
-				        </div>
-				    </div>
-				    <!-- Modal End -->
+                    <div class="modal" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form action="index.jsp?main=product/searchresult.jsp" method="post" class="modal-content modal-body border-0 p-0" onSubmit="return false;">
+                                <div style="margin:30px;">
+                                    <p><strong>검색 키워드를 입력해주세요.</strong></p>
+                                    <div class="input-group mb-2">
+                                        <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search ...">
+                                        <button type="button" class="input-group-text bg-success text-light search">
+                                            <i class="fa fa-fw fa-search text-white"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Modal End -->
 				    
                     
                     <%
                     // 장바구니에 담긴 제품 수
                     CartDao cdao = new CartDao();
 					int productCnt = cdao.getCartList(id).size();
+					
+					// 구매목록 수
+					CartOrderDao orderDao = new CartOrderDao();
+					int orderCnt = orderDao.getAllList(m_num).size();
                     
                     if(loginok == null){ // login session이 없으면
                    	%>
@@ -232,7 +238,8 @@ String id = (String)session.getAttribute("idok");
 	                    </a>
 	                    
 	                    <a class="nav-icon position-relative text-decoration-none" href="index.jsp?main=orderpage/myorder.jsp">
-	                        <i class="fa fa-fw fa-user-alt text-dark mr-1"></i>
+	                        <i class="fa fa-fw fa-clipboard-list text-dark mr-1"></i>
+	                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"><%= orderCnt %></span>
 	                    </a>
 	                    
                    		<a class="nav-icon position-relative text-decoration-none" href="#">
