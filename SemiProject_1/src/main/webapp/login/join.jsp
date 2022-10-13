@@ -174,7 +174,7 @@ a.gologin{
 		         
 		         <br>
 		         
-		         <button class="w-100 btn btn-lg btn-primary" type="submit" id="submit" disabled>가입</button>
+		         <button class="w-100 btn btn-lg btn-primary" type="submit" id="submit">가입</button>
 		         
 		         <br><br>
 		         
