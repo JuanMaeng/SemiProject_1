@@ -119,8 +119,6 @@ public class CartDao {
 		}
 	}
 	
-	
-	
 	// 장바구니에 담긴 상품의 수 구하기
 	
 }
