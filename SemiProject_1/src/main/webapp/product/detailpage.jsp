@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@page import="data.dto.DetailProductDto"%>
 <%@page import="data.dao.DetailProductDao"%>
 <%@page import="java.text.NumberFormat"%>
@@ -114,7 +115,9 @@ $(function (){
 	});
 	
 	$("#order").click(function() {
+		
 		var p_num = $(this).attr("p_num");
+		var m_num = $(this).attr("m_num");
 		var cnt = $("#count").val();
 		var p_name = $("#p_name").text();
 		var price = $("#price").val();
@@ -129,28 +132,31 @@ $(function (){
 		<%}
 		else {%>
 			
+			var jumunok = confirm("주문 하시기 전 상품을 확인해주세요.\n제품명 : "+p_name+"\n수량 : "+cnt+"개\n총 금액 : "+price*cnt+"원");
 			
-			
-			if(jumunok) {
-				location.href = "orderpage/orderSuccess.jsp?p_num="+p_num+"&cnt="+cnt+"&price="+price;
-			}
-			else {
+			if(jumunok){
+				
+				//alert();
+				cartorder(p_num, m_num, cnt, price);
+			} else {
+				
 				return;
 			}
+			
 		<%}
 		%>
 	});
 	
-	function cartorder(idx, p_num, m_num, cnt, price){
+	function cartorder(p_num, m_num, cnt, price){
 		
 		$.ajax({
 			
 			type: "post",
 			dataType: "html",
 			url: "orderpage/orderaction.jsp",
-			data: {"idx":idx, "p_num":p_num, "m_num":m_num, "cnt":cnt, "price":price},
+			data: {"p_num":p_num, "m_num":m_num, "cnt":cnt, "price":price},
 			success: function(){
-				
+				location.href="index.jsp?main=orderpage/orderSuccess.jsp"
 			}
 		});
 	}
@@ -159,11 +165,18 @@ $(function (){
 </head>
 <%
 String p_num = request.getParameter("p_num");
+String id = (String)session.getAttribute("idok");
+
 ProductDao dao = new ProductDao();
 ProductDto dto = dao.getData(p_num);
+
 DetailProductDao ddao = new DetailProductDao();
 DetailProductDto ddto = ddao.getData(p_num);
+
 NumberFormat nf=NumberFormat.getCurrencyInstance();
+
+MemberDao mdao = new MemberDao();
+String m_num = mdao.getMemberInfo(id).getM_num();
 %>
 <body>
 
@@ -260,7 +273,7 @@ NumberFormat nf=NumberFormat.getCurrencyInstance();
                                         <button type="button" class="btn btn-outline-secondary" id="cart" p_num="<%=dto.getP_num()%>">장바구니</button>
                                     </div>
                                     <div class="col d-grid">
-										<button type="button" class="btn btn-outline-info" id="order" p_num="<%=dto.getP_num()%>">바로구매</button>
+										<button type="button" class="btn btn-outline-info" id="order" p_num="<%=dto.getP_num()%>" m_num="<%=m_num%>">바로구매</button>
                                     </div>
                                 </div>
                             </form>
