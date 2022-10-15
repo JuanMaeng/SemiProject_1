@@ -99,7 +99,7 @@ a.gologin{
 				data: {"id":id},
 				success: function(response){
 					
-					if(response.count == 1){
+					if(response.count == 1 || id == ""){
 						
 						// alert("중복됨");
 						$("#check").removeClass("btn-outline-primary");
@@ -114,6 +114,35 @@ a.gologin{
 						$("#check").removeClass("btn-danger");
 						$("#check").addClass("btn-success");
 						$("#check").val("사용 가능");
+
+					}
+				}
+			});
+		});
+		
+		
+		// 비밀번호 확인
+		$("#pwchk").keyup(function(){
+			
+			var pwchk = $(this).val();
+			var pw = $("#pw").val();
+			// alert("pw : " + pw + ", pwchk : " + pwchk);
+			
+			$.ajax({
+				
+				type: "get",
+				dataType: "json",
+				url: "login/checkpw.jsp",
+				data: {"pw":pw, "pwchk":pwchk},
+				success: function(response){
+					
+					if(response.flag == 1){
+						
+						$("#pwchkdiv").html("비밀번호가 일치합니다.");
+						
+					} else {
+						
+						$("#pwchkdiv").html("비밀번호가 일치하지 않습니다.");
 
 					}
 				}
@@ -139,15 +168,23 @@ a.gologin{
 		         
 				<div class="form-floating">
 					<input type="text" class="form-control" name="id" id="id" placeholder="아이디 입력..." required="required" style="width: 395px;">
-					<input style="float: right; height: 57px !important;" class="btn btn-outline-primary idchk" type="button" id="check" value="중복 체크">
+					<input style="float: right; height: 57px !important;" class="btn btn-outline-primary idchk" type="button" disabled="disabled" id="check" value="중복 체크">
 					<label for="id">아이디</label>
 				</div>
-				<br>
+				
 		        <br>
 		         
 		        <div class="form-floating">
 					<input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호 입력..." required="required">
 					<label for="pw">비밀번호</label>
+				</div>
+		         
+		        <br>
+		        
+		        <div class="form-floating">
+					<input type="password" class="form-control" id="pwchk" placeholder="비밀번호 확인" required="required">
+					<label for="pw">비밀번호 확인</label>
+					<div id="pwchkdiv"></div>
 				</div>
 		         
 		        <br>
