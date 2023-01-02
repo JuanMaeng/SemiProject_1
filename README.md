@@ -1,4 +1,4 @@
-# JSP를 활용한 Model1 프로젝트 - Logitech 쇼핑몰 웹사이트 구현 프로젝트
+# JSP를 활용한 Model1 프로젝트 - Logitech 웹사이트 구현 프로젝트
 
 ## 🖥️ 프로젝트 소개
 - 컴퓨터 주변기기 브랜드 Logitech의 홈페이지를 기반으로 상품 구매, 고객 문의 게시판 기능이 있는 웹페이지입니다. 
@@ -21,7 +21,7 @@
     - API: BootStrap5
 
 ## 📜 ERD
-<img src="https://user-images.githubusercontent.com/106582252/210235883-eb092581-6409-468a-88e2-c55a4eb292a7.png" alt=""></img>
+<img src="https://user-images.githubusercontent.com/106582252/210236788-617c185d-fbda-4064-bd52-2fa8674c8dfa.png" alt=""></img>
 
 
 ## 🧑‍🤝‍🧑 프로젝트 역할 분담
