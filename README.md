@@ -34,13 +34,13 @@
 팀원 권민찬: 메인 페이지, 로그인, 장바구니
 
 ## 📌 담당 기능
-### 고객 문의 게시판 [상세보기 - WIKI 이동](https://github.com/InsooHan/mainssangproject/wiki/Main-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C)
+### 고객 문의 게시판 [상세보기 - WIKI 이동](https://github.com/JuanMaeng/SemiProject_1/wiki/%EA%B3%A0%EA%B0%9D-%EB%AC%B8%EC%9D%98-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C)
 - 당일 올라온 문의글의 제목 옆에 'new' 아이콘 표시
 - 관리자의 댓글이 달린 문의글은 제목 옆에 '[답변완료]' 표시
 - 관리자를 제외하고 모든 회원들은 본인이 작성한 문의글만 조회 가능
 - 공지사항 게시물 검색
 
-### 댓글 [상세보기 - WIKI 이동](https://github.com/InsooHan/mainssangproject/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C)
+### 댓글 [상세보기 - WIKI 이동](https://github.com/JuanMaeng/SemiProject_1/wiki/%EB%8C%93%EA%B8%80-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C)
 - 로그인된 계정이 관리자인 경우만 댓글 작성창 활성화
 - AJAX를 활용하여 비동기 방식으로 댓글 CRUD
 
