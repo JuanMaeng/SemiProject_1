@@ -41,7 +41,7 @@
 - 공지사항 게시물 검색
 
 ### 댓글 [상세보기 - WIKI 이동](https://github.com/JuanMaeng/SemiProject_1/wiki/%EB%8C%93%EA%B8%80-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C)
-- 로그인된 계정이 관리자인 경우만 댓글 작성창 활성화
+- 관리자가 로그인 한 경우에만 댓글 작성창 활성화
 - AJAX를 활용하여 비동기 방식으로 댓글 CRUD
 
 ### 배포
